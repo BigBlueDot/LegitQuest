@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MessageDataStructures
 {
-    public class Class1
+    public class StatusRemoved
     {
+
     }
 }
