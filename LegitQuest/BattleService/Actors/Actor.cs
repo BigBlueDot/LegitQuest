@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleService
+namespace BattleService.Actors
 {
-    public class BattleService
+    public abstract class Actor
     {
 
     }

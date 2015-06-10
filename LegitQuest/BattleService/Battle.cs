@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BattleService
 {
-    public class BattleService
+    public class Battle
     {
 
     }
