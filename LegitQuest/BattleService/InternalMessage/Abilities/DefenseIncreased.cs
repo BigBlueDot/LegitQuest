@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleService.InternalMessage
+namespace BattleService.InternalMessage.Abilities
 {
-    public class DefenseIncreased
+    public class DefenseIncreased : Targeted
     {
-
+        public int duration { get; set; }
+        public bool defenseBonus { get; set; }
     }
 }

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleService.InternalMessage.DataResults
+namespace BattleService.InternalMessage.DataRequests
 {
-    public class EnemyList
+    public class WhoHasLowestHealth
     {
-
+        public bool isAlly { get; set; }
     }
 }

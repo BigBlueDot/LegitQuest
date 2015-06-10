@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleService.InternalMessage
+namespace BattleService.InternalMessage.Abilities
 {
-    public class MagicalAttack
+    public class MagicalAttack : Targeted
     {
-
+        public int magicAttack { get; set; }
+        public int abilityStrength { get; set; }
     }
 }

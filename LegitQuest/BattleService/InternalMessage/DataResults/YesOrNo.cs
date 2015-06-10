@@ -8,6 +8,6 @@ namespace BattleService.InternalMessage.DataResults
 {
     public class YesOrNo
     {
-
+        public bool isYes { get; set; }
     }
 }

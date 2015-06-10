@@ -1,0 +1,5 @@
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\BattleService\obj\Debug\BattleService.csprojResolveAssemblyReference.cache
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\BattleService\bin\Debug\BattleService.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\BattleService\bin\Debug\BattleService.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\BattleService\obj\Debug\BattleService.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\BattleService\obj\Debug\BattleService.pdb

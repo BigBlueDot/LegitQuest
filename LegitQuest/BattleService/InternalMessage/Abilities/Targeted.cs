@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BattleService.InternalMessage.Abilities
 {
-    public class PhysicalAttack : Targeted
+    public abstract class Targeted
     {
-        public int attack { get; set; }
-        public int abilityStrength { get; set; }
+        bool isAlly { get; set; }
+        int target { get; set; } //1 2 or 3
     }
 }

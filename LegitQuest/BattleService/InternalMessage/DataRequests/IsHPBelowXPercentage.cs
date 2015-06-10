@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace BattleService.InternalMessage.DataRequests
 {
-    public class WhichAlliesLackStatusEffect
+    public class IsHPBelowXPercentage
     {
-
+        public bool isAlly { get; set; }
+        public int percentage { get; set; }
     }
 }

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleService.InternalMessage
+namespace BattleService.InternalMessage.Abilities
 {
-    public class Taunt
+    public class Taunt : Targeted
     {
-
+        public bool sourceIsAlly { get; set; }
+        public int source { get; set; }
     }
 }
