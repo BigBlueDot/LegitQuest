@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BattleService.InternalMessage.Abilities
 {
-    public abstract class Targeted
+    public abstract class Targeted : InternalMessage
     {
         bool isAlly { get; set; }
         int target { get; set; } //1 2 or 3

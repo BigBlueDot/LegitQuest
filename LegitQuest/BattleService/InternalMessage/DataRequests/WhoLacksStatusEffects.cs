@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BattleService.InternalMessage.DataRequests
 {
-    public class WhoLacksStatusEffects
+    public class WhoLacksStatusEffects : InternalMessage
     {
         public bool isAlly { get; set; }
         public string statusEffect { get; set; } //might use a different identifier later on

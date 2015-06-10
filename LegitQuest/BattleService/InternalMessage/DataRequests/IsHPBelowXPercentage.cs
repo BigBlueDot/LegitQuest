@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BattleService.InternalMessage.DataRequests
 {
-    public class IsHPBelowXPercentage
+    public class IsHPBelowXPercentage : InternalMessage
     {
         public bool isAlly { get; set; }
         public int percentage { get; set; }

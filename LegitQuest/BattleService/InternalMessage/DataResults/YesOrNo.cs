@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BattleService.InternalMessage.DataResults
 {
-    public class YesOrNo
+    public class YesOrNo : InternalMessage
     {
         public bool isYes { get; set; }
     }

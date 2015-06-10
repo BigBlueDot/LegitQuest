@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BattleService.InternalMessage.DataRequests
 {
-    public class WhoHasLowestHealth
+    public class WhoHasLowestHealth : InternalMessage
     {
         public bool isAlly { get; set; }
     }

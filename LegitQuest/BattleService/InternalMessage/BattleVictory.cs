@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BattleService.InternalMessage
 {
-    public class BattleVictory
+    public class BattleVictory : InternalMessage
     {
 
     }

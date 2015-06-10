@@ -46,16 +46,14 @@
     <Compile Include="Actors\EndingConditions\KOEndingCondition.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="BattleService.cs" />
-    <Compile Include="InternalMessage\Abilities\ITarget.cs" />
+    <Compile Include="InternalMessage\Abilities\Targeted.cs" />
     <Compile Include="InternalMessage\BattleDefeat.cs" />
     <Compile Include="InternalMessage\BattleVictory.cs" />
     <Compile Include="InternalMessage\Abilities\DamageOverTime.cs" />
-    <Compile Include="InternalMessage\DataRequests\IsAllyBelowXPercentage.cs" />
-    <Compile Include="InternalMessage\DataRequests\WhatAllyHasLowestHealth.cs" />
-    <Compile Include="InternalMessage\DataRequests\WhichAlliesLackStatusEffect.cs" />
-    <Compile Include="InternalMessage\DataRequests\WhichEnemiesLackStatusEffect.cs" />
+    <Compile Include="InternalMessage\DataRequests\IsHPBelowXPercentage.cs" />
+    <Compile Include="InternalMessage\DataRequests\WhoHasLowestHealth.cs" />
+    <Compile Include="InternalMessage\DataRequests\WhoLacksStatusEffects.cs" />
     <Compile Include="InternalMessage\DataResults\AllyList.cs" />
-    <Compile Include="InternalMessage\DataResults\EnemyList.cs" />
     <Compile Include="InternalMessage\DataResults\YesOrNo.cs" />
     <Compile Include="InternalMessage\Defeated.cs" />
     <Compile Include="InternalMessage\Abilities\DefenseDecreased.cs" />
@@ -64,6 +62,7 @@
     <Compile Include="InternalMessage\Abilities\MagicalAttack.cs" />
     <Compile Include="InternalMessage\Abilities\PhysicalAttack.cs" />
     <Compile Include="InternalMessage\Abilities\Taunt.cs" />
+    <Compile Include="InternalMessage\InternalMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
