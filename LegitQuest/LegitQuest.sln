@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegitQuest", "LegitQuest\LegitQuest.csproj", "{10B591C6-12E9-43EA-A919-CDBE0ACB2D6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleService", "BattleService\BattleService.csproj", "{6E4BDF76-D363-452A-8D0E-13692D530927}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageDataStructures", "MessageDataStructures\MessageDataStructures.csproj", "{87E53F27-0120-4795-B497-4A93304D0CBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{10B591C6-12E9-43EA-A919-CDBE0ACB2D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10B591C6-12E9-43EA-A919-CDBE0ACB2D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10B591C6-12E9-43EA-A919-CDBE0ACB2D6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E4BDF76-D363-452A-8D0E-13692D530927}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E4BDF76-D363-452A-8D0E-13692D530927}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E4BDF76-D363-452A-8D0E-13692D530927}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E4BDF76-D363-452A-8D0E-13692D530927}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87E53F27-0120-4795-B497-4A93304D0CBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87E53F27-0120-4795-B497-4A93304D0CBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87E53F27-0120-4795-B497-4A93304D0CBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87E53F27-0120-4795-B497-4A93304D0CBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

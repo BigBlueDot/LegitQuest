@@ -1,0 +1,5 @@
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MessageDataStructures\bin\Debug\MessageDataStructures.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MessageDataStructures\bin\Debug\MessageDataStructures.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MessageDataStructures\obj\Debug\MessageDataStructures.csprojResolveAssemblyReference.cache
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MessageDataStructures\obj\Debug\MessageDataStructures.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MessageDataStructures\obj\Debug\MessageDataStructures.pdb

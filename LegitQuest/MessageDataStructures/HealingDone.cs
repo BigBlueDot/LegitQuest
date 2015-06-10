@@ -8,6 +8,8 @@ namespace MessageDataStructures
 {
     public class HealingDone
     {
-
+        public int isAlly { get; set; }
+        public int targetNumber { get; set; }
+        public int healValue { get; set; }
     }
 }

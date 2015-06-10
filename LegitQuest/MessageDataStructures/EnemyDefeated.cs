@@ -8,6 +8,6 @@ namespace MessageDataStructures
 {
     public class EnemyDefeated
     {
-
+        public int targetNumber { get; set; }
     }
 }

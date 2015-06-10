@@ -8,6 +8,7 @@ namespace MessageDataStructures
 {
     public class BattleInitialization
     {
-
+        public List<ViewModels.Character> PlayerCharacters { get; set; }
+        public List<ViewModels.Character> NonPlayerCharacters { get; set; }
     }
 }

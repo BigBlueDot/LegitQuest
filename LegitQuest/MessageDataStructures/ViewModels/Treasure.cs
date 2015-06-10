@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MessageDataStructures
+namespace MessageDataStructures.ViewModels
 {
-    public class StatusRemoved
+    public class Treasure
     {
-
+        public string name { get; set; }
     }
 }

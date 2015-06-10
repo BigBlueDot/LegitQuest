@@ -8,6 +8,6 @@ namespace MessageDataStructures
 {
     public class BattleUpdates
     {
-
+        public List<BattleUpdate> updates { get; set; }
     }
 }

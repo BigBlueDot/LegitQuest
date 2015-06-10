@@ -8,6 +8,8 @@ namespace MessageDataStructures
 {
     public class CombatEnded
     {
-
+        public bool playerWon { get; set; }
+        public int xp { get; set; }
+        public List<ViewModels.Treasure> treasure { get; set; }
     }
 }

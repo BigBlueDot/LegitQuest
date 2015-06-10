@@ -8,6 +8,8 @@ namespace MessageDataStructures
 {
     public class DamageDealt
     {
-
+        public bool isAlly { get; set; }
+        public int targetNumber { get; set; }
+        public int damage { get; set; }
     }
 }

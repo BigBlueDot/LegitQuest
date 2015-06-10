@@ -8,6 +8,6 @@ namespace MessageDataStructures
 {
     public class BattleUpdate
     {
-
+        public int timeMS { get; set; }
     }
 }

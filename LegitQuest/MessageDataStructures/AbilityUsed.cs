@@ -8,6 +8,7 @@ namespace MessageDataStructures
 {
     public class AbilityUsed
     {
-
+        public String message { get; set; }
+        //TODO: information about animation should go here
     }
 }
