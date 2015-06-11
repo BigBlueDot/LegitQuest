@@ -42,8 +42,6 @@ namespace BattleService.Actors.Characters
                 damageDealt.damage = dmg;
                 damageDealt.target = this.id;
                 addOutgoingMessage(damageDealt);
-
-                messages.Dequeue();
             }
             else if (message is MagicalAttack)
             {
@@ -57,8 +55,6 @@ namespace BattleService.Actors.Characters
                 damageDealt.damage = dmg;
                 damageDealt.target = this.id;
                 addOutgoingMessage(damageDealt);
-
-                messages.Dequeue();
             }
             else if (message is Heal)
             {
@@ -70,8 +66,6 @@ namespace BattleService.Actors.Characters
                 healingDone.healValue = specificMessage.healValue;
                 healingDone.target = this.id;
                 addOutgoingMessage(healingDone);
-
-                messages.Dequeue();
             }
             else if (message is DefenseIncreased)
             {
@@ -79,7 +73,6 @@ namespace BattleService.Actors.Characters
 
                 this.defense += specificMessage.defenseBonus;
 
-                messages.Dequeue();
             }
             else if (message is DefenseDecreased)
             {
@@ -90,8 +83,6 @@ namespace BattleService.Actors.Characters
                 {
                     this.defense = 0;
                 }
-
-                messages.Dequeue();
             }
             else if (message is DamageOverTime)
             {
@@ -99,7 +90,19 @@ namespace BattleService.Actors.Characters
 
                 //Default is to do nothing.  A sub class could process this instead and instantly heal the damage over time
 
-                messages.Dequeue();
+            }
+            else if (message is DealStaticDamage)
+            {
+                DealStaticDamage specificMessage = (DealStaticDamage)message;
+
+                int dmg = specificMessage.damage;
+
+                this.hp -= dmg;
+
+                DamageDealt damageDealt = new DamageDealt();
+                damageDealt.damage = dmg;
+                damageDealt.target = this.id;
+                addOutgoingMessage(damageDealt);
             }
             else if (message is Taunt)
             {
@@ -116,8 +119,6 @@ namespace BattleService.Actors.Characters
                     specificMessage.status = Taunt.Status.PassedSwitchTarget;
                     addOutgoingMessage(specificMessage);
                 }
-
-                messages.Dequeue();
             }
             else if (message is IsHPBelowXPercentage)
             {
@@ -133,8 +134,6 @@ namespace BattleService.Actors.Characters
                 yesOrNo.inquirer = specificMessage.inquirer;
                 yesOrNo.answered = specificMessage.answerer;
                 addOutgoingMessage(yesOrNo);
-
-                messages.Dequeue();
             }
         }
 

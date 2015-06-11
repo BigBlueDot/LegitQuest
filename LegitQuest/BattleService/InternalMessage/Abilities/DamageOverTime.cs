@@ -12,5 +12,6 @@ namespace BattleService.InternalMessage.Abilities
         public int damage { get; set; }
         public int durationMS { get; set; }
         public int tickDurationMS { get; set; }
+        public int timeStarted { get; set; }
     }
 }
