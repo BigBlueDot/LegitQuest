@@ -140,7 +140,7 @@ namespace BattleService.Actors.Characters
 
         public override void processDeltaTime(int time)
         {
-            currentTime += time;
+            currentTime = time;
 
             while (messages.Count > 0)
             {
