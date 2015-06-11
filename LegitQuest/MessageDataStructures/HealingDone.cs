@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace MessageDataStructures
 {
-    public class HealingDone
+    public class HealingDone : Message
     {
-        public int isAlly { get; set; }
-        public int targetNumber { get; set; }
+        public Guid target { get; set; }
         public int healValue { get; set; }
     }
 }

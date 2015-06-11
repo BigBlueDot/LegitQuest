@@ -9,6 +9,6 @@ namespace BattleService.InternalMessage.Abilities
     public class DefenseIncreased : Targeted
     {
         public int duration { get; set; }
-        public bool defenseBonus { get; set; }
+        public int defenseBonus { get; set; }
     }
 }

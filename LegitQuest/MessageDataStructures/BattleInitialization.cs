@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MessageDataStructures
 {
-    public class BattleInitialization
+    public class BattleInitialization : Message
     {
         public List<ViewModels.Character> PlayerCharacters { get; set; }
         public List<ViewModels.Character> NonPlayerCharacters { get; set; }

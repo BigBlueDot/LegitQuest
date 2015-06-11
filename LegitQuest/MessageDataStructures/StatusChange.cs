@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MessageDataStructures
 {
-    public class StatusChange
+    public class StatusChange : Message
     {
         public bool isAdd { get; set; } //False if status is removed
         public bool targetIsAlly { get; set; }

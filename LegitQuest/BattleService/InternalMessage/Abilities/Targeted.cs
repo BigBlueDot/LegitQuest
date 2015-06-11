@@ -8,7 +8,6 @@ namespace BattleService.InternalMessage.Abilities
 {
     public abstract class Targeted : InternalMessage
     {
-        bool isAlly { get; set; }
-        int target { get; set; } //1 2 or 3
+        public Guid id { get; set; }
     }
 }

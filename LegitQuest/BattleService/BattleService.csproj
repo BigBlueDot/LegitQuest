@@ -68,6 +68,12 @@
   <ItemGroup>
     <Folder Include="Actors\Statuses\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MessageDataStructures\MessageDataStructures.csproj">
+      <Project>{87e53f27-0120-4795-b497-4a93304d0cbc}</Project>
+      <Name>MessageDataStructures</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -3,26 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MessageDataStructures;
 
 namespace BattleService.Actors
 {
     public abstract class Actor
     {
         public Guid id { get; set; }
-        public Queue<InternalMessage.InternalMessage> messages { get; set; }
-        public Queue<InternalMessage.InternalMessage> outgoingMessages { get; set; }
+        public Queue<Message> messages { get; set; }
+        public Queue<Message> outgoingMessages { get; set; }
 
         public Actor()
         {
-            messages = new Queue<InternalMessage.InternalMessage>();
-            outgoingMessages = new Queue<InternalMessage.InternalMessage>();
+            messages = new Queue<Message>();
+            outgoingMessages = new Queue<Message>();
         }
 
-        public abstract List<InternalMessage.InternalMessage> processEvents();
-        public abstract List<InternalMessage.InternalMessage> processDeltaTime(int time);
-        public abstract List<InternalMessage.InternalMessage> processFinal();
+        public abstract List<Message> processEvents();
+        public abstract List<Message> processDeltaTime(int time);
+        public abstract List<Message> processFinal();
 
-        public void addEventMessage(InternalMessage.InternalMessage message)
+        public void addEventMessage(Message message)
         {
             messages.Enqueue(message);
         }
@@ -32,12 +33,12 @@ namespace BattleService.Actors
             messages.Clear();
         }
 
-        public void addOutgoingMessage(InternalMessage.InternalMessage message)
+        public void addOutgoingMessage(Message message)
         {
             outgoingMessages.Enqueue(message);
         }
 
-        public List<InternalMessage.InternalMessage> retrieveOutgoingMessages()
+        public List<Message> retrieveOutgoingMessages()
         {
             return outgoingMessages.ToList();
         }

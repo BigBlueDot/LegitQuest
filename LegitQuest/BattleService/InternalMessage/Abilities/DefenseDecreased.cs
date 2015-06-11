@@ -10,6 +10,6 @@ namespace BattleService.InternalMessage.Abilities
     public class DefenseDecreased : Targeted
     {
         public int duration { get; set; }
-        public bool defenseReduction { get; set; }
+        public int defenseReduction { get; set; }
     }
 }

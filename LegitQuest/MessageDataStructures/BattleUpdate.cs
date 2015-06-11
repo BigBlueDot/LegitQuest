@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MessageDataStructures
 {
-    public class BattleUpdate
+    public class BattleUpdate : Message
     {
         public int timeMS { get; set; }
     }

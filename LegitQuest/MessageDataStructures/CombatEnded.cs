@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MessageDataStructures
 {
-    public class CombatEnded
+    public class CombatEnded : Message
     {
         public bool playerWon { get; set; }
         public int xp { get; set; }

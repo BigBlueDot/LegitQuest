@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MessageDataStructures
 {
-    public class PositionChanged
+    public class PositionChanged : Message
     {
         public bool isAlly { get; set; }
         public int positionOne { get; set; } //1 2 or 3

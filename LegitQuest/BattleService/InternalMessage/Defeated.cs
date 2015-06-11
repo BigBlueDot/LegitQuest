@@ -9,6 +9,6 @@ namespace BattleService.InternalMessage
     public class Defeated : InternalMessage
     {
         public bool isAlly { get; set; }
-        public int id { get; set; } //1 2 or 3
+        public Guid id { get; set; } //1 2 or 3
     }
 }

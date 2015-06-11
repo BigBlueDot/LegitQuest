@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MessageDataStructures
 {
-    public class EnemyDefeated : Message
+    public class Message
     {
-        public int targetNumber { get; set; }
+
     }
 }

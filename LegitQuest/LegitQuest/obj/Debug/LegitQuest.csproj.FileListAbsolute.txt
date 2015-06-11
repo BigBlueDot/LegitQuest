@@ -1,1 +1,12 @@
 C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\bin\Debug\LegitQuest.exe.config
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\bin\Debug\LegitQuest.exe
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\bin\Debug\LegitQuest.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\MainWindow.baml
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\MainWindow.g.cs
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\App.g.cs
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\LegitQuest_MarkupCompile.cache
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\LegitQuest.g.resources
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\LegitQuest.Properties.Resources.resources
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\LegitQuest.csproj.GenerateResource.Cache
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\LegitQuest.exe
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\LegitQuest.pdb

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MessageDataStructures
 {
-    public class CommandIssued
+    public class CommandIssued : Message
     {
         public int commandNumber { get; set; } // 1 2 or 3
         public int source { get; set; } //1 2 or 3

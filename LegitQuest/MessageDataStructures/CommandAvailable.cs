@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MessageDataStructures
 {
-    public class CommandAvailable
+    public class CommandAvailable : Message
     {
         //TODO: Add graphic information as well
         public String commandOne { get; set; }

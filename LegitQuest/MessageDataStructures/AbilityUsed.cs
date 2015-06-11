@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MessageDataStructures
 {
-    public class AbilityUsed
+    public class AbilityUsed : Message
     {
         public String message { get; set; }
         //TODO: information about animation should go here

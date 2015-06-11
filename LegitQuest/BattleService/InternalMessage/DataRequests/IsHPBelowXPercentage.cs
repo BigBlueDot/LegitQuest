@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BattleService.InternalMessage.Abilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,8 @@ namespace BattleService.InternalMessage.DataRequests
 {
     public class IsHPBelowXPercentage : InternalMessage
     {
-        public bool isAlly { get; set; }
+        public Targeted inquirer { get; set; }
+        public Targeted answerer { get; set; }
         public int percentage { get; set; }
     }
 }
