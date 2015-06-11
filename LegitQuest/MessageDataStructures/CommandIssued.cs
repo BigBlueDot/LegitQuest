@@ -9,7 +9,7 @@ namespace MessageDataStructures
     public class CommandIssued : Message
     {
         public int commandNumber { get; set; } // 1 2 or 3
-        public int source { get; set; } //1 2 or 3
-        public int target { get; set; } //1 2 or 3.  0 Indicates a target all
+        public Guid source { get; set; } //1 2 or 3
+        public Guid target { get; set; } //1 2 or 3.  0 Indicates a target all
     }
 }

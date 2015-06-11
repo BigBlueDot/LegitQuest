@@ -63,6 +63,7 @@
     <Compile Include="InternalMessage\Abilities\PhysicalAttack.cs" />
     <Compile Include="InternalMessage\Abilities\Taunt.cs" />
     <Compile Include="InternalMessage\InternalMessage.cs" />
+    <Compile Include="InternalMessage\Targetted.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
