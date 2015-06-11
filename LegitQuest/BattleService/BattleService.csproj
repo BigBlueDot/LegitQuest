@@ -43,6 +43,7 @@
     <Compile Include="Actors\Characters\Character.cs" />
     <Compile Include="Actors\Characters\NonPlayerCharacter.cs" />
     <Compile Include="Actors\Characters\PlayerCharacter.cs" />
+    <Compile Include="Actors\Characters\RandomNonPlayerCharacter.cs" />
     <Compile Include="Actors\EndingConditions\KOEndingCondition.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="BattleService.cs" />
@@ -52,8 +53,10 @@
     <Compile Include="InternalMessage\Abilities\DamageOverTime.cs" />
     <Compile Include="InternalMessage\DataRequests\IsHPBelowXPercentage.cs" />
     <Compile Include="InternalMessage\DataRequests\WhoHasLowestHealth.cs" />
+    <Compile Include="InternalMessage\DataRequests\WhoIsEngagedWithMe.cs" />
     <Compile Include="InternalMessage\DataRequests\WhoLacksStatusEffects.cs" />
-    <Compile Include="InternalMessage\DataResults\AllyList.cs" />
+    <Compile Include="InternalMessage\DataResults\Target.cs" />
+    <Compile Include="InternalMessage\DataResults\TargetList.cs" />
     <Compile Include="InternalMessage\DataResults\YesOrNo.cs" />
     <Compile Include="InternalMessage\Defeated.cs" />
     <Compile Include="InternalMessage\Abilities\DefenseDecreased.cs" />

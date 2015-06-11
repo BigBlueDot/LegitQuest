@@ -138,7 +138,7 @@ namespace BattleService.Actors.Characters
             }
         }
 
-        public override void processDeltaTime(int time)
+        public override void process(int time)
         {
             currentTime = time;
 
@@ -153,11 +153,6 @@ namespace BattleService.Actors.Characters
                 defeated.id = this.id;
                 addOutgoingMessage(defeated);
             }
-        }
-
-        public override void processFinal()
-        {
-
         }
     }
 }

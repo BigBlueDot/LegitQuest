@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BattleService.InternalMessage.DataRequests
 {
-    public class WhoIsEngageWithMe : InternalMessage
+    public class WhoIsEngagedWithMe : InternalMessage
     {
         public Targeted source { get; set; }
     }

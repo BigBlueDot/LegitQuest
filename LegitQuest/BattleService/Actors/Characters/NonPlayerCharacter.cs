@@ -10,7 +10,7 @@ namespace BattleService.Actors.Characters
     {
         protected abstract void doAction();
 
-        public override void processDeltaTime(int time)
+        public override void process(int time)
         {
             //Determine if they should do an attack
             if (castTimeComplete <= time)
@@ -18,17 +18,12 @@ namespace BattleService.Actors.Characters
                 doAction();
             }
 
-            base.processDeltaTime(time);
+            base.process(time);
         }
 
         protected override void processMessage(MessageDataStructures.Message message)
         {
             base.processMessage(message);
-        }
-
-        public override void processFinal()
-        {
-            base.processFinal();
         }
     }
 }

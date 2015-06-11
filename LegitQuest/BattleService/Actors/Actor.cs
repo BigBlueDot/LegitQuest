@@ -19,8 +19,7 @@ namespace BattleService.Actors
             outgoingMessages = new Queue<Message>();
         }
 
-        public abstract void processDeltaTime(int time);
-        public abstract void processFinal();
+        public abstract void process(int time);
 
         public void addEventMessage(Message message)
         {
