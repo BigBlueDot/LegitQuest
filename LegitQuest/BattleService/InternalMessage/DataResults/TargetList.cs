@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BattleService.InternalMessage.DataResults
 {
-    public class AllyList : InternalMessage
+    public class TargetList : InternalMessage
     {
         public List<Abilities.Targeted> targets { get; set; }
     }
