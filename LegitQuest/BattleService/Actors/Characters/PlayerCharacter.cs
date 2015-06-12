@@ -33,6 +33,7 @@ namespace BattleService.Actors.Characters
                     physicalAttack.abilityStrength = 15;
                     physicalAttack.attack = this.strength;
                     physicalAttack.id = specificMessage.target;
+                    physicalAttack.executeTime = this.currentTime + 4000; //4 second cast time
                     addOutgoingMessage(physicalAttack);
                 }
             }

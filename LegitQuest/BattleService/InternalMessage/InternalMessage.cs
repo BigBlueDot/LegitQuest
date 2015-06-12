@@ -7,8 +7,13 @@ using MessageDataStructures;
 
 namespace BattleService.InternalMessage
 {
-    public class InternalMessage : Message
+    public class InternalMessage : Message, IComparable
     {
+        public int executeTime { get; set; }
 
+        public int CompareTo(object obj)
+        {
+            return ((InternalMessage)obj).executeTime - this.executeTime;
+        }
     }
 }
