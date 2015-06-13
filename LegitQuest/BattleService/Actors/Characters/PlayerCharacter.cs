@@ -12,7 +12,7 @@ namespace BattleService.Actors.Characters
     {
         private bool canUseCommand()
         {
-            return (this.castTimeComplete <= this.currentTime);
+            return (this.castTimeComplete <= this.currentTime + 1000); //Can cast 1 second ahead of time
         }
 
         private bool AoEAttackAllowed(CommandIssued command)
@@ -33,12 +33,18 @@ namespace BattleService.Actors.Characters
                     physicalAttack.abilityStrength = 15;
                     physicalAttack.attack = this.strength;
                     physicalAttack.id = specificMessage.target;
-                    physicalAttack.executeTime = this.currentTime + 4000; //4 second cast time
+                    setCastTime(4000); //4s cast time
+                    physicalAttack.executeTime = this.castTimeComplete;
                     addOutgoingMessage(physicalAttack);
                 }
             }
 
             base.processMessage(message);
+        }
+
+        private void setCastTime(long ms)
+        {
+            this.castTimeComplete += ms;
         }
     }
 }
