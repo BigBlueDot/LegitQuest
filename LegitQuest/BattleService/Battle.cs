@@ -193,20 +193,11 @@ namespace BattleService
                     }
                 }
             }
-            else if (message is WhoHasLowestHealth)
+            else if (message is WhoHasLowestHealth ||
+                        message is WhoIsEngagedWithMe ||
+                        message is WhoLacksStatusEffects)
             {
-                WhoHasLowestHealth specificMessage = (WhoHasLowestHealth)message;
-
-            }
-            else if (message is WhoIsEngagedWithMe)
-            {
-                WhoIsEngagedWithMe specificMessage = (WhoIsEngagedWithMe)message;
-
-            }
-            else if (message is WhoLacksStatusEffects)
-            {
-                WhoLacksStatusEffects specificMessage = (WhoLacksStatusEffects)message;
-
+                this.messages.Add(message); //These need to be processed globally
             }
         }
 
