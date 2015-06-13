@@ -10,7 +10,7 @@ namespace BattleService.Actors.Characters
     {
         protected abstract void doAction();
 
-        public override void process(int time)
+        public override void process(long time)
         {
             //Determine if they should do an attack
             if (castTimeComplete <= time)

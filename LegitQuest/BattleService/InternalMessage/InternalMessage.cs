@@ -9,11 +9,24 @@ namespace BattleService.InternalMessage
 {
     public class InternalMessage : Message, IComparable
     {
-        public int executeTime { get; set; }
+        public long executeTime { get; set; }
 
         public int CompareTo(object obj)
         {
-            return ((InternalMessage)obj).executeTime - this.executeTime;
+            long value = ((InternalMessage)obj).executeTime - this.executeTime;
+            int returnValue;
+            if(value > 0)
+            {
+                returnValue = 1;
+            }
+            else if (value < 0)
+            {
+                returnValue = -1;
+            }
+            else{
+                returnValue = 0;
+            }
+            return returnValue;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace BattleService.Actors.EndingConditions
             this.enemies = enemies;
         }
 
-        public override void process(int time)
+        public override void process(long time)
         {
             while (messages.Count >= 0)
             {

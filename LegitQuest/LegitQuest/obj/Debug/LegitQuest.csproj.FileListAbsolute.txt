@@ -10,4 +10,3 @@ C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\Legi
 C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\LegitQuest.csproj.GenerateResource.Cache
 C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\LegitQuest.exe
 C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\LegitQuest.pdb
-C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\LegitQuest.csprojResolveAssemblyReference.cache

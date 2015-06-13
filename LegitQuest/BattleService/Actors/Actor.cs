@@ -19,7 +19,7 @@ namespace BattleService.Actors
             outgoingMessages = new Queue<Message>();
         }
 
-        public abstract void process(int time);
+        public abstract void process(long time);
 
         public void addEventMessage(Message message)
         {

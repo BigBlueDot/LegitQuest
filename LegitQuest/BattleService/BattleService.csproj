@@ -45,8 +45,11 @@
     <Compile Include="Actors\Characters\PlayerCharacter.cs" />
     <Compile Include="Actors\Characters\RandomNonPlayerCharacter.cs" />
     <Compile Include="Actors\EndingConditions\KOEndingCondition.cs" />
+    <Compile Include="Actors\Statuses\DamageOverTime.cs" />
+    <Compile Include="Actors\Statuses\DefenseIncreased.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="BattleService.cs" />
+    <Compile Include="InternalMessage\Abilities\DealStaticDamage.cs" />
     <Compile Include="InternalMessage\Abilities\Targeted.cs" />
     <Compile Include="InternalMessage\BattleDefeat.cs" />
     <Compile Include="InternalMessage\BattleVictory.cs" />
@@ -69,9 +72,7 @@
     <Compile Include="InternalMessage\Targetted.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Actors\Statuses\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MessageDataStructures\MessageDataStructures.csproj">
       <Project>{87e53f27-0120-4795-b497-4a93304d0cbc}</Project>

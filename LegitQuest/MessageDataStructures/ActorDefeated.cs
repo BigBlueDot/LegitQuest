@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MessageDataStructures
 {
-    public class EnemyDefeated : Message
+    public class ActorDefeated : Message
     {
-        public int targetNumber { get; set; }
+        public Guid targetId { get; set; }
     }
 }

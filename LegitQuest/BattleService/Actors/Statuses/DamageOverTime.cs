@@ -26,7 +26,7 @@ namespace BattleService.Actors.Statuses
             this.damage = damage;
         }
 
-        public override void process(int time)
+        public override void process(long time)
         {
             while (lastTickTime + tickTime <= time && lastTickTime + tickTime <= endTime)
             {

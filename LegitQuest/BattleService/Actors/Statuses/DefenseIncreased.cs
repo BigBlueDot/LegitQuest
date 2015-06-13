@@ -21,7 +21,7 @@ namespace BattleService.Actors.Statuses
             this.target = target;
         }
 
-        public override void process(int time)
+        public override void process(long time)
         {
             if (time >= endTime)
             {

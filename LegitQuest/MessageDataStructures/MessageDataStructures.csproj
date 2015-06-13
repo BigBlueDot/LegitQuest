@@ -47,7 +47,7 @@
     <Compile Include="CommandAvailable.cs" />
     <Compile Include="CommandIssued.cs" />
     <Compile Include="DamageDealt.cs" />
-    <Compile Include="EnemyDefeated.cs" />
+    <Compile Include="ActorDefeated.cs" />
     <Compile Include="HealingDone.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="PositionChanged.cs" />

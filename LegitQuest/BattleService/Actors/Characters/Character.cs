@@ -21,8 +21,8 @@ namespace BattleService.Actors.Characters
         public int resistance { get; set; }
         public int spirit { get; set; }
 
-        public int currentTime { get; set; }
-        public int castTimeComplete { get; set; }
+        public long currentTime { get; set; }
+        public long castTimeComplete { get; set; }
 
         protected bool isDefeated()
         {
@@ -137,7 +137,7 @@ namespace BattleService.Actors.Characters
             }
         }
 
-        public override void process(int time)
+        public override void process(long time)
         {
             currentTime = time;
 
