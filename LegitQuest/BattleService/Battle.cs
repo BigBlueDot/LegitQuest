@@ -1,4 +1,5 @@
 ﻿using BattleService.Actors;
+using BattleService.Actors.Characters;
 using BattleService.InternalMessage;
 using BattleService.InternalMessage.Abilities;
 using BattleService.InternalMessage.DataRequests;
@@ -25,7 +26,7 @@ namespace BattleService
         public Battle()
         {
             messages = new List<InternalMessage.InternalMessage>();
-            outgoingMessages = new Queue<Message>();
+            outgoingMessages = new List<Message>();
             this.actors = new List<Actor>();
             this.startingTime = getCurrentTimeMs();
             this.globalMessages = new List<Message>();
@@ -154,6 +155,42 @@ namespace BattleService
                     result.id = target;
                     result.inquirer = specificMessage.source.id;
                     this.messages.Add(result);
+                }
+                else if (message is WhoHasLowestHealth)
+                {
+                    WhoHasLowestHealth specificMessage = (WhoHasLowestHealth)message;
+                    int currentLowest = int.MaxValue;
+                    Guid currentLowestId = new Guid();
+                    List<Guid> guidsToCheck = new List<Guid>();
+
+                    if (specificMessage.isAlly)
+                    {
+                        guidsToCheck.AddRange(allies);
+                    }
+                    else
+                    {
+                        guidsToCheck.AddRange(enemies);
+                    }
+
+                    foreach (Guid id in guidsToCheck)
+                    {
+                        foreach (Actor actor in actors)
+                        {
+                            if (id == actor.id)
+                            {
+                                if (((Character)actor).hp < currentLowest)
+                                {
+                                    currentLowest = ((Character)actor).hp;
+                                    currentLowestId = ((Character)actor).id;
+                                }
+                            }
+                        }
+                    }
+
+                    Target target = new Target();
+                    target.inquirer = specificMessage.inquirer.id;
+                    target.id = currentLowestId;
+                    this.messages.Add(target);
                 }
 
             }
