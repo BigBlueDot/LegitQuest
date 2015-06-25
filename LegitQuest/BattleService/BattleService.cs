@@ -31,6 +31,11 @@ namespace BattleService
                 foreach(Guid key in battles.Keys)
                 {
                     battles[key].process();
+                    foreach (MessageDataStructures.Message message in battles[key].getOutgoingMessages())
+                    {
+                        outboundMessages.Add(message);
+                    }
+                    battles[key].clearOutgoingMessages();
                 }
             }
         }

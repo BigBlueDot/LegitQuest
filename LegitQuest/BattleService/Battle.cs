@@ -16,7 +16,7 @@ namespace BattleService
     {
         private List<InternalMessage.InternalMessage> messages { get; set; } //TODO:  Need to sort based on execute time
         private List<Message> globalMessages { get; set; }
-        private Queue<Message> outgoingMessages { get; set; }
+        private List<Message> outgoingMessages { get; set; }
         private List<Actor> actors { get; set; }
         private List<Guid> allies { get; set; } //Allows it to track down ally actors for global data requests
         private List<Guid> enemies { get; set; } //Allows it to track down enemy actors for global data requests
@@ -257,6 +257,17 @@ namespace BattleService
         public void addOutgoingMessage(Message message)
         {
             //Do nothing for now
+            this.outgoingMessages.Add(message);
+        }
+
+        public List<Message> getOutgoingMessages()
+        {
+            return this.outgoingMessages;
+        }
+
+        public List<Message> clearOutgoingMessages()
+        {
+            this.outgoingMessages.Clear();
         }
     }
 }
