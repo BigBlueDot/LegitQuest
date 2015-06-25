@@ -9,6 +9,6 @@ namespace BattleService.InternalMessage.DataResults
 {
     public class Target : Targeted
     {
-
+        public Guid inquirer { get; set; }
     }
 }

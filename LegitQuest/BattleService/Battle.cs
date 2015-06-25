@@ -2,6 +2,7 @@
 using BattleService.InternalMessage;
 using BattleService.InternalMessage.Abilities;
 using BattleService.InternalMessage.DataRequests;
+using BattleService.InternalMessage.DataResults;
 using MessageDataStructures;
 using System;
 using System.Collections.Generic;
@@ -112,7 +113,48 @@ namespace BattleService
             //Process global messages
             foreach(Message message in this.globalMessages)
             {
-                //TODO
+                if (message is WhoIsEngagedWithMe)
+                {
+                    //Find the index of this enemy
+                    WhoIsEngagedWithMe specificMessage = (WhoIsEngagedWithMe)message;
+                    int index = enemies.IndexOf(specificMessage.source.id);
+                    Guid target = allies[index];
+
+                    //Verify that the target is alive
+                    bool specificTargetAlive = false;
+                    bool[] targetAlive = new bool[3];
+                    foreach (Actor actor in actors)
+                    {
+                        if (actor.id == target)
+                        {
+                            specificTargetAlive = true;
+                        }
+                        for (int i = 0; i < 3; i++)
+                        {
+                            if (actor.id == allies[i])
+                            {
+                                targetAlive[i] = true;
+                            }
+                        }
+                    }
+
+                    if (!specificTargetAlive)
+                    {
+                        for (int i = 0; i < 3; i++)
+                        {
+                            if (targetAlive[i])
+                            {
+                                target = allies[i];
+                                break;
+                            }
+                        }
+                    }
+
+                    Target result = new Target();
+                    result.id = target;
+                    result.inquirer = specificMessage.source.id;
+                    this.messages.Add(result);
+                }
 
             }
             this.globalMessages.Clear();
@@ -188,6 +230,17 @@ namespace BattleService
                 foreach (Actor actor in actors)
                 {
                     if (specificMessage.answerer.id == actor.id)
+                    {
+                        actor.addEventMessage(message);
+                    }
+                }
+            }
+            else if (message is Target)
+            {
+                Target specificMessage = (Target)message;
+                foreach (Actor actor in actors)
+                {
+                    if (specificMessage.inquirer == actor.id)
                     {
                         actor.addEventMessage(message);
                     }
