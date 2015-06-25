@@ -265,7 +265,7 @@ namespace BattleService
             return this.outgoingMessages;
         }
 
-        public List<Message> clearOutgoingMessages()
+        public void clearOutgoingMessages()
         {
             this.outgoingMessages.Clear();
         }
