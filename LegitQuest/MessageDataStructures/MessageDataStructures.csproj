@@ -39,20 +39,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbilityUsed.cs" />
-    <Compile Include="BattleInitialization.cs" />
-    <Compile Include="BattleUpdate.cs" />
-    <Compile Include="BattleUpdates.cs" />
-    <Compile Include="CombatEnded.cs" />
-    <Compile Include="CommandAvailable.cs" />
-    <Compile Include="CommandIssued.cs" />
-    <Compile Include="DamageDealt.cs" />
-    <Compile Include="ActorDefeated.cs" />
-    <Compile Include="HealingDone.cs" />
+    <Compile Include="Battle\AbilityUsed.cs" />
+    <Compile Include="Battle\BattleInitialization.cs" />
+    <Compile Include="Battle\BattleUpdate.cs" />
+    <Compile Include="Battle\BattleUpdates.cs" />
+    <Compile Include="Battle\CombatEnded.cs" />
+    <Compile Include="Battle\CommandAvailable.cs" />
+    <Compile Include="Battle\CommandIssued.cs" />
+    <Compile Include="Battle\DamageDealt.cs" />
+    <Compile Include="Battle\ActorDefeated.cs" />
+    <Compile Include="Battle\HealingDone.cs" />
     <Compile Include="Message.cs" />
-    <Compile Include="PositionChanged.cs" />
+    <Compile Include="Battle\PositionChanged.cs" />
+    <Compile Include="MessageReader.cs" />
+    <Compile Include="MessageReceivedEventArgs.cs" />
+    <Compile Include="MessageWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StatusChange.cs" />
+    <Compile Include="Battle\StatusChange.cs" />
     <Compile Include="ViewModels\Character.cs" />
     <Compile Include="ViewModels\Treasure.cs" />
   </ItemGroup>

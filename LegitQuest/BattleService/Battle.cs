@@ -192,6 +192,12 @@ namespace BattleService
                     target.id = currentLowestId;
                     this.messages.Add(target);
                 }
+                else if (message is WhoLacksStatusEffects)
+                {
+                    //TODO: Need to write once status effects are more fleshed out
+                    WhoLacksStatusEffects specificMessage = (WhoLacksStatusEffects)message;
+                    
+                }
 
             }
             this.globalMessages.Clear();
