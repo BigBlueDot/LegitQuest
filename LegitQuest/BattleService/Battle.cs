@@ -299,7 +299,6 @@ namespace BattleServiceLibrary
 
         public void addOutgoingMessage(Message message)
         {
-            //Do nothing for now
             this.outgoingMessages.Add(message);
         }
 
