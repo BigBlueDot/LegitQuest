@@ -89,6 +89,8 @@
     <Compile Include="EnemyDisplay.xaml.cs">
       <DependentUpon>EnemyDisplay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EventInfo\AbilitySelectedEventArgs.cs" />
+    <Compile Include="EventInfo\CharacterSelectedEventArgs.cs" />
     <Compile Include="GuiServiceHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
