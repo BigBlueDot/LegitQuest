@@ -9,8 +9,8 @@ namespace MessageDataStructures
     public class CommandAvailable : Message
     {
         //TODO: Add graphic information as well
-        public String commandOne { get; set; }
-        public String commandTwo { get; set; }
-        public String commandThree { get; set; }
+        public string commandOne { get; set; }
+        public string commandTwo { get; set; }
+        public string commandThree { get; set; }
     }
 }

@@ -13,5 +13,6 @@ namespace MessageDataStructures.ViewModels
         public int position { get; set; }
         //TODO:  String should be replaced with a visual indicator class (e.g. link to image and name of weakness)
         public List<String> weaknesses { get; set; }
+        public List<Ability> abilities { get; set; }
     }
 }
