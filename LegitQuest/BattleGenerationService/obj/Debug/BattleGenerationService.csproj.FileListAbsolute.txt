@@ -1,0 +1,7 @@
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\BattleGenerationService\bin\Debug\BattleGenerationService.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\BattleGenerationService\bin\Debug\BattleGenerationService.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\BattleGenerationService\bin\Debug\MessageDataStructures.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\BattleGenerationService\bin\Debug\MessageDataStructures.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\BattleGenerationService\obj\Debug\BattleGenerationService.csprojResolveAssemblyReference.cache
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\BattleGenerationService\obj\Debug\BattleGenerationService.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\BattleGenerationService\obj\Debug\BattleGenerationService.pdb

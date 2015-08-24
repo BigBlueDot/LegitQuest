@@ -8,16 +8,11 @@ using System.Threading.Tasks;
 
 namespace BattleGenerationService
 {
-    public class BattleGenerationService
+    public class BattleGenerationService : BaseService
     {
-        private MessageReader messageReader { get; set; }
-        private MessageWriter messageWriter { get; set; }
-
         public BattleGenerationService(MessageReader messageReader, MessageWriter messageWriter)
+            : base(messageReader, messageWriter)
         {
-            this.messageReader = messageReader;
-            this.messageWriter = messageWriter;
-
             this.messageReader.MessageReceived += messageReader_MessageReceived;
         }
 

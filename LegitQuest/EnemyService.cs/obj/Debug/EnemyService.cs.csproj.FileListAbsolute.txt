@@ -1,0 +1,7 @@
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\EnemyService.cs\bin\Debug\EnemyService.cs.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\EnemyService.cs\bin\Debug\EnemyService.cs.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\EnemyService.cs\bin\Debug\MessageDataStructures.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\EnemyService.cs\bin\Debug\MessageDataStructures.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\EnemyService.cs\obj\Debug\EnemyService.cs.csprojResolveAssemblyReference.cache
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\EnemyService.cs\obj\Debug\EnemyService.cs.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\EnemyService.cs\obj\Debug\EnemyService.cs.pdb

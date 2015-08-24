@@ -15,11 +15,14 @@ namespace BattleService.Actors.Characters
     {
         public int hp { get; set; }
         public int maxHp { get; set; }
-        public int strength { get; set; }
-        public int defense { get; set; }
-        public int magic { get; set; }
-        public int resistance { get; set; }
-        public int spirit { get; set; }
+        public int strength { get; set; } //Physical attack
+        public int dexterity { get; set; } //Physical attack for speed-based moves, increases accuracy, crit, and dodge
+        public int vitality { get; set; } //Physical resistance, also contributes to some status resistance
+        public int magic { get; set; } //Magic Attack
+        public int resistance { get; set; } //Magic Defense
+        public int accuracy { get; set; } //Higher hit rate, generally useful when fighting enemies much higher than you
+        public int critical { get; set; } //Increases critical hit rate
+        public int dodge { get; set; } //Increases chance to dodge
 
         public long currentTime { get; set; }
         public long castTimeComplete { get; set; }
@@ -35,7 +38,7 @@ namespace BattleService.Actors.Characters
             {
                 PhysicalAttack specificMessage = (PhysicalAttack)message;
 
-                int dmg = Convert.ToInt32(Math.Floor((Math.Pow((double)specificMessage.attack, 1.65f)) / ((double)this.defense) * specificMessage.abilityStrength));
+                int dmg = Convert.ToInt32(Math.Floor((Math.Pow((double)specificMessage.attack, 1.65f)) / ((double)this.vitality) * specificMessage.abilityStrength));
                 hp -= dmg;
 
                 DamageDealt damageDealt = new DamageDealt();
@@ -71,17 +74,17 @@ namespace BattleService.Actors.Characters
             {
                 DefenseIncreased specificMessage = (DefenseIncreased)message;
 
-                this.defense += specificMessage.defenseBonus;
+                this.vitality += specificMessage.defenseBonus;
 
             }
             else if (message is DefenseDecreased)
             {
                 DefenseDecreased specificMessage = (DefenseDecreased)message;
 
-                this.defense -= specificMessage.defenseReduction;
-                if (this.defense < 0)
+                this.vitality -= specificMessage.defenseReduction;
+                if (this.vitality < 0)
                 {
-                    this.defense = 0;
+                    this.vitality = 0;
                 }
             }
             else if (message is DamageOverTime)

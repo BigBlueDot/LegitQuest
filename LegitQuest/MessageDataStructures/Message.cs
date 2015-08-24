@@ -8,6 +8,6 @@ namespace MessageDataStructures
 {
     public class Message
     {
-
+        public Guid conversationId { get; set; } 
     }
 }

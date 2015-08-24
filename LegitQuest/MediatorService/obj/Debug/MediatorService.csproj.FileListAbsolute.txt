@@ -1,0 +1,7 @@
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\bin\Debug\MediatorService.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\bin\Debug\MediatorService.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\bin\Debug\MessageDataStructures.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\bin\Debug\MessageDataStructures.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\obj\Debug\MediatorService.csprojResolveAssemblyReference.cache
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\obj\Debug\MediatorService.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\obj\Debug\MediatorService.pdb
