@@ -19,6 +19,7 @@ namespace BattleService.Actors.Characters
         public int dexterity { get; set; } //Physical attack for speed-based moves, increases accuracy, crit, and dodge
         public int vitality { get; set; } //Physical resistance, also contributes to some status resistance
         public int magic { get; set; } //Magic Attack
+        public int mind { get; set; } //Healing strength
         public int resistance { get; set; } //Magic Defense
         public int accuracy { get; set; } //Higher hit rate, generally useful when fighting enemies much higher than you
         public int critical { get; set; } //Increases critical hit rate

@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MessageDataStructures.EnemyGeneration
+namespace MessageDataStructures.Player
 {
-    public class Enemy
+    public class BattleCharacter
     {
-        public BattleGeneration.Enemy battleGenerationInfo { get; set; }
+        public string name { get; set; }
+        public CharacterClass characterClass { get; set; }
         public int hp { get; set; }
         public int maxHp { get; set; }
         public int strength { get; set; } //Physical attack
