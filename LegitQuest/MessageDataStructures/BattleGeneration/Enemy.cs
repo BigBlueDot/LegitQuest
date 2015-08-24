@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MessageDataStructures.BattleGeneration
 {
-    public class BattleGenerationMessage : Message
+    public class Enemy
     {
-        public List<Enemy> enemies { get; set; }
-        public FieldType fieldType { get; set; }
+        public int level { get; set; }
+        public EnemyType enemyType { get; set; } 
     }
 }

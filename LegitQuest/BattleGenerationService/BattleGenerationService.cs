@@ -28,10 +28,10 @@ namespace BattleGenerationService
             {
                 BattleGenerationMessage battleGenerationMessage = new BattleGenerationMessage();
                 battleGenerationMessage.fieldType = FieldType.Plains;
-                battleGenerationMessage.enemies = new List<EnemyType>();
-                battleGenerationMessage.enemies.Add(EnemyType.Goblin);
-                battleGenerationMessage.enemies.Add(EnemyType.Goblin);
-                battleGenerationMessage.enemies.Add(EnemyType.Goblin);
+                battleGenerationMessage.enemies = new List<Enemy>();
+                battleGenerationMessage.enemies.Add(new Enemy() { level = 1, enemyType = EnemyType.Goblin });
+                battleGenerationMessage.enemies.Add(new Enemy() { level = 1, enemyType = EnemyType.Goblin });
+                battleGenerationMessage.enemies.Add(new Enemy() { level = 1, enemyType = EnemyType.Goblin });
                 this.messageWriter.writeMessage(battleGenerationMessage);
             }
         }
