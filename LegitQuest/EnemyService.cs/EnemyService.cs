@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EnemyService.cs
+namespace EnemyServiceLibrary
 {
     public class EnemyService : BaseService
     {

@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MediatorService
+namespace MediatorServiceLibrary
 {
     public enum ServiceType
     {
-        Battle
+        Battle,
+        BattleGeneration,
+        Enemy,
+        Player
     }
 }

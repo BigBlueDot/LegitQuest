@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MessageDataStructures;
 
-namespace BattleService.InternalMessage
+namespace BattleServiceLibrary.InternalMessage
 {
     public class InternalMessage : Message, IComparable
     {

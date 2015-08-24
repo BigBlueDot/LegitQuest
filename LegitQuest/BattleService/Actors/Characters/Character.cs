@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BattleService.InternalMessage.Abilities;
-using BattleService.InternalMessage.DataRequests;
-using BattleService.InternalMessage.DataResults;
+using BattleServiceLibrary.InternalMessage.Abilities;
+using BattleServiceLibrary.InternalMessage.DataRequests;
+using BattleServiceLibrary.InternalMessage.DataResults;
 using MessageDataStructures;
-using BattleService.InternalMessage;
+using BattleServiceLibrary.InternalMessage;
 
-namespace BattleService.Actors.Characters
+namespace BattleServiceLibrary.Actors.Characters
 {
     public abstract class Character : Actor
     {

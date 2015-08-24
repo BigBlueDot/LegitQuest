@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleGenerationService
+namespace BattleGenerationServiceLibrary
 {
     public class BattleGenerationService : BaseService
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleService.Actors.Characters
+namespace BattleServiceLibrary.Actors.Characters
 {
     public abstract class NonPlayerCharacter : Character
     {

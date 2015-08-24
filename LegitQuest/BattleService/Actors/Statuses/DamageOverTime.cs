@@ -1,12 +1,12 @@
-﻿using BattleService.InternalMessage;
-using BattleService.InternalMessage.Abilities;
+﻿using BattleServiceLibrary.InternalMessage;
+using BattleServiceLibrary.InternalMessage.Abilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleService.Actors.Statuses
+namespace BattleServiceLibrary.Actors.Statuses
 {
     public class DamageOverTime : Actor
     {

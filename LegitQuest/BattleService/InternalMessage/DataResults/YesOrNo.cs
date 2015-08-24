@@ -1,11 +1,11 @@
-﻿using BattleService.InternalMessage.Abilities;
+﻿using BattleServiceLibrary.InternalMessage.Abilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleService.InternalMessage.DataResults
+namespace BattleServiceLibrary.InternalMessage.DataResults
 {
     public class YesOrNo : InternalMessage
     {

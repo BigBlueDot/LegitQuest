@@ -1,22 +1,25 @@
-﻿using System;
+﻿using MessageDataStructures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleService
+namespace BattleServiceLibrary
 {
-    public class BattleService
+    public class BattleService : BaseService
     {
         Dictionary<Guid, Battle> battles;
-        List<MessageDataStructures.Message> outboundMessages;
-        List<MessageDataStructures.Message> inboundMessages;
 
-        public BattleService()
+        public BattleService(MessageReader messageReader, MessageWriter messageWriter) : base(messageReader, messageWriter)
         {
             battles = new Dictionary<Guid, Battle>();
-            outboundMessages = new List<MessageDataStructures.Message>();
-            inboundMessages = new List<MessageDataStructures.Message>();
+            this.messageReader.MessageReceived += messageReader_MessageReceived;
+        }
+
+        void messageReader_MessageReceived(MessageReceivedEventArgs args)
+        {
+            throw new NotImplementedException();
         }
 
         //This will be called as the thread method
@@ -33,7 +36,7 @@ namespace BattleService
                     battles[key].process();
                     foreach (MessageDataStructures.Message message in battles[key].getOutgoingMessages())
                     {
-                        outboundMessages.Add(message);
+                        this.messageWriter.writeMessage(message);
                     }
                     battles[key].clearOutgoingMessages();
                 }
@@ -52,7 +55,7 @@ namespace BattleService
 
         public void writeMessage(MessageDataStructures.Message message)
         {
-            this.inboundMessages.Add(message);
+            this.messageWriter.writeMessage(message);
         }
     }
 }

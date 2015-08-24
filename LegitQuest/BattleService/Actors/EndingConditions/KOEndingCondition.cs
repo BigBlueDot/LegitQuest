@@ -1,11 +1,11 @@
-﻿using BattleService.InternalMessage;
+﻿using BattleServiceLibrary.InternalMessage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleService.Actors.EndingConditions
+namespace BattleServiceLibrary.Actors.EndingConditions
 {
     public class KOEndingCondition : Actor
     {

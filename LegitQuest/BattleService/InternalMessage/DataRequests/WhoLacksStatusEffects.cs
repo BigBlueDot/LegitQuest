@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleService.InternalMessage.DataRequests
+namespace BattleServiceLibrary.InternalMessage.DataRequests
 {
     public class WhoLacksStatusEffects : InternalMessage
     {

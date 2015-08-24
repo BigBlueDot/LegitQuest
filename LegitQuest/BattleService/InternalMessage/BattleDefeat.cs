@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleService.InternalMessage
+namespace BattleServiceLibrary.InternalMessage
 {
     public class BattleDefeat : InternalMessage
     {

@@ -1,9 +1,9 @@
-﻿using BattleService.Actors;
-using BattleService.Actors.Characters;
-using BattleService.InternalMessage;
-using BattleService.InternalMessage.Abilities;
-using BattleService.InternalMessage.DataRequests;
-using BattleService.InternalMessage.DataResults;
+﻿using BattleServiceLibrary.Actors;
+using BattleServiceLibrary.Actors.Characters;
+using BattleServiceLibrary.InternalMessage;
+using BattleServiceLibrary.InternalMessage.Abilities;
+using BattleServiceLibrary.InternalMessage.DataRequests;
+using BattleServiceLibrary.InternalMessage.DataResults;
 using MessageDataStructures;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleService
+namespace BattleServiceLibrary
 {
     public class Battle
     {

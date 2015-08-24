@@ -1,13 +1,13 @@
-﻿using BattleService.InternalMessage.Abilities;
-using BattleService.InternalMessage.DataRequests;
-using BattleService.InternalMessage.DataResults;
+﻿using BattleServiceLibrary.InternalMessage.Abilities;
+using BattleServiceLibrary.InternalMessage.DataRequests;
+using BattleServiceLibrary.InternalMessage.DataResults;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleService.Actors.Characters
+namespace BattleServiceLibrary.Actors.Characters
 {
     public class RandomNonPlayerCharacter : NonPlayerCharacter
     {

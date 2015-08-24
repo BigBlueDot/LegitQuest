@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleService.InternalMessage.Abilities
+namespace BattleServiceLibrary.InternalMessage.Abilities
 {
     public class MagicalAttack : Targeted
     {

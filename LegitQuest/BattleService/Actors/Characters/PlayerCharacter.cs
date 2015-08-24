@@ -1,4 +1,4 @@
-﻿using BattleService.InternalMessage.Abilities;
+﻿using BattleServiceLibrary.InternalMessage.Abilities;
 using MessageDataStructures;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleService.Actors.Characters
+namespace BattleServiceLibrary.Actors.Characters
 {
     public class PlayerCharacter : Character
     {
