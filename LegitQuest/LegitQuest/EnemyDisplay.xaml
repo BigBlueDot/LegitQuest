@@ -6,6 +6,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            
+        <StackPanel Orientation="Vertical">
+            <TextBlock Name="txtName"></TextBlock>
+            <TextBlock Name="txtHP"></TextBlock>
+            <Button Name="Select" Click="Select_Click_1">SELECT</Button>
+        </StackPanel>
     </Grid>
 </UserControl>
