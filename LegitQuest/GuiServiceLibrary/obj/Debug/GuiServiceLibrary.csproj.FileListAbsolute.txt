@@ -1,0 +1,7 @@
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\GuiServiceLibrary\bin\Debug\GuiServiceLibrary.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\GuiServiceLibrary\bin\Debug\GuiServiceLibrary.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\GuiServiceLibrary\bin\Debug\MessageDataStructures.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\GuiServiceLibrary\bin\Debug\MessageDataStructures.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\GuiServiceLibrary\obj\Debug\GuiServiceLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\GuiServiceLibrary\obj\Debug\GuiServiceLibrary.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\GuiServiceLibrary\obj\Debug\GuiServiceLibrary.pdb

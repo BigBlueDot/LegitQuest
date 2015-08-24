@@ -11,6 +11,7 @@ namespace MediatorServiceLibrary
         Battle,
         BattleGeneration,
         Enemy,
-        Player
+        Player,
+        Gui
     }
 }

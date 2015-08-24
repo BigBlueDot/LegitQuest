@@ -56,6 +56,7 @@
     <Compile Include="Battle\DamageDealt.cs" />
     <Compile Include="Battle\ActorDefeated.cs" />
     <Compile Include="Battle\HealingDone.cs" />
+    <Compile Include="DirectMessageReader.cs" />
     <Compile Include="EnemyGeneration\Enemy.cs" />
     <Compile Include="EnemyGeneration\EnemyGeneratedMessage.cs" />
     <Compile Include="Message.cs" />
@@ -71,6 +72,9 @@
     <Compile Include="Battle\StatusChange.cs" />
     <Compile Include="ViewModels\Character.cs" />
     <Compile Include="ViewModels\Treasure.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Gui\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

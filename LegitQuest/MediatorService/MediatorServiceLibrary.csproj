@@ -7,7 +7,7 @@
     <ProjectGuid>{44C2AD5B-B9F6-47B6-A4A9-A30834162BEB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MediatorService</RootNamespace>
+    <RootNamespace>MediatorServiceLibrary</RootNamespace>
     <AssemblyName>MediatorService</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -39,14 +39,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BattleAggregator.cs" />
     <Compile Include="MediatorService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BattleGenerationService\BattleGenerationServiceLibrary.csproj">
+      <Project>{4d075866-fba9-4f3f-8a38-8032cf4f45a6}</Project>
+      <Name>BattleGenerationServiceLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BattleService\BattleServiceLibrary.csproj">
+      <Project>{6e4bdf76-d363-452a-8d0e-13692d530927}</Project>
+      <Name>BattleServiceLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnemyService.cs\EnemyServiceLibrary.csproj">
+      <Project>{fe5c8aa8-7a2f-438a-90b2-96773a15bf18}</Project>
+      <Name>EnemyServiceLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GuiServiceLibrary\GuiServiceLibrary.csproj">
+      <Project>{572bed69-2e5f-4a2b-9199-494bbb75d45f}</Project>
+      <Name>GuiServiceLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MessageDataStructures\MessageDataStructures.csproj">
       <Project>{87e53f27-0120-4795-b497-4a93304d0cbc}</Project>
       <Name>MessageDataStructures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PlayerService\PlayerServiceLibrary.csproj">
+      <Project>{74222533-b155-492a-89d9-2a2d5b61b6ab}</Project>
+      <Name>PlayerServiceLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

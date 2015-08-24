@@ -8,11 +8,21 @@ using BattleGenerationServiceLibrary;
 using BattleServiceLibrary;
 using PlayerServiceLibrary;
 using EnemyServiceLibrary;
+using GuiServiceLibrary;
+using MessageDataStructures.BattleGeneration;
+using MessageDataStructures.Battle;
+using MediatorServiceLibrary;
+using MessageDataStructures.Player;
+using MessageDataStructures.EnemyGeneration;
 
 namespace MediatorServiceLibrary
 {
     public class MediatorService
     {
+        /* this is kind of confusing, but writers are how the mediator write to a service,
+         * and readers are where the Mediator receives new messages.  The reader here corresponds
+         * to the writers elsewhere, and the writers here correspond to each individual reader
+         */ 
         private Dictionary<ServiceType, MessageDataStructures.DirectMessageReader> writers;
         private DirectMessageReader messageReader;
 
@@ -21,11 +31,18 @@ namespace MediatorServiceLibrary
         private EnemyService enemyService;
         private PlayerService playerService;
 
-        public MediatorService()
+        //Aggregators
+        private BattleAggregator battleAggregator;
+
+
+        public MediatorService(DirectMessageReader guiMessageWriter, DirectMessageReader guiMessageReader)
         {
             initReader();
             initWriters();
             initServices();
+            initAggregators();
+            this.writers.Add(ServiceType.Gui, guiMessageWriter);
+            guiMessageReader = messageReader; //Set this so that we can communicate
         }
 
         private void initServices()
@@ -51,10 +68,69 @@ namespace MediatorServiceLibrary
             this.messageReader.MessageReceived += messageReader_MessageReceived;
         }
 
+        private void initAggregators()
+        {
+            this.battleAggregator = new BattleAggregator();
+        }
+
         void messageReader_MessageReceived(MessageReceivedEventArgs args)
         {
             //Begin message routing here
-            throw new NotImplementedException();
+            Message message = args.message;
+
+            if (message.conversationId == null) //If it's a new message, give it a conversation id so that it can be tracked
+            {
+                message.conversationId = Guid.NewGuid();
+            }
+
+            if (message is BattleGenerationRequest)
+            {
+                writers[ServiceType.BattleGeneration].writeMessage(message);
+            }
+            else if (message is BattleGenerationMessage)
+            {
+                //Need to get enemy information and player information
+                AggregatedBattleInformation aggregatedBattleInformation = new AggregatedBattleInformation();
+                aggregatedBattleInformation.conversationId = message.conversationId;
+                aggregatedBattleInformation.battleGenerationInfo = (BattleGenerationMessage)message;
+
+                //Add info to aggregator
+                battleAggregator.addAggregatedInformation(aggregatedBattleInformation, this.writers[ServiceType.Battle]);
+
+                //Now request info from PlayerService and EnemyService
+                CharacterBattleRequest characterBattleRequest = new CharacterBattleRequest();
+                characterBattleRequest.conversationId = message.conversationId;
+                this.writers[ServiceType.Player].writeMessage(characterBattleRequest);
+
+                this.writers[ServiceType.Enemy].writeMessage(message); //Enemy Service needs info from BattleGenerationMessage to process
+            }
+            else if (message is CharacterBattleMessage)
+            {
+                //Add to the aggregator, it will handle writing if it has everything it needs
+                battleAggregator.addPlayerCharacterMessageInfo(message.conversationId, (CharacterBattleMessage)message);
+            }
+            else if (message is EnemyGeneratedMessage)
+            {
+                //Add to the aggregator, it will handle writing if it has everything it needs
+                battleAggregator.addEnemyGenerationMessageInfo(message.conversationId, (EnemyGeneratedMessage)message);
+            }
+            else if (message is AbilityUsed ||
+                message is BattleInitialization ||
+                message is BattleUpdate ||
+                message is BattleUpdates ||
+                message is CombatEnded ||
+                message is CommandAvailable ||
+                message is DamageDealt ||
+                message is HealingDone ||
+                message is StatusChange)
+            {
+                //These are simple Gui outputs
+                this.writers[ServiceType.Gui].writeMessage(message);
+            }
+            else if (message is CommandIssued)
+            {
+                this.writers[ServiceType.Battle].writeMessage(message);
+            }
         }
     }
 }

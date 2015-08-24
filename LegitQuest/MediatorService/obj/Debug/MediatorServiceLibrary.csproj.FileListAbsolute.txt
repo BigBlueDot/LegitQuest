@@ -1,0 +1,17 @@
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\bin\Debug\MediatorService.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\bin\Debug\MediatorService.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\bin\Debug\BattleGenerationService.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\bin\Debug\BattleService.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\bin\Debug\EnemyService.cs.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\bin\Debug\GuiServiceLibrary.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\bin\Debug\MessageDataStructures.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\bin\Debug\PlayerService.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\bin\Debug\BattleGenerationService.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\bin\Debug\BattleService.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\bin\Debug\EnemyService.cs.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\bin\Debug\GuiServiceLibrary.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\bin\Debug\MessageDataStructures.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\bin\Debug\PlayerService.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\obj\Debug\MediatorServiceLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\obj\Debug\MediatorService.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\MediatorService\obj\Debug\MediatorService.pdb

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace MessageDataStructures.Battle
 {
-    public class AggregatedBattleInformation
+    public class AggregatedBattleInformation : Message
     {
         public BattleGeneration.BattleGenerationMessage battleGenerationInfo { get; set; }
         public EnemyGeneration.EnemyGeneratedMessage enemyGenerationInfo { get; set; }
+        public Player.CharacterBattleMessage characterBattleInfo { get; set; }
     }
 }

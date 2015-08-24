@@ -1,0 +1,7 @@
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\PlayerService\bin\Debug\PlayerService.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\PlayerService\bin\Debug\PlayerService.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\PlayerService\bin\Debug\MessageDataStructures.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\PlayerService\bin\Debug\MessageDataStructures.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\PlayerService\obj\Debug\PlayerServiceLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\PlayerService\obj\Debug\PlayerService.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\PlayerService\obj\Debug\PlayerService.pdb
