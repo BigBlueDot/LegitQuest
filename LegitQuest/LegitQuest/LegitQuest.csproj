@@ -53,14 +53,43 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AbilityDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BattleDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CharacterDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EnemyDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AbilityDisplay.xaml.cs">
+      <DependentUpon>AbilityDisplay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BattleDisplay.xaml.cs">
+      <DependentUpon>BattleDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CharacterDisplay.xaml.cs">
+      <DependentUpon>CharacterDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EnemyDisplay.xaml.cs">
+      <DependentUpon>EnemyDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GuiServiceHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -92,6 +121,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MediatorService\MediatorServiceLibrary.csproj">
+      <Project>{44c2ad5b-b9f6-47b6-a4a9-a30834162beb}</Project>
+      <Name>MediatorServiceLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MessageDataStructures\MessageDataStructures.csproj">
+      <Project>{87e53f27-0120-4795-b497-4a93304d0cbc}</Project>
+      <Name>MessageDataStructures</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
