@@ -1,7 +1,6 @@
 ﻿using MediatorServiceLibrary;
 using MessageDataStructures;
 using MessageDataStructures.BattleGeneration;
-using MessageDataStructures.Gui;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +21,7 @@ namespace LegitQuest
         {
             this.messageWriter = new DirectMessageReader();
             this.messageReader = new DirectMessageReader();
-            mediatorService = new MediatorService(messageReader, messageWriter);
+            mediatorService = new MediatorService(ref messageReader, ref messageWriter);
             messageReader.MessageReceived += messageReader_MessageReceived;
         }
 

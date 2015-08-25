@@ -35,7 +35,7 @@ namespace MediatorServiceLibrary
         private BattleAggregator battleAggregator;
 
 
-        public MediatorService(DirectMessageReader guiMessageWriter, DirectMessageReader guiMessageReader)
+        public MediatorService(ref DirectMessageReader guiMessageWriter, ref DirectMessageReader guiMessageReader)
         {
             initReader();
             initWriters();
@@ -43,6 +43,7 @@ namespace MediatorServiceLibrary
             initAggregators();
             this.writers.Add(ServiceType.Gui, guiMessageWriter);
             guiMessageReader = messageReader; //Set this so that we can communicate
+            
         }
 
         private void initServices()

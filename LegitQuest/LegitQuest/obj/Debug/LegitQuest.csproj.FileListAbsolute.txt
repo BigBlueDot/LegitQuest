@@ -31,3 +31,5 @@ C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\Abil
 C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\BattleDisplay.g.cs
 C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\CharacterDisplay.g.cs
 C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\EnemyDisplay.g.cs
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\MessageDisplay.baml
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\MessageDisplay.g.cs
