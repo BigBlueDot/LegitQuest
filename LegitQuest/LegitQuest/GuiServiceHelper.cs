@@ -1,5 +1,6 @@
 ﻿using MediatorServiceLibrary;
 using MessageDataStructures;
+using MessageDataStructures.Gui;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +11,24 @@ namespace LegitQuest
 {
     public class GuiServiceHelper
     {
-        MediatorService mediatorService;
-        DirectMessageReader messageWriter;
-        DirectMessageReader messageReader;
+        private MediatorService mediatorService;
+        private DirectMessageReader messageWriter;
+        private DirectMessageReader messageReader;
+        public delegate void ReceiveMessageEventHandler(MessageReceivedEventArgs e);
+        public event ReceiveMessageEventHandler MessageReceived;
 
         public GuiServiceHelper()
         {
-            mediatorService = new MediatorService(messageWriter, messageReader);
+            this.messageWriter = new DirectMessageReader();
+            this.messageReader = new DirectMessageReader();
+            mediatorService = new MediatorService(messageReader, messageWriter);
             messageReader.MessageReceived += messageReader_MessageReceived;
+        }
+
+        public void startCombat()
+        {
+            StartCombatMessage startCombatMessage = new StartCombatMessage();
+            messageWriter.writeMessage(startCombatMessage);
         }
 
         public void useCommand()
@@ -28,7 +39,10 @@ namespace LegitQuest
         void messageReader_MessageReceived(MessageReceivedEventArgs args)
         {
             //Process message from the mediator (Will just fire events up to the Battle Display, more likely than not
-            throw new NotImplementedException();
+            if (MessageReceived != null)
+            {
+                MessageReceived(args);
+            }
         }
     }
 }

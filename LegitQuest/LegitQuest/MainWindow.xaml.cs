@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MessageDataStructures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,36 @@ namespace LegitQuest
     /// </summary>
     public partial class MainWindow : Window
     {
+        private BattleDisplay battleDisplay;
+        private MessageDisplay messageDisplay;
+        private GuiServiceHelper guiServiceHelper;
+
         public MainWindow()
         {
             InitializeComponent();
+            messageDisplay = new MessageDisplay();
+            guiServiceHelper = new GuiServiceHelper();
+            guiServiceHelper.MessageReceived += guiServiceHelper_MessageReceived;
+            guiServiceHelper.startCombat();
+        }
+
+        private void draw()
+        {
+            this.pnlMain.Children.Clear();
+            this.pnlMain.Children.Add(battleDisplay);
+            this.pnlMain.Children.Add(messageDisplay);
+        }
+
+        void guiServiceHelper_MessageReceived(MessageDataStructures.MessageReceivedEventArgs e)
+        {
+            //Handle all of the messages
+            Message message = e.message;
+            if (message is BattleInitialization)
+            {
+                BattleInitialization battleInitialization = (BattleInitialization)message;
+                this.battleDisplay = new BattleDisplay(battleInitialization.PlayerCharacters, battleInitialization.NonPlayerCharacters);
+                draw();
+            }
         }
     }
 }
