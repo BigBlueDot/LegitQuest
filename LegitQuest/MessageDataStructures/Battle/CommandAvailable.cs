@@ -9,6 +9,7 @@ namespace MessageDataStructures
     public class CommandAvailable : Message
     {
         //TODO: Add graphic information as well
+        public Guid characterId { get; set; }
         public string commandOne { get; set; }
         public string commandTwo { get; set; }
         public string commandThree { get; set; }
