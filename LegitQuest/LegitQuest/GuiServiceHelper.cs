@@ -1,5 +1,6 @@
 ﻿using MediatorServiceLibrary;
 using MessageDataStructures;
+using MessageDataStructures.BattleGeneration;
 using MessageDataStructures.Gui;
 using System;
 using System.Collections.Generic;
@@ -27,8 +28,8 @@ namespace LegitQuest
 
         public void startCombat()
         {
-            StartCombatMessage startCombatMessage = new StartCombatMessage();
-            messageWriter.writeMessage(startCombatMessage);
+            BattleGenerationRequest battleGenerationRequest = new BattleGenerationRequest();
+            messageWriter.writeMessage(battleGenerationRequest);
         }
 
         public void useCommand()
