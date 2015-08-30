@@ -49,9 +49,9 @@ namespace MediatorServiceLibrary
         private void initServices()
         {
             this.battleGenerationService = new BattleGenerationService(this.writers[ServiceType.BattleGeneration], this.messageReader);
-            this.battleService = new BattleService(this.writers[ServiceType.BattleGeneration], this.messageReader);
-            this.enemyService = new EnemyService(this.writers[ServiceType.BattleGeneration], this.messageReader);
-            this.playerService = new PlayerService(this.writers[ServiceType.BattleGeneration], this.messageReader);
+            this.battleService = new BattleService(this.writers[ServiceType.Battle], this.messageReader);
+            this.enemyService = new EnemyService(this.writers[ServiceType.Enemy], this.messageReader);
+            this.playerService = new PlayerService(this.writers[ServiceType.Player], this.messageReader);
         }
 
         private void initWriters()

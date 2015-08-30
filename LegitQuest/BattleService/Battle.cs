@@ -22,8 +22,9 @@ namespace BattleServiceLibrary
         private List<Guid> allies { get; set; } //Allows it to track down ally actors for global data requests
         private List<Guid> enemies { get; set; } //Allows it to track down enemy actors for global data requests
         private long startingTime { get; set; }
+        public Guid id { get; set; }
 
-        public Battle()
+        public Battle(Guid id, Actor pointCharacter, Actor leftWingCharacter, Actor rightWingCharacter, Actor pointEnemy, Actor leftWingEnemy, Actor rightWingEnemy)
         {
             messages = new List<InternalMessage.InternalMessage>();
             outgoingMessages = new List<Message>();
@@ -32,6 +33,20 @@ namespace BattleServiceLibrary
             this.globalMessages = new List<Message>();
             this.allies = new List<Guid>();
             this.enemies = new List<Guid>();
+            this.id = id;
+            this.allies.Add(pointCharacter.id);
+            this.allies.Add(leftWingCharacter.id);
+            this.allies.Add(rightWingCharacter.id);
+            this.enemies.Add(pointEnemy.id);
+            this.enemies.Add(leftWingEnemy.id);
+            this.enemies.Add(rightWingEnemy.id);
+
+            this.actors.Add(pointCharacter);
+            this.actors.Add(leftWingCharacter);
+            this.actors.Add(rightWingCharacter);
+            this.actors.Add(pointEnemy);
+            this.actors.Add(leftWingEnemy);
+            this.actors.Add(rightWingEnemy);
         }
 
         private long getCurrentTimeMs()

@@ -1,4 +1,8 @@
-﻿using MessageDataStructures;
+﻿using BattleServiceLibrary.Actors;
+using BattleServiceLibrary.Actors.Characters;
+using MessageDataStructures;
+using MessageDataStructures.Battle;
+using MessageDataStructures.EnemyGeneration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +23,16 @@ namespace BattleServiceLibrary
 
         void messageReader_MessageReceived(MessageReceivedEventArgs args)
         {
-            throw new NotImplementedException();
+            this.processMessage(args.message);
+        }
+
+        private void processMessage(Message message)
+        {
+            if (message is AggregatedBattleInformation)
+            {
+                AggregatedBattleInformation aggregateBattleInformation = (AggregatedBattleInformation)message;
+                
+            }
         }
 
         //This will be called as the thread method
@@ -48,9 +61,27 @@ namespace BattleServiceLibrary
 
         }
 
-        private void createBattle()
+        private void createBattle(List<Enemy> enemies, List<Character> characters)
         {
+            //There will be more to this later
+            Actor pointCharacter = getPlayerCharacter(characters[0]);
+            Actor leftWingCharacter = getPlayerCharacter(characters[1]);
+            Actor rightWingCharacter = getPlayerCharacter(characters[2]);
+            Actor pointEnemy = getRandomNonPlayerCharacter(enemies[0]);
+            Actor leftWingEnemy = getRandomNonPlayerCharacter(enemies[1]);
+            Actor rightWingEnemy = getRandomNonPlayerCharacter(enemies[2]);
+            Battle battle = new Battle(new Guid(), pointCharacter, leftWingCharacter, rightWingCharacter, pointEnemy, leftWingEnemy, rightWingEnemy);
+            battles.Add(battle.id, battle);
+        }
 
+        private PlayerCharacter getPlayerCharacter(Character character)
+        {
+            return new PlayerCharacter(character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
+        }
+
+        private RandomNonPlayerCharacter getRandomNonPlayerCharacter(Enemy character)
+        {
+            return new RandomNonPlayerCharacter(character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
         }
 
         public void writeMessage(MessageDataStructures.Message message)

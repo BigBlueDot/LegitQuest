@@ -10,6 +10,29 @@ namespace BattleServiceLibrary.Actors.Characters
 {
     public class PlayerCharacter : Character
     {
+        private bool started { get; set; }
+
+        public PlayerCharacter()
+        {
+            this.started = false;
+        }
+
+        public PlayerCharacter(int maxHP, int strength, int dexterity, int vitality, int magic, int mind, int resistance, int accuracy, int dodge, int critical)
+        {
+            this.maxHp = maxHp;
+            this.hp = maxHp;
+            this.strength = strength;
+            this.dexterity = dexterity;
+            this.vitality = vitality;
+            this.magic = magic;
+            this.mind = mind;
+            this.resistance = resistance;
+            this.accuracy = accuracy;
+            this.dodge = dodge;
+            this.critical = critical;
+            this.started = false;
+        }
+
         private bool canUseCommand()
         {
             return (this.castTimeComplete <= this.currentTime + 1000); //Can cast 1 second ahead of time

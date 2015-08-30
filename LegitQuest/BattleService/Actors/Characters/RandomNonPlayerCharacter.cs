@@ -13,6 +13,27 @@ namespace BattleServiceLibrary.Actors.Characters
     {
         private bool waitingForTarget { get; set; }
 
+        public RandomNonPlayerCharacter()
+        {
+
+        }
+
+
+        public RandomNonPlayerCharacter(int maxHP, int strength, int dexterity, int vitality, int magic, int mind, int resistance, int accuracy, int dodge, int critical)
+        {
+            this.maxHp = maxHp;
+            this.hp = maxHp;
+            this.strength = strength;
+            this.dexterity = dexterity;
+            this.vitality = vitality;
+            this.magic = magic;
+            this.mind = mind;
+            this.resistance = resistance;
+            this.accuracy = accuracy;
+            this.dodge = dodge;
+            this.critical = critical;
+        }
+
         protected override void doAction()
         {
             //Get the correct target
