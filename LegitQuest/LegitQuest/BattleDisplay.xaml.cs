@@ -36,7 +36,7 @@ namespace LegitQuest
             }
             for (int i = 0; i < npcs.Count && i < 3; i++)
             {
-                addCharacter(i, npcs[i]);
+                addEnemy(i, npcs[i]);
                 indexDictionary.Add(npcs[i].id, i);
             }
         }
