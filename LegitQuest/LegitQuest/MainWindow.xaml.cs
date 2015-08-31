@@ -51,6 +51,13 @@ namespace LegitQuest
                 this.battleDisplay = new BattleDisplay(battleInitialization.PlayerCharacters, battleInitialization.NonPlayerCharacters);
                 draw();
             }
+            else if (message is CommandAvailable)
+            {
+                CommandAvailable commandAvailable = (CommandAvailable)message;
+                battleDisplay.addCommand(commandAvailable.characterId, 0, commandAvailable.commandOne);
+                battleDisplay.addCommand(commandAvailable.characterId, 1, commandAvailable.commandTwo);
+                battleDisplay.addCommand(commandAvailable.characterId, 2, commandAvailable.commandThree);
+            }
         }
     }
 }
