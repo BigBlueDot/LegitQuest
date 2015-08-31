@@ -3,6 +3,7 @@ using BattleServiceLibrary.Actors.Characters;
 using MessageDataStructures;
 using MessageDataStructures.Battle;
 using MessageDataStructures.EnemyGeneration;
+using MessageDataStructures.Player;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace BattleServiceLibrary
             if (message is AggregatedBattleInformation)
             {
                 AggregatedBattleInformation aggregateBattleInformation = (AggregatedBattleInformation)message;
-                
+                createBattle(aggregateBattleInformation.enemyGenerationInfo.enemies, aggregateBattleInformation.characterBattleInfo.characters, message.conversationId);
             }
         }
 
@@ -61,20 +62,35 @@ namespace BattleServiceLibrary
 
         }
 
-        private void createBattle(List<Enemy> enemies, List<Character> characters)
+        private void createBattle(List<Enemy> enemies, List<BattleCharacter> characters, Guid conversationId)
         {
             //There will be more to this later
-            Actor pointCharacter = getPlayerCharacter(characters[0]);
-            Actor leftWingCharacter = getPlayerCharacter(characters[1]);
-            Actor rightWingCharacter = getPlayerCharacter(characters[2]);
-            Actor pointEnemy = getRandomNonPlayerCharacter(enemies[0]);
-            Actor leftWingEnemy = getRandomNonPlayerCharacter(enemies[1]);
-            Actor rightWingEnemy = getRandomNonPlayerCharacter(enemies[2]);
+            PlayerCharacter pointCharacter = getPlayerCharacter(characters[0]);
+            PlayerCharacter leftWingCharacter = getPlayerCharacter(characters[1]);
+            PlayerCharacter rightWingCharacter = getPlayerCharacter(characters[2]);
+            NonPlayerCharacter pointEnemy = getRandomNonPlayerCharacter(enemies[0]);
+            NonPlayerCharacter leftWingEnemy = getRandomNonPlayerCharacter(enemies[1]);
+            NonPlayerCharacter rightWingEnemy = getRandomNonPlayerCharacter(enemies[2]);
             Battle battle = new Battle(new Guid(), pointCharacter, leftWingCharacter, rightWingCharacter, pointEnemy, leftWingEnemy, rightWingEnemy);
             battles.Add(battle.id, battle);
+            
+            //Now get initialization
+            BattleInitialization battleInitialization = new BattleInitialization();
+            battleInitialization.conversationId = conversationId;
+            battleInitialization.battleId = battle.id;
+            battleInitialization.NonPlayerCharacters = new List<MessageDataStructures.ViewModels.Character>();
+            battleInitialization.PlayerCharacters = new List<MessageDataStructures.ViewModels.Character>();
+            battleInitialization.NonPlayerCharacters.Add(getCharacterViewModel(pointEnemy, MessageDataStructures.ViewModels.Position.Point));
+            battleInitialization.NonPlayerCharacters.Add(getCharacterViewModel(leftWingEnemy, MessageDataStructures.ViewModels.Position.LeftWing));
+            battleInitialization.NonPlayerCharacters.Add(getCharacterViewModel(rightWingEnemy, MessageDataStructures.ViewModels.Position.RightWing));
+            battleInitialization.PlayerCharacters.Add(getCharacterViewModel(pointCharacter, MessageDataStructures.ViewModels.Position.Point));
+            battleInitialization.PlayerCharacters.Add(getCharacterViewModel(leftWingCharacter, MessageDataStructures.ViewModels.Position.LeftWing));
+            battleInitialization.PlayerCharacters.Add(getCharacterViewModel(rightWingCharacter, MessageDataStructures.ViewModels.Position.RightWing));
+
+            writeMessage(battleInitialization);
         }
 
-        private PlayerCharacter getPlayerCharacter(Character character)
+        private PlayerCharacter getPlayerCharacter(BattleCharacter character)
         {
             return new PlayerCharacter(character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
         }
@@ -82,6 +98,17 @@ namespace BattleServiceLibrary
         private RandomNonPlayerCharacter getRandomNonPlayerCharacter(Enemy character)
         {
             return new RandomNonPlayerCharacter(character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
+        }
+
+        private MessageDataStructures.ViewModels.Character getCharacterViewModel(Character character, MessageDataStructures.ViewModels.Position position)
+        {
+            MessageDataStructures.ViewModels.Character viewModel = new MessageDataStructures.ViewModels.Character();
+            viewModel.id = character.id;
+            viewModel.hp = character.hp;
+            viewModel.maxHp = character.maxHp;
+            viewModel.position = position;
+            viewModel.weaknesses = new List<string>();
+            return viewModel;
         }
 
         public void writeMessage(MessageDataStructures.Message message)

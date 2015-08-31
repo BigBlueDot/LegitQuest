@@ -32,6 +32,7 @@ namespace BattleServiceLibrary.Actors.Characters
             this.accuracy = accuracy;
             this.dodge = dodge;
             this.critical = critical;
+            this.id = Guid.NewGuid();
         }
 
         protected override void doAction()

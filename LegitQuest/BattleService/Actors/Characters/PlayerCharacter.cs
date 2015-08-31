@@ -31,6 +31,7 @@ namespace BattleServiceLibrary.Actors.Characters
             this.dodge = dodge;
             this.critical = critical;
             this.started = false;
+            this.id = Guid.NewGuid();
         }
 
         private bool canUseCommand()

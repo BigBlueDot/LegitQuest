@@ -10,7 +10,7 @@ namespace MessageDataStructures.ViewModels
     {
         public int hp { get; set; }
         public int maxHp { get; set; }
-        public int position { get; set; }
+        public Position position { get; set; }
         //TODO:  String should be replaced with a visual indicator class (e.g. link to image and name of weakness)
         public List<String> weaknesses { get; set; }
         public Guid id { get; set; }
