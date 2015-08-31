@@ -19,8 +19,8 @@ namespace BattleServiceLibrary.Actors.Characters
 
         public PlayerCharacter(int maxHP, int strength, int dexterity, int vitality, int magic, int mind, int resistance, int accuracy, int dodge, int critical)
         {
-            this.maxHp = maxHp;
-            this.hp = maxHp;
+            this.maxHp = maxHP;
+            this.hp = maxHP;
             this.strength = strength;
             this.dexterity = dexterity;
             this.vitality = vitality;
