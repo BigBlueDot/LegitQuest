@@ -68,6 +68,10 @@ namespace LegitQuest
                 battleDisplay.addCommand(commandAvailable.characterId, 1, commandAvailable.commandTwo);
                 battleDisplay.addCommand(commandAvailable.characterId, 2, commandAvailable.commandThree);
             }
+            else if (message is AbilityUsed)
+            {
+                messageDisplay.addMessage(((AbilityUsed)message).message);
+            }
         }
 
         void battleDisplay_abilityClicked(EventInfo.AbilitySelectedEventArgs e)

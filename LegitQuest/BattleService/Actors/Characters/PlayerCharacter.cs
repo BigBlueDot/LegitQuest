@@ -72,7 +72,13 @@ namespace BattleServiceLibrary.Actors.Characters
                     physicalAttack.id = specificMessage.target;
                     setCastTime(4000); //4s cast time
                     physicalAttack.executeTime = this.castTimeComplete;
+                    physicalAttack.conversationId = specificMessage.conversationId;
                     addOutgoingMessage(physicalAttack);
+
+                    AbilityUsed abilityUsed = new AbilityUsed();
+                    abilityUsed.conversationId = specificMessage.conversationId;
+                    abilityUsed.message = "An attack has been used!";
+                    addOutgoingMessage(abilityUsed);
                 }
             }
 
