@@ -23,6 +23,8 @@ namespace LegitQuest
     {
         private Dictionary<Guid, int> indexDictionary;
         private Dictionary<int, Dictionary<int, AbilityDisplay>> abilityDictionary;
+        private Dictionary<Guid, CharacterDisplay> characterDisplays;
+        private Dictionary<Guid, EnemyDisplay> enemyDisplays;
 
         public event LegitQuest.CharacterDisplay.CharacterClickedEventHandler characterClicked;
         public event LegitQuest.EnemyDisplay.CharacterClickedEventHandler enemyClicked;
@@ -33,6 +35,8 @@ namespace LegitQuest
             InitializeComponent();
             indexDictionary = new Dictionary<Guid, int>();
             abilityDictionary = new Dictionary<int, Dictionary<int, AbilityDisplay>>();
+            characterDisplays = new Dictionary<Guid, CharacterDisplay>();
+            enemyDisplays = new Dictionary<Guid, EnemyDisplay>();
             for (int i = 0; i < pcs.Count && i < 3; i++)
             {
                 addCharacter(i, pcs[i]);
@@ -51,6 +55,19 @@ namespace LegitQuest
             characterDisplay.CharacterClicked += characterDisplay_CharacterClicked;
             Grid.SetColumn(characterDisplay, index);
             PlayerCharacters.Children.Add(characterDisplay);
+            characterDisplays.Add(character.id, characterDisplay);
+        }
+
+        public void modifyHP(Guid character, int damage)
+        {
+            if (this.characterDisplays.ContainsKey(character))
+            {
+                this.characterDisplays[character].changeHP(damage);
+            }
+            else if (this.enemyDisplays.ContainsKey(character))
+            {
+                this.enemyDisplays[character].changeHP(damage);
+            }
         }
 
         void characterDisplay_CharacterClicked(EventInfo.CharacterSelectedEventArgs args)
@@ -67,6 +84,7 @@ namespace LegitQuest
             enemyDisplay.EnemyClicked += enemyDisplay_EnemyClicked;
             Grid.SetColumn(enemyDisplay, index);
             EnemyGrid.Children.Add(enemyDisplay);
+            enemyDisplays.Add(character.id, enemyDisplay);
         }
 
         void enemyDisplay_EnemyClicked(EventInfo.CharacterSelectedEventArgs args)

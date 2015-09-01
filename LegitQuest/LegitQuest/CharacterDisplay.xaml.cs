@@ -46,6 +46,12 @@ namespace LegitQuest
             this.txtHP.Text = this.hp.ToString() + " / " + this.maxHP.ToString();
         }
 
+        public void changeHP(int damage)
+        {
+            hp = hp - damage;
+            this.txtHP.Text = this.hp.ToString() + " / " + this.maxHP.ToString();
+        }
+
         private void Select_Click_1(object sender, RoutedEventArgs e)
         {
             if (CharacterClicked != null)

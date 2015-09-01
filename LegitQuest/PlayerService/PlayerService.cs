@@ -36,8 +36,8 @@ namespace PlayerServiceLibrary
             //Just return a default for now
             BattleCharacter battleCharacter = new BattleCharacter();
             battleCharacter.characterClass = characterClass;
-            battleCharacter.maxHp = 10;
-            battleCharacter.hp = 10;
+            battleCharacter.maxHp = 50;
+            battleCharacter.hp = 50;
             battleCharacter.strength = 5;
             battleCharacter.dexterity = 5;
             battleCharacter.vitality = 5;

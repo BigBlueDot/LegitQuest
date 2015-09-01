@@ -72,6 +72,14 @@ namespace LegitQuest
             {
                 messageDisplay.addMessage(((AbilityUsed)message).message);
             }
+            else if (message is DamageDealt)
+            {
+                DamageDealt specificMessage = (DamageDealt)message;
+                int dmg = specificMessage.damage;
+                Guid target = specificMessage.target;
+                messageDisplay.addMessage(dmg + " damage has been dealt!");
+                battleDisplay.modifyHP(specificMessage.target, specificMessage.damage);
+            }
         }
 
         void battleDisplay_abilityClicked(EventInfo.AbilitySelectedEventArgs e)
