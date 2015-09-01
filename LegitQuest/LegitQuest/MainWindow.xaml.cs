@@ -24,11 +24,13 @@ namespace LegitQuest
         private BattleDisplay battleDisplay;
         private MessageDisplay messageDisplay;
         private GuiServiceHelper guiServiceHelper;
+        private AbilityAggregator abilityAggregator;
 
         public MainWindow()
         {
             InitializeComponent();
             messageDisplay = new MessageDisplay();
+            this.abilityAggregator = new AbilityAggregator();
             guiServiceHelper = new GuiServiceHelper();
             guiServiceHelper.MessageReceived += guiServiceHelper_MessageReceived;
             guiServiceHelper.startCombat();
@@ -55,6 +57,8 @@ namespace LegitQuest
                 BattleInitialization battleInitialization = (BattleInitialization)message;
                 this.battleDisplay = new BattleDisplay(battleInitialization.PlayerCharacters, battleInitialization.NonPlayerCharacters);
                 this.battleDisplay.characterClicked += battleDisplay_characterClicked;
+                this.battleDisplay.enemyClicked += battleDisplay_enemyClicked;
+                this.battleDisplay.abilityClicked += battleDisplay_abilityClicked;
                 draw();
             }
             else if (message is CommandAvailable)
@@ -66,9 +70,24 @@ namespace LegitQuest
             }
         }
 
+        void battleDisplay_abilityClicked(EventInfo.AbilitySelectedEventArgs e)
+        {
+            this.abilityAggregator.startAbility(e.commandIssued.source, e.commandIssued.commandNumber);
+        }
+
+        void battleDisplay_enemyClicked(EventInfo.CharacterSelectedEventArgs args)
+        {
+            this.abilityAggregator.addTarget(args.id);
+            CommandIssued commandIssued = this.abilityAggregator.getCommand();
+            if (commandIssued != null)
+            {
+                this.guiServiceHelper.useCommand(commandIssued);
+            }
+        }
+
         void battleDisplay_characterClicked(EventInfo.CharacterSelectedEventArgs args)
         {
-            throw new NotImplementedException();
+            //Nothing for now
         }
     }
 }

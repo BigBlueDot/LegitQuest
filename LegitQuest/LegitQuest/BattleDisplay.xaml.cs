@@ -25,6 +25,8 @@ namespace LegitQuest
         private Dictionary<int, Dictionary<int, AbilityDisplay>> abilityDictionary;
 
         public event LegitQuest.CharacterDisplay.CharacterClickedEventHandler characterClicked;
+        public event LegitQuest.EnemyDisplay.CharacterClickedEventHandler enemyClicked;
+        public event LegitQuest.AbilityDisplay.AbilitySelectedEventHandler abilityClicked;
 
         public BattleDisplay(List<Character> pcs, List<Character> npcs)
         {
@@ -62,8 +64,17 @@ namespace LegitQuest
         private void addEnemy(int index, Character character)
         {
             EnemyDisplay enemyDisplay = new EnemyDisplay(character);
+            enemyDisplay.EnemyClicked += enemyDisplay_EnemyClicked;
             Grid.SetColumn(enemyDisplay, index);
             EnemyGrid.Children.Add(enemyDisplay);
+        }
+
+        void enemyDisplay_EnemyClicked(EventInfo.CharacterSelectedEventArgs args)
+        {
+            if (this.enemyClicked != null)
+            {
+                this.enemyClicked(args);
+            }
         }
 
         public void addCommand(Guid characterId, int index, String name)
@@ -98,7 +109,16 @@ namespace LegitQuest
                 abilityDictionary[characterIndex][index] = abilityDisplay;
             }
             Grid.SetColumn(abilityDisplay, (characterIndex * 3) + index);
+            abilityDisplay.AbilitySelected += abilityDisplay_AbilitySelected;
             Abilities.Children.Add(abilityDisplay);
+        }
+
+        void abilityDisplay_AbilitySelected(EventInfo.AbilitySelectedEventArgs e)
+        {
+            if (abilityClicked != null)
+            {
+                abilityClicked(e);
+            }
         }
     }
 }

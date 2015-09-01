@@ -31,9 +31,9 @@ namespace LegitQuest
             messageWriter.writeMessage(battleGenerationRequest);
         }
 
-        public void useCommand()
+        public void useCommand(CommandIssued commandIssued)
         {
-            //Oh god something goes here, but what
+            messageWriter.writeMessage(commandIssued);
         }
 
         void messageReader_MessageReceived(MessageReceivedEventArgs args)

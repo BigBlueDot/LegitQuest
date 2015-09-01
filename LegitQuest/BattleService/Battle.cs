@@ -218,6 +218,16 @@ namespace BattleServiceLibrary
                     WhoLacksStatusEffects specificMessage = (WhoLacksStatusEffects)message;
                     
                 }
+                else if (message is CommandIssued)
+                {
+                    foreach (Actor actor in actors)
+                    {
+                        if (actor.id == ((CommandIssued)message).source)
+                        {
+                            actor.addEventMessage(message);
+                        }
+                    }
+                }
 
             }
             this.globalMessages.Clear();
@@ -314,6 +324,14 @@ namespace BattleServiceLibrary
                         message is WhoLacksStatusEffects)
             {
                 this.globalMessages.Add(message); //These need to be processed globally
+            }
+        }
+
+        public void addInternalMessage(Message message)
+        {
+            lock (messages)
+            {
+                globalMessages.Add(message);
             }
         }
 

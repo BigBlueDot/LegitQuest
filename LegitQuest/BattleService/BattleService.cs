@@ -36,6 +36,11 @@ namespace BattleServiceLibrary
                 AggregatedBattleInformation aggregateBattleInformation = (AggregatedBattleInformation)message;
                 createBattle(aggregateBattleInformation.enemyGenerationInfo.enemies, aggregateBattleInformation.characterBattleInfo.characters, message.conversationId);
             }
+            else if (message is CommandIssued)
+            {
+                //Write to appropriate battle 
+                battles[battles.Keys.First()].addInternalMessage(message);
+            }
         }
 
         //This will be called as the thread method
