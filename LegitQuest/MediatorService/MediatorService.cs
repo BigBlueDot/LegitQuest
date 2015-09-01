@@ -14,6 +14,8 @@ using MessageDataStructures.Battle;
 using MediatorServiceLibrary;
 using MessageDataStructures.Player;
 using MessageDataStructures.EnemyGeneration;
+using System.Threading;
+using System.ComponentModel;
 
 namespace MediatorServiceLibrary
 {
@@ -34,6 +36,9 @@ namespace MediatorServiceLibrary
         //Aggregators
         private BattleAggregator battleAggregator;
 
+        //Threads
+        private Thread battleThread;
+        private BackgroundWorker battleBackgroundWorker;
 
         public MediatorService(ref DirectMessageReader guiMessageWriter, ref DirectMessageReader guiMessageReader)
         {
@@ -41,6 +46,7 @@ namespace MediatorServiceLibrary
             initWriters();
             initServices();
             initAggregators();
+            initThreads();
             this.writers.Add(ServiceType.Gui, guiMessageWriter);
             guiMessageReader = messageReader; //Set this so that we can communicate
             
@@ -72,6 +78,23 @@ namespace MediatorServiceLibrary
         private void initAggregators()
         {
             this.battleAggregator = new BattleAggregator();
+        }
+
+        private void initThreads()
+        {
+            //this.battleBackgroundWorker = new BackgroundWorker();
+            //this.battleBackgroundWorker.DoWork += battleBackgroundWorker_DoWork;
+            //this.battleBackgroundWorker.RunWorkerAsync();
+            this.battleThread = new Thread(new ThreadStart(battleService.process));
+            this.battleThread.IsBackground = true;
+            this.battleThread.Name = "BattleThread";
+            this.battleThread.SetApartmentState(ApartmentState.STA);
+            this.battleThread.Start();
+        }
+
+        void battleBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            this.battleService.process();
         }
 
         void messageReader_MessageReceived(MessageReceivedEventArgs args)

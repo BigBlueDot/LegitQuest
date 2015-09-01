@@ -65,11 +65,14 @@ namespace BattleServiceLibrary
             //Assign all internal messages and process all events for actors
             do
             {
-                foreach (InternalMessage.InternalMessage message in this.messages)
+                List<InternalMessage.InternalMessage> toProcess = new List<InternalMessage.InternalMessage>();
+                toProcess.AddRange(this.messages);
+                this.messages.Clear();
+                foreach (InternalMessage.InternalMessage message in toProcess)
                 {
                     assignMessage(message);
                 }
-                this.messages.Clear();
+                toProcess.Clear();
 
                 processActorMessages(externalMessages, currentTime);
             } while ((this.messages.Count != 0)); //Need to run at least once
@@ -117,6 +120,8 @@ namespace BattleServiceLibrary
                             addOutgoingMessage(message);
                         }
                     }
+
+                    actor.clearOutgoingMessages();
                 }
             }
 
@@ -308,7 +313,7 @@ namespace BattleServiceLibrary
                         message is WhoIsEngagedWithMe ||
                         message is WhoLacksStatusEffects)
             {
-                this.messages.Add(message); //These need to be processed globally
+                this.globalMessages.Add(message); //These need to be processed globally
             }
         }
 

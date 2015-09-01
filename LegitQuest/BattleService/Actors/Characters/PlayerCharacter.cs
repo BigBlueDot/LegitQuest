@@ -32,6 +32,19 @@ namespace BattleServiceLibrary.Actors.Characters
             this.critical = critical;
             this.started = false;
             this.id = Guid.NewGuid();
+
+            this.addCommandAvailableMessage();
+        }
+
+        private void addCommandAvailableMessage()
+        {
+            CommandAvailable commandAvailable = new CommandAvailable();
+            commandAvailable.conversationId = Guid.NewGuid();
+            commandAvailable.commandOne = "Attack";
+            commandAvailable.commandTwo = "Attack";
+            commandAvailable.commandThree = "Attack";
+            commandAvailable.characterId = this.id;
+            this.addOutgoingMessage(commandAvailable);
         }
 
         private bool canUseCommand()

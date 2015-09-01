@@ -38,10 +38,14 @@ namespace BattleServiceLibrary.Actors.Characters
         protected override void doAction()
         {
             //Get the correct target
-            WhoIsEngagedWithMe dataRequest = new WhoIsEngagedWithMe();
-            waitingForTarget = true;
-            dataRequest.source.id = this.id;
-            addOutgoingMessage(dataRequest);
+            if (!waitingForTarget)
+            {
+                WhoIsEngagedWithMe dataRequest = new WhoIsEngagedWithMe();
+                waitingForTarget = true;
+                dataRequest.source = new Targeted();
+                dataRequest.source.id = this.id;
+                addOutgoingMessage(dataRequest);
+            }
         }
 
         protected override void processMessage(MessageDataStructures.Message message)

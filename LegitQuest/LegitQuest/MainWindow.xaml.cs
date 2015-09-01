@@ -45,10 +45,16 @@ namespace LegitQuest
         {
             //Handle all of the messages
             Message message = e.message;
+            this.Dispatcher.BeginInvoke((Action)(() => processMessage(message)));
+        }
+
+        private void processMessage(Message message)
+        {
             if (message is BattleInitialization)
             {
                 BattleInitialization battleInitialization = (BattleInitialization)message;
                 this.battleDisplay = new BattleDisplay(battleInitialization.PlayerCharacters, battleInitialization.NonPlayerCharacters);
+                this.battleDisplay.characterClicked += battleDisplay_characterClicked;
                 draw();
             }
             else if (message is CommandAvailable)
@@ -58,6 +64,11 @@ namespace LegitQuest
                 battleDisplay.addCommand(commandAvailable.characterId, 1, commandAvailable.commandTwo);
                 battleDisplay.addCommand(commandAvailable.characterId, 2, commandAvailable.commandThree);
             }
+        }
+
+        void battleDisplay_characterClicked(EventInfo.CharacterSelectedEventArgs args)
+        {
+            throw new NotImplementedException();
         }
     }
 }

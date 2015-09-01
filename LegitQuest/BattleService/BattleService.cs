@@ -15,16 +15,18 @@ namespace BattleServiceLibrary
     public class BattleService : BaseService
     {
         Dictionary<Guid, Battle> battles;
+        private List<Message> incomingMessageQueue;
 
         public BattleService(MessageReader messageReader, MessageWriter messageWriter) : base(messageReader, messageWriter)
         {
             battles = new Dictionary<Guid, Battle>();
+            this.incomingMessageQueue = new List<Message>();
             this.messageReader.MessageReceived += messageReader_MessageReceived;
         }
 
         void messageReader_MessageReceived(MessageReceivedEventArgs args)
         {
-            this.processMessage(args.message);
+            this.incomingMessageQueue.Add(args.message);
         }
 
         private void processMessage(Message message)
@@ -59,7 +61,16 @@ namespace BattleServiceLibrary
 
         private void processMessages()
         {
-
+            List<Message> messages = new List<Message>();
+            lock (incomingMessageQueue)
+            {
+                messages.AddRange(incomingMessageQueue);
+                incomingMessageQueue.Clear();
+            }
+            foreach(Message message in messages)
+            {
+                processMessage(message);
+            }
         }
 
         private void createBattle(List<Enemy> enemies, List<BattleCharacter> characters, Guid conversationId)
