@@ -80,6 +80,10 @@ namespace LegitQuest
                 messageDisplay.addMessage(dmg + " damage has been dealt!");
                 battleDisplay.modifyHP(specificMessage.target, specificMessage.damage);
             }
+            else if (message is CombatEnded)
+            {
+                messageDisplay.addMessage("Combat has ended");
+            }
         }
 
         void battleDisplay_abilityClicked(EventInfo.AbilitySelectedEventArgs e)

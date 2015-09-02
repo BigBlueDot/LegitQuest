@@ -103,6 +103,7 @@ namespace BattleServiceLibrary
                         addMessages = false;
                         actorsToRemove.Add(actor.id);
                         defeatedTime = ((Defeated)message).executeTime;
+                        checkCombatEnded();
                     }
                 }
 
@@ -231,6 +232,63 @@ namespace BattleServiceLibrary
 
             }
             this.globalMessages.Clear();
+        }
+
+        private void checkCombatEnded()
+        {
+            bool alliesDefeated = true;
+            foreach (Guid id in allies)
+            {
+                foreach (Actor actor in actors)
+                {
+                    if (actor.id == id)
+                    {
+                        if (actor is Character)
+                        {
+                            if (((Character)actor).hp > 0)
+                            {
+                                alliesDefeated = false;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (alliesDefeated)
+            {
+                CombatEnded combatEnded = new CombatEnded();
+                combatEnded.playerWon = false;
+                combatEnded.treasure = new List<MessageDataStructures.ViewModels.Treasure>();
+                combatEnded.xp = 0;
+                this.addOutgoingMessage(combatEnded);
+            }
+
+            bool enemiesDefeated = true;
+            foreach (Guid id in enemies)
+            {
+                foreach (Actor actor in actors)
+                {
+                    if (actor.id == id)
+                    {
+                        if (actor is Character)
+                        {
+                            if (((Character)actor).hp > 0)
+                            {
+                                enemiesDefeated = false;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (enemiesDefeated)
+            {
+                CombatEnded combatEnded = new CombatEnded();
+                combatEnded.playerWon = true;
+                combatEnded.treasure = new List<MessageDataStructures.ViewModels.Treasure>();
+                combatEnded.xp = 0;
+                this.addOutgoingMessage(combatEnded);
+            }
         }
 
         private void removeActor(Guid id, long defeatedTime)
