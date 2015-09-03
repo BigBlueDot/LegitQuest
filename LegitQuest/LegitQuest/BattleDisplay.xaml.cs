@@ -138,5 +138,13 @@ namespace LegitQuest
                 abilityClicked(e);
             }
         }
+
+        public void disableAbilities(Guid characterId)
+        {
+            int index = indexDictionary[characterId];
+            removeAbility(index, 0);
+            removeAbility(index, 1);
+            removeAbility(index, 2);
+        }
     }
 }

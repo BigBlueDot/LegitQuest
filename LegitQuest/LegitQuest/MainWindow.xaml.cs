@@ -103,6 +103,10 @@ namespace LegitQuest
             CommandIssued commandIssued = this.abilityAggregator.getCommand();
             if (commandIssued != null)
             {
+                //Disable commands
+                battleDisplay.disableAbilities(commandIssued.source);
+
+                //Send gui message
                 this.guiServiceHelper.useCommand(commandIssued);
             }
         }
