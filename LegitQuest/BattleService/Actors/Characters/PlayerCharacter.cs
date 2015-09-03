@@ -11,6 +11,7 @@ namespace BattleServiceLibrary.Actors.Characters
     public class PlayerCharacter : Character
     {
         private bool started { get; set; }
+        private bool commandSent { get; set; }
 
         public PlayerCharacter()
         {
@@ -34,6 +35,7 @@ namespace BattleServiceLibrary.Actors.Characters
             this.id = Guid.NewGuid();
 
             this.addCommandAvailableMessage();
+            this.commandSent = true;
         }
 
         private void addCommandAvailableMessage()
@@ -79,6 +81,8 @@ namespace BattleServiceLibrary.Actors.Characters
                     abilityUsed.conversationId = specificMessage.conversationId;
                     abilityUsed.message = "An attack has been used!";
                     addOutgoingMessage(abilityUsed);
+
+                    this.commandSent = false;
                 }
             }
 
@@ -88,6 +92,17 @@ namespace BattleServiceLibrary.Actors.Characters
         private void setCastTime(long ms)
         {
             this.castTimeComplete += ms;
+        }
+
+        public override void process(long time)
+        {
+            base.process(time);
+
+            if (canUseCommand() && !commandSent)
+            {
+                commandSent = true;
+                addCommandAvailableMessage();
+            }
         }
     }
 }
