@@ -84,6 +84,12 @@ namespace LegitQuest
             {
                 messageDisplay.addMessage("Combat has ended");
             }
+            else if (message is HealingDone)
+            {
+                HealingDone healingDone = (HealingDone)message;
+                battleDisplay.modifyHP(healingDone.target, -healingDone.healValue);
+                messageDisplay.addMessage(healingDone.healValue + " healing has been done!");
+            }
         }
 
         void battleDisplay_abilityClicked(EventInfo.AbilitySelectedEventArgs e)
