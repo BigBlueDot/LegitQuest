@@ -344,12 +344,12 @@ namespace BattleServiceLibrary
 
         private void assignMessage(InternalMessage.InternalMessage message)
         {
-            if (message is Targeted)
+            if (message is Targeted && !(message is Target))
             {
                 //Assign to the targetted actor
                 foreach(Actor actor in actors)
                 {
-                    if(actor.id == ((Targeted)message).id)
+                    if (actor.id == ((Targeted)message).id)
                     {
                         actor.addEventMessage(message);
                     }
