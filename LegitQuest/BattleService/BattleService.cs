@@ -1,5 +1,6 @@
 ﻿using BattleServiceLibrary.Actors;
 using BattleServiceLibrary.Actors.Characters;
+using BattleServiceLibrary.Actors.Characters.Classes;
 using MessageDataStructures;
 using MessageDataStructures.Battle;
 using MessageDataStructures.EnemyGeneration;
@@ -108,7 +109,14 @@ namespace BattleServiceLibrary
 
         private PlayerCharacter getPlayerCharacter(BattleCharacter character)
         {
-            return new PlayerCharacter(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical, character.abilities);
+            if (character.characterClass == CharacterClass.Warrior)
+            {
+                return new Warrior(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.maxHp, character.mind, character.resistance, character.accuracy, character.dodge, character.critical, character.abilities);
+            }
+            else
+            {
+                return new PlayerCharacter(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical, character.abilities);
+            }
         }
 
         private RandomNonPlayerCharacter getRandomNonPlayerCharacter(Enemy character)

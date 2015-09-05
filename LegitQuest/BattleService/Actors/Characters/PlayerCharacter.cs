@@ -10,8 +10,8 @@ namespace BattleServiceLibrary.Actors.Characters
 {
     public class PlayerCharacter : Character
     {
-        private bool started { get; set; }
-        private bool commandSent { get; set; }
+        protected bool started { get; set; }
+        protected bool commandSent { get; set; }
         public List<string> abilities { get; set; }
 
         public PlayerCharacter()
@@ -69,31 +69,35 @@ namespace BattleServiceLibrary.Actors.Characters
                 if (canUseCommand())
                 {
                     CommandIssued specificMessage = (CommandIssued)message;
-                    
-                    //For now we are just assuming it's an attack
-                    PhysicalAttack physicalAttack = new PhysicalAttack();
-                    physicalAttack.abilityStrength = 15;
-                    physicalAttack.attack = this.strength;
-                    physicalAttack.target = specificMessage.target;
-                    physicalAttack.source = this.id;
-                    setCastTime(4000); //4s cast time
-                    physicalAttack.executeTime = this.castTimeComplete;
-                    physicalAttack.conversationId = specificMessage.conversationId;
-                    addOutgoingMessage(physicalAttack);
-
-                    AbilityUsed abilityUsed = new AbilityUsed();
-                    abilityUsed.conversationId = specificMessage.conversationId;
-                    abilityUsed.message = "An attack has been used!";
-                    addOutgoingMessage(abilityUsed);
-
-                    this.commandSent = false;
+                    useCommand(specificMessage);
                 }
             }
 
             base.processMessage(message);
         }
 
-        private void setCastTime(long ms)
+        protected virtual void useCommand(CommandIssued commandIssued)
+        {
+            //For now we are just assuming it's an attack
+            PhysicalAttack physicalAttack = new PhysicalAttack();
+            physicalAttack.abilityStrength = 15;
+            physicalAttack.attack = this.strength;
+            physicalAttack.target = commandIssued.target;
+            physicalAttack.source = this.id;
+            setCastTime(4000); //4s cast time
+            physicalAttack.executeTime = this.castTimeComplete;
+            physicalAttack.conversationId = commandIssued.conversationId;
+            addOutgoingMessage(physicalAttack);
+
+            AbilityUsed abilityUsed = new AbilityUsed();
+            abilityUsed.conversationId = commandIssued.conversationId;
+            abilityUsed.message = "An attack has been used!";
+            addOutgoingMessage(abilityUsed);
+
+            this.commandSent = false;
+        }
+
+        protected void setCastTime(long ms)
         {
             this.castTimeComplete += ms;
         }
