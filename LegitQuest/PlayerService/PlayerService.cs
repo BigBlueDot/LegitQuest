@@ -38,6 +38,10 @@ namespace PlayerServiceLibrary
             {
                 case CharacterClass.Warrior:
                     battleCharacter.characterClass = characterClass;
+                    battleCharacter.abilities = new List<string>();
+                    battleCharacter.abilities.Add("Sword and Board");
+                    battleCharacter.abilities.Add("Stagger");
+                    battleCharacter.abilities.Add("Haymaker");
                     battleCharacter.name = "Tonin";
                     battleCharacter.maxHp = 100;
                     battleCharacter.hp = 100;
@@ -53,6 +57,10 @@ namespace PlayerServiceLibrary
                     return battleCharacter;
                 case CharacterClass.Mage:
                     battleCharacter.name = "Noktix";
+                    battleCharacter.abilities = new List<string>();
+                    battleCharacter.abilities.Add("Arcane Bullet");
+                    battleCharacter.abilities.Add("Flurry");
+                    battleCharacter.abilities.Add("Enfeeble");
                     battleCharacter.characterClass = characterClass;
                     battleCharacter.maxHp = 45;
                     battleCharacter.hp = 45;
@@ -68,6 +76,10 @@ namespace PlayerServiceLibrary
                     return battleCharacter;
                 case CharacterClass.Priest:
                     battleCharacter.name = "Cohlm";
+                    battleCharacter.abilities = new List<string>();
+                    battleCharacter.abilities.Add("Heal");
+                    battleCharacter.abilities.Add("Pray");
+                    battleCharacter.abilities.Add("Smite");
                     battleCharacter.characterClass = characterClass;
                     battleCharacter.maxHp = 65;
                     battleCharacter.hp = 65;

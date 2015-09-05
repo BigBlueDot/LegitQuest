@@ -12,13 +12,14 @@ namespace BattleServiceLibrary.Actors.Characters
     {
         private bool started { get; set; }
         private bool commandSent { get; set; }
+        public List<string> abilities { get; set; }
 
         public PlayerCharacter()
         {
             this.started = false;
         }
 
-        public PlayerCharacter(string name, int maxHP, int strength, int dexterity, int vitality, int magic, int mind, int resistance, int accuracy, int dodge, int critical)
+        public PlayerCharacter(string name, int maxHP, int strength, int dexterity, int vitality, int magic, int mind, int resistance, int accuracy, int dodge, int critical, List<string> abilities)
         {
             this.name = name;
             this.maxHp = maxHP;
@@ -32,6 +33,7 @@ namespace BattleServiceLibrary.Actors.Characters
             this.accuracy = accuracy;
             this.dodge = dodge;
             this.critical = critical;
+            this.abilities = abilities;
             this.started = false;
             this.id = Guid.NewGuid();
 
@@ -43,9 +45,9 @@ namespace BattleServiceLibrary.Actors.Characters
         {
             CommandAvailable commandAvailable = new CommandAvailable();
             commandAvailable.conversationId = Guid.NewGuid();
-            commandAvailable.commandOne = "Attack";
-            commandAvailable.commandTwo = "Attack";
-            commandAvailable.commandThree = "Attack";
+            commandAvailable.commandOne = abilities[0];
+            commandAvailable.commandTwo = abilities[1];
+            commandAvailable.commandThree = abilities[2];
             commandAvailable.characterId = this.id;
             this.addOutgoingMessage(commandAvailable);
         }

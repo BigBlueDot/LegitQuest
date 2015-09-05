@@ -108,7 +108,7 @@ namespace BattleServiceLibrary
 
         private PlayerCharacter getPlayerCharacter(BattleCharacter character)
         {
-            return new PlayerCharacter(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
+            return new PlayerCharacter(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical, character.abilities);
         }
 
         private RandomNonPlayerCharacter getRandomNonPlayerCharacter(Enemy character)
@@ -125,6 +125,11 @@ namespace BattleServiceLibrary
             viewModel.position = position;
             viewModel.weaknesses = new List<string>();
             viewModel.name = character.name;
+            if (character is PlayerCharacter)
+            {
+                viewModel.abilities = ((PlayerCharacter)character).abilities;
+            }
+
             return viewModel;
         }
 

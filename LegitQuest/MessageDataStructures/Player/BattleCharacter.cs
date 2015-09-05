@@ -10,6 +10,7 @@ namespace MessageDataStructures.Player
     {
         public string name { get; set; }
         public CharacterClass characterClass { get; set; }
+        public List<string> abilities { get; set; }
         public int hp { get; set; }
         public int maxHp { get; set; }
         public int strength { get; set; } //Physical attack
