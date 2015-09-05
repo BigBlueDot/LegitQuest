@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.InternalMessage.DataResults
 {
-    public class Target : Targeted
+    public class Target : InternalMessage
     {
-        public Guid inquirer { get; set; }
+        public Guid target { get; set; }
+        public Guid source { get; set; }
     }
 }

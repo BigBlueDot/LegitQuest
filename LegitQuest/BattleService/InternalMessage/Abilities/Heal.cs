@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.InternalMessage.Abilities
 {
-    public class Heal : Targeted
+    public class Heal : InternalMessage
     {
         public int healValue { get; set; }
+        public Guid source { get; set; }
+        public Guid target { get; set; }
     }
 }

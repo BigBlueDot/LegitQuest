@@ -9,6 +9,7 @@ namespace MessageDataStructures
     public class HealingDone : Message
     {
         public Guid target { get; set; }
+        public Guid source { get; set; }
         public int healValue { get; set; }
     }
 }

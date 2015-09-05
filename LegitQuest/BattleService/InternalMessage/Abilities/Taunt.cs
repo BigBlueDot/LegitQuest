@@ -8,8 +8,8 @@ namespace BattleServiceLibrary.InternalMessage.Abilities
 {
     public class Taunt : InternalMessage
     {
-        public Targeted target { get; set; }
-        public Targeted switchTarget { get; set; }
+        public Guid target { get; set; }
+        public Guid switchTarget { get; set; }
         public int switchPosition { get; set; }
         public Status status { get; set; }
 

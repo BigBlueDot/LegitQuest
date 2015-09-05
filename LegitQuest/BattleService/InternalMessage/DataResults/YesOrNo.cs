@@ -10,7 +10,7 @@ namespace BattleServiceLibrary.InternalMessage.DataResults
     public class YesOrNo : InternalMessage
     {
         public bool isYes { get; set; }
-        public Targeted inquirer { get; set; }
-        public Targeted answered { get; set; }
+        public Guid inquirer { get; set; }
+        public Guid answered { get; set; }
     }
 }

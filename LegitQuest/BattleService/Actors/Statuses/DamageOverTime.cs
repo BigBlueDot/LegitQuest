@@ -34,7 +34,7 @@ namespace BattleServiceLibrary.Actors.Statuses
 
                 DealStaticDamage dealStaticDamage = new DealStaticDamage();
                 dealStaticDamage.damage = this.damage;
-                dealStaticDamage.id = this.target;
+                dealStaticDamage.target = this.target;
                 addOutgoingMessage(dealStaticDamage);
             }
 

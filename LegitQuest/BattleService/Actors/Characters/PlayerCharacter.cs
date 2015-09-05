@@ -71,7 +71,8 @@ namespace BattleServiceLibrary.Actors.Characters
                     PhysicalAttack physicalAttack = new PhysicalAttack();
                     physicalAttack.abilityStrength = 15;
                     physicalAttack.attack = this.strength;
-                    physicalAttack.id = specificMessage.target;
+                    physicalAttack.target = specificMessage.target;
+                    physicalAttack.source = this.id;
                     setCastTime(4000); //4s cast time
                     physicalAttack.executeTime = this.castTimeComplete;
                     physicalAttack.conversationId = specificMessage.conversationId;

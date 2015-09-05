@@ -45,6 +45,7 @@ namespace BattleServiceLibrary.Actors.Characters
                 DamageDealt damageDealt = new DamageDealt();
                 damageDealt.damage = dmg;
                 damageDealt.target = this.id;
+                damageDealt.source = specificMessage.source;
                 addOutgoingMessage(damageDealt);
             }
             else if (message is MagicalAttack)
@@ -58,6 +59,7 @@ namespace BattleServiceLibrary.Actors.Characters
                 DamageDealt damageDealt = new DamageDealt();
                 damageDealt.damage = dmg;
                 damageDealt.target = this.id;
+                damageDealt.source = specificMessage.source;
                 addOutgoingMessage(damageDealt);
             }
             else if (message is Heal)
@@ -106,6 +108,7 @@ namespace BattleServiceLibrary.Actors.Characters
                 DamageDealt damageDealt = new DamageDealt();
                 damageDealt.damage = dmg;
                 damageDealt.target = this.id;
+                damageDealt.source = specificMessage.source;
                 addOutgoingMessage(damageDealt);
             }
             else if (message is Taunt)
@@ -113,12 +116,12 @@ namespace BattleServiceLibrary.Actors.Characters
                 Taunt specificMessage = (Taunt)message;
 
                 //No resistance by default
-                if (specificMessage.target.id == this.id)
+                if (specificMessage.target == this.id)
                 {
                     specificMessage.status = Taunt.Status.PassedTarget;
                     addOutgoingMessage(specificMessage);
                 }
-                else if (specificMessage.switchTarget.id == this.id)
+                else if (specificMessage.switchTarget == this.id)
                 {
                     specificMessage.status = Taunt.Status.PassedSwitchTarget;
                     addOutgoingMessage(specificMessage);

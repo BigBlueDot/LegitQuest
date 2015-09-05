@@ -124,6 +124,7 @@ namespace BattleServiceLibrary
             viewModel.maxHp = character.maxHp;
             viewModel.position = position;
             viewModel.weaknesses = new List<string>();
+            viewModel.name = "Aidazar";
             return viewModel;
         }
 

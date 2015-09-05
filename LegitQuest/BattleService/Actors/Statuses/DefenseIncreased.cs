@@ -28,7 +28,7 @@ namespace BattleServiceLibrary.Actors.Statuses
                 DefenseDecreased defenseDecreased = new DefenseDecreased();
                 defenseDecreased.defenseReduction = defenseMod;
                 defenseDecreased.duration = -1;
-                defenseDecreased.id = this.target;
+                defenseDecreased.target = this.target;
                 this.addOutgoingMessage(defenseDecreased);
 
                 Defeated defeated = new Defeated();

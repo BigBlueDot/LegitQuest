@@ -8,6 +8,6 @@ namespace BattleServiceLibrary.InternalMessage.DataResults
 {
     public class TargetList : InternalMessage
     {
-        public List<Abilities.Targeted> targets { get; set; }
+        public List<Guid> targets { get; set; }
     }
 }

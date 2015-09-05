@@ -9,7 +9,7 @@ namespace BattleServiceLibrary.InternalMessage.DataRequests
 {
     public class WhoHasLowestHealth : InternalMessage
     {
-        public Targeted inquirer { get; set; }
+        public Guid inquirer { get; set; }
         public bool isAlly { get; set; }
     }
 }

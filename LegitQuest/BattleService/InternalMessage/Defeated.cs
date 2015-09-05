@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.InternalMessage
 {
-    public class Defeated : Targeted
+    public class Defeated : InternalMessage
     {
-
+        public Guid id;
     }
 }

@@ -9,6 +9,6 @@ namespace BattleServiceLibrary.InternalMessage.DataRequests
 {
     public class WhoIsEngagedWithMe : InternalMessage
     {
-        public Targeted source { get; set; }
+        public Guid source { get; set; }
     }
 }

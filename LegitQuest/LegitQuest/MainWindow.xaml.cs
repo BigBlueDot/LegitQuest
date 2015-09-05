@@ -25,6 +25,7 @@ namespace LegitQuest
         private MessageDisplay messageDisplay;
         private GuiServiceHelper guiServiceHelper;
         private AbilityAggregator abilityAggregator;
+        private Dictionary<Guid, String> characterMapper;
 
         public MainWindow()
         {
@@ -32,6 +33,7 @@ namespace LegitQuest
             messageDisplay = new MessageDisplay();
             this.abilityAggregator = new AbilityAggregator();
             guiServiceHelper = new GuiServiceHelper();
+            this.characterMapper = new Dictionary<Guid, string>();
             guiServiceHelper.MessageReceived += guiServiceHelper_MessageReceived;
             guiServiceHelper.startCombat();
         }
@@ -55,6 +57,14 @@ namespace LegitQuest
             if (message is BattleInitialization)
             {
                 BattleInitialization battleInitialization = (BattleInitialization)message;
+                foreach (MessageDataStructures.ViewModels.Character character in battleInitialization.PlayerCharacters)
+                {
+                    characterMapper.Add(character.id, character.name);
+                }
+                foreach (MessageDataStructures.ViewModels.Character character in battleInitialization.NonPlayerCharacters)
+                {
+                    characterMapper.Add(character.id, character.name);
+                }
                 this.battleDisplay = new BattleDisplay(battleInitialization.PlayerCharacters, battleInitialization.NonPlayerCharacters);
                 this.battleDisplay.characterClicked += battleDisplay_characterClicked;
                 this.battleDisplay.enemyClicked += battleDisplay_enemyClicked;
@@ -77,7 +87,7 @@ namespace LegitQuest
                 DamageDealt specificMessage = (DamageDealt)message;
                 int dmg = specificMessage.damage;
                 Guid target = specificMessage.target;
-                messageDisplay.addMessage(dmg + " damage has been dealt!");
+                messageDisplay.addMessage(characterMapper[specificMessage.source] + " has dealt " + dmg + " to " + characterMapper[specificMessage.target] + "!");
                 battleDisplay.modifyHP(specificMessage.target, specificMessage.damage);
             }
             else if (message is CombatEnded)
@@ -88,7 +98,7 @@ namespace LegitQuest
             {
                 HealingDone healingDone = (HealingDone)message;
                 battleDisplay.modifyHP(healingDone.target, -healingDone.healValue);
-                messageDisplay.addMessage(healingDone.healValue + " healing has been done!");
+                messageDisplay.addMessage(characterMapper[healingDone.source] + " has healed " + characterMapper[healingDone.target] + healingDone.healValue + " healing has been done!");
             }
         }
 

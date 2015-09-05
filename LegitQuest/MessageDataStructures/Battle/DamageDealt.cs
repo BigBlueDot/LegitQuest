@@ -8,6 +8,7 @@ namespace MessageDataStructures
 {
     public class DamageDealt : Message
     {
+        public Guid source { get; set; }
         public Guid target { get; set; }
         public int damage { get; set; }
     }

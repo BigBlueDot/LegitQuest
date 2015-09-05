@@ -139,7 +139,7 @@ namespace BattleServiceLibrary
                 {
                     //Find the index of this enemy
                     WhoIsEngagedWithMe specificMessage = (WhoIsEngagedWithMe)message;
-                    int index = enemies.IndexOf(specificMessage.source.id);
+                    int index = enemies.IndexOf(specificMessage.source);
                     Guid target = allies[index];
 
                     //Verify that the target is alive
@@ -173,8 +173,8 @@ namespace BattleServiceLibrary
                     }
 
                     Target result = new Target();
-                    result.id = target;
-                    result.inquirer = specificMessage.source.id;
+                    result.target = target;
+                    result.source = specificMessage.source;
                     this.messages.Add(result);
                 }
                 else if (message is WhoHasLowestHealth)
@@ -209,8 +209,8 @@ namespace BattleServiceLibrary
                     }
 
                     Target target = new Target();
-                    target.inquirer = specificMessage.inquirer.id;
-                    target.id = currentLowestId;
+                    target.source = specificMessage.inquirer;
+                    target.target = currentLowestId;
                     this.messages.Add(target);
                 }
                 else if (message is WhoLacksStatusEffects)
@@ -344,12 +344,59 @@ namespace BattleServiceLibrary
 
         private void assignMessage(InternalMessage.InternalMessage message)
         {
-            if (message is Targeted && !(message is Target))
+            if (message is DamageOverTime ||
+                message is DealStaticDamage ||
+                message is DefenseDecreased ||
+                message is DefenseIncreased ||
+                message is MagicalAttack ||
+                message is PhysicalAttack ||
+                message is Taunt ||
+                message is Heal)
             {
                 //Assign to the targetted actor
+                Guid target = new Guid();
+
+                if (message is DamageOverTime)
+                {
+                    target = ((DamageOverTime)message).target;
+                }
+                else if (message is DealStaticDamage)
+                {
+                    target = ((DealStaticDamage)message).target;
+                }
+                else if (message is DefenseDecreased)
+                {
+                    target = ((DefenseDecreased)message).target;
+                }
+                else if (message is DefenseIncreased)
+                {
+                    target = ((DefenseIncreased)message).target;
+                }
+                else if (message is MagicalAttack)
+                {
+                    target = ((MagicalAttack)message).target;
+                }
+                else if (message is PhysicalAttack)
+                {
+                    target = ((PhysicalAttack)message).target;
+                }
+                else if (message is Taunt)
+                {
+                    target = ((Taunt)message).target;
+                }
+                else if (message is Heal)
+                {
+                    target = ((Heal)message).target;
+                }
+                else if (message is DealStaticDamage)
+                {
+                    target = ((DealStaticDamage)message).target;
+                }
+
+
                 foreach(Actor actor in actors)
                 {
-                    if (actor.id == ((Targeted)message).id)
+                    if (actor.id == target)
                     {
                         actor.addEventMessage(message);
                     }
@@ -360,7 +407,7 @@ namespace BattleServiceLibrary
                 IsHPBelowXPercentage specificMessage = (IsHPBelowXPercentage)message;
                 foreach (Actor actor in actors)
                 {
-                    if (specificMessage.answerer.id == actor.id)
+                    if (specificMessage.answerer == actor.id)
                     {
                         actor.addEventMessage(message);
                     }
@@ -371,7 +418,7 @@ namespace BattleServiceLibrary
                 Target specificMessage = (Target)message;
                 foreach (Actor actor in actors)
                 {
-                    if (specificMessage.inquirer == actor.id)
+                    if (specificMessage.source == actor.id)
                     {
                         actor.addEventMessage(message);
                     }

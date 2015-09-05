@@ -42,8 +42,7 @@ namespace BattleServiceLibrary.Actors.Characters
             {
                 WhoIsEngagedWithMe dataRequest = new WhoIsEngagedWithMe();
                 waitingForTarget = true;
-                dataRequest.source = new Targeted();
-                dataRequest.source.id = this.id;
+                dataRequest.source = this.id;
                 addOutgoingMessage(dataRequest);
             }
         }
@@ -57,7 +56,8 @@ namespace BattleServiceLibrary.Actors.Characters
                 PhysicalAttack physicalAttack = new PhysicalAttack();
                 physicalAttack.abilityStrength = 10;
                 physicalAttack.attack = this.strength;
-                physicalAttack.id = ((Target)message).id;
+                physicalAttack.target = ((Target)message).target;
+                physicalAttack.source = this.id;
 
                 setCastTime(4000); //4s cast time
 

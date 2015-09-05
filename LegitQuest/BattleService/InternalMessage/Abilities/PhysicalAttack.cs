@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.InternalMessage.Abilities
 {
-    public class PhysicalAttack : Targeted
+    public class PhysicalAttack : InternalMessage
     {
+        public Guid target;
+        public Guid source;
         public int attack { get; set; }
         public int abilityStrength { get; set; }
     }

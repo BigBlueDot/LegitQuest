@@ -9,8 +9,8 @@ namespace BattleServiceLibrary.InternalMessage.DataRequests
 {
     public class IsHPBelowXPercentage : InternalMessage
     {
-        public Targeted inquirer { get; set; }
-        public Targeted answerer { get; set; }
+        public Guid inquirer { get; set; }
+        public Guid answerer { get; set; }
         public int percentage { get; set; }
     }
 }
