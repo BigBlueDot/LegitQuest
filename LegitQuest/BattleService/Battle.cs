@@ -151,7 +151,7 @@ namespace BattleServiceLibrary
                         {
                             specificTargetAlive = true;
                         }
-                        for (int i = 0; i < 3; i++)
+                        for (int i = 0; i < allies.Count; i++)
                         {
                             if (actor.id == allies[i])
                             {
@@ -162,7 +162,7 @@ namespace BattleServiceLibrary
 
                     if (!specificTargetAlive)
                     {
-                        for (int i = 0; i < 3; i++)
+                        for (int i = 0; i < allies.Count; i++)
                         {
                             if (targetAlive[i])
                             {
