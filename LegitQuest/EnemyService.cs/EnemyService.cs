@@ -40,6 +40,7 @@ namespace EnemyServiceLibrary
         {
             //This will be structured differently later
             MessageDataStructures.EnemyGeneration.Enemy enemy = new MessageDataStructures.EnemyGeneration.Enemy();
+            enemy.name = "Goblin";
             enemy.hp = 50;
             enemy.maxHp = 50;
             enemy.strength = 5;

@@ -38,6 +38,7 @@ namespace PlayerServiceLibrary
             {
                 case CharacterClass.Warrior:
                     battleCharacter.characterClass = characterClass;
+                    battleCharacter.name = "Tonin";
                     battleCharacter.maxHp = 100;
                     battleCharacter.hp = 100;
                     battleCharacter.strength = 10;
@@ -51,6 +52,7 @@ namespace PlayerServiceLibrary
                     battleCharacter.dodge = 6;
                     return battleCharacter;
                 case CharacterClass.Mage:
+                    battleCharacter.name = "Noktix";
                     battleCharacter.characterClass = characterClass;
                     battleCharacter.maxHp = 45;
                     battleCharacter.hp = 45;
@@ -65,6 +67,7 @@ namespace PlayerServiceLibrary
                     battleCharacter.dodge = 2;
                     return battleCharacter;
                 case CharacterClass.Priest:
+                    battleCharacter.name = "Cohlm";
                     battleCharacter.characterClass = characterClass;
                     battleCharacter.maxHp = 65;
                     battleCharacter.hp = 65;

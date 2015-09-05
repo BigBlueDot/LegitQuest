@@ -13,6 +13,7 @@ namespace BattleServiceLibrary.Actors.Characters
 {
     public abstract class Character : Actor
     {
+        public string name { get; set; }
         public int hp { get; set; }
         public int maxHp { get; set; }
         public int strength { get; set; } //Physical attack

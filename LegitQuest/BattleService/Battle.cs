@@ -140,6 +140,7 @@ namespace BattleServiceLibrary
                     //Find the index of this enemy
                     WhoIsEngagedWithMe specificMessage = (WhoIsEngagedWithMe)message;
                     int index = enemies.IndexOf(specificMessage.source);
+
                     Guid target = allies[index];
 
                     //Verify that the target is alive
@@ -315,8 +316,6 @@ namespace BattleServiceLibrary
             }
 
             actors.Remove(toRemove);
-            this.allies.Remove(id);
-            this.enemies.Remove(id);
         }
 
         private void assignMessages()

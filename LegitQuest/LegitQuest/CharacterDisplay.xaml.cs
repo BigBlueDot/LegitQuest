@@ -39,7 +39,7 @@ namespace LegitQuest
         {
             this.hp = character.hp;
             this.maxHP = character.maxHp;
-            this.name = "Name";
+            this.name = character.name;
             this.characterId = character.id;
 
             this.txtName.Text = this.name;

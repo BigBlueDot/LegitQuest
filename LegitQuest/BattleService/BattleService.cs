@@ -108,12 +108,12 @@ namespace BattleServiceLibrary
 
         private PlayerCharacter getPlayerCharacter(BattleCharacter character)
         {
-            return new PlayerCharacter(character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
+            return new PlayerCharacter(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
         }
 
         private RandomNonPlayerCharacter getRandomNonPlayerCharacter(Enemy character)
         {
-            return new RandomNonPlayerCharacter(character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
+            return new RandomNonPlayerCharacter(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
         }
 
         private MessageDataStructures.ViewModels.Character getCharacterViewModel(Character character, MessageDataStructures.ViewModels.Position position)
@@ -124,7 +124,7 @@ namespace BattleServiceLibrary
             viewModel.maxHp = character.maxHp;
             viewModel.position = position;
             viewModel.weaknesses = new List<string>();
-            viewModel.name = "Aidazar";
+            viewModel.name = character.name;
             return viewModel;
         }
 
