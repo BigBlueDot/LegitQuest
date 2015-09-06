@@ -41,7 +41,7 @@ namespace BattleServiceLibrary.Actors
             return outgoingMessages.ToList();
         }
 
-        public void removeMessagesAfterDefeat()
+        public virtual void removeMessagesAfterDefeat()
         {
             //Remove any messages that shouldn't be sent out after a defeat
             List<Message> toRemove = new List<Message>();

@@ -130,6 +130,7 @@ namespace BattleServiceLibrary
             }
 
             //Process global messages
+            List<InternalMessage.InternalMessage> newMessages = new List<InternalMessage.InternalMessage>();
             foreach (Message message in this.globalMessages)
             {
                 if (message is WhoIsEngagedWithMe)
@@ -231,16 +232,22 @@ namespace BattleServiceLibrary
                 {
                     if (((Ability)message).hasComplexProcessing)
                     {
-                        List<InternalMessage.InternalMessage> messages = ((Ability)message).execute((Ability)message, actors, allies, enemies);
-                        foreach (InternalMessage.InternalMessage im in messages)
-                        {
-                            this.addInternalMessage(im);
-                        }
+                        newMessages.AddRange(((Ability)message).execute((Ability)message, actors, allies, enemies));
                     }
+                }
+                else if (message is AddStatus)
+                {
+                    AddStatus addStatus = (AddStatus)message;
+                    actors.Add(addStatus.status);
                 }
 
             }
             this.globalMessages.Clear();
+
+            foreach (InternalMessage.InternalMessage im in newMessages)
+            {
+                this.addInternalMessage(im);
+            }
         }
 
         private void checkCombatEnded()
@@ -437,13 +444,28 @@ namespace BattleServiceLibrary
             {
                 this.globalMessages.Add(message); //These need to be processed globally
             }
+            else if (message is Ability)
+            {
+                this.globalMessages.Add(message);
+            }
+            else if (message is AddStatus)
+            {
+                this.globalMessages.Add(message);
+            }
         }
 
         public void addInternalMessage(Message message)
         {
             lock (messages)
             {
-                globalMessages.Add(message);
+                if (message is InternalMessage.InternalMessage)
+                {
+                    this.messages.Add((InternalMessage.InternalMessage)message);
+                }
+                else
+                {
+                    this.globalMessages.Add(message);
+                }
             }
         }
 

@@ -43,8 +43,8 @@ namespace PlayerServiceLibrary
                     battleCharacter.abilities.Add("Stagger");
                     battleCharacter.abilities.Add("Haymaker");
                     battleCharacter.name = "Tonin";
-                    battleCharacter.maxHp = 100;
-                    battleCharacter.hp = 100;
+                    battleCharacter.maxHp = 1000;
+                    battleCharacter.hp = 1000;
                     battleCharacter.strength = 10;
                     battleCharacter.dexterity = 5;
                     battleCharacter.vitality = 8;

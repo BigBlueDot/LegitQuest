@@ -26,6 +26,12 @@ namespace BattleServiceLibrary.InternalMessage.Abilities.Warrior
                     defenseIncreased.target = swordAndBoard.source;
                     defenseIncreased.executeTime = swordAndBoard.executeTime;
 
+                    AddStatus addStatus = new AddStatus();
+                    addStatus.conversationId = swordAndBoard.conversationId;
+                    addStatus.executeTime = swordAndBoard.executeTime;
+                    addStatus.status = new Actors.Statuses.DefenseIncreased(swordAndBoard.executeTime, 8000, 5, swordAndBoard.source);
+                    messages.Add(addStatus);
+
                     messages.Add(defenseIncreased);
                 }
                 return messages;
