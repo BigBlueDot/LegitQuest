@@ -79,7 +79,7 @@ namespace BattleServiceLibrary
 
 
             //Write external messages
-            foreach(Message message in externalMessages)
+            foreach (Message message in externalMessages)
             {
                 addOutgoingMessage(message);
             }
@@ -90,40 +90,37 @@ namespace BattleServiceLibrary
             //Process for each actor
             List<Guid> actorsToRemove = new List<Guid>();
             long defeatedTime = 0;
-            foreach(Actor actor in this.actors)
+            foreach (Actor actor in this.actors)
             {
                 actor.process(currentTime); //Note: currentTime is the actual current time for combat, not where processing is at
                 List<Message> thisActorsMessages = new List<Message>();
-                bool addMessages = true;
                 foreach (Message message in actor.retrieveOutgoingMessages())
                 {
                     if (message is Defeated)
                     {
                         //This actor was defeated, don't do anything else
-                        addMessages = false;
                         actorsToRemove.Add(actor.id);
                         defeatedTime = ((Defeated)message).executeTime;
+                        actor.removeMessagesAfterDefeat();
                         checkCombatEnded();
                     }
                 }
 
                 //Assign internal and external messages
-                if (addMessages)
-                {
-                    foreach (Message message in actor.retrieveOutgoingMessages())
-                    {
-                        if (message is InternalMessage.InternalMessage)
-                        {
-                            this.messages.Add((InternalMessage.InternalMessage)message);
-                        }
-                        else
-                        {
-                            addOutgoingMessage(message);
-                        }
-                    }
 
-                    actor.clearOutgoingMessages();
+                foreach (Message message in actor.retrieveOutgoingMessages())
+                {
+                    if (message is InternalMessage.InternalMessage)
+                    {
+                        this.messages.Add((InternalMessage.InternalMessage)message);
+                    }
+                    else
+                    {
+                        addOutgoingMessage(message);
+                    }
                 }
+
+                actor.clearOutgoingMessages();
             }
 
             //Remove any defeated actors
@@ -133,7 +130,7 @@ namespace BattleServiceLibrary
             }
 
             //Process global messages
-            foreach(Message message in this.globalMessages)
+            foreach (Message message in this.globalMessages)
             {
                 if (message is WhoIsEngagedWithMe)
                 {
@@ -218,7 +215,7 @@ namespace BattleServiceLibrary
                 {
                     //TODO: Need to write once status effects are more fleshed out
                     WhoLacksStatusEffects specificMessage = (WhoLacksStatusEffects)message;
-                    
+
                 }
                 else if (message is CommandIssued)
                 {
@@ -227,6 +224,17 @@ namespace BattleServiceLibrary
                         if (actor.id == ((CommandIssued)message).source)
                         {
                             actor.addEventMessage(message);
+                        }
+                    }
+                }
+                else if (message is Ability)
+                {
+                    if (((Ability)message).hasComplexProcessing)
+                    {
+                        List<InternalMessage.InternalMessage> messages = ((Ability)message).execute((Ability)message, actors, allies, enemies);
+                        foreach (InternalMessage.InternalMessage im in messages)
+                        {
+                            this.addInternalMessage(im);
                         }
                     }
                 }
@@ -309,7 +317,7 @@ namespace BattleServiceLibrary
             Actor toRemove = null;
             foreach (Actor actor in actors)
             {
-                if(actor.id == id)
+                if (actor.id == id)
                 {
                     toRemove = actor;
                 }
@@ -393,7 +401,7 @@ namespace BattleServiceLibrary
                 }
 
 
-                foreach(Actor actor in actors)
+                foreach (Actor actor in actors)
                 {
                     if (actor.id == target)
                     {

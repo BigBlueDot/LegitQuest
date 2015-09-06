@@ -38,7 +38,6 @@ namespace MediatorServiceLibrary
 
         //Threads
         private Thread battleThread;
-        private BackgroundWorker battleBackgroundWorker;
 
         public MediatorService(ref DirectMessageReader guiMessageWriter, ref DirectMessageReader guiMessageReader)
         {

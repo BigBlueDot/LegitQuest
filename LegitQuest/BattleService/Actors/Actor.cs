@@ -11,12 +11,12 @@ namespace BattleServiceLibrary.Actors
     {
         public Guid id { get; set; }
         public Queue<Message> messages { get; set; }
-        public Queue<Message> outgoingMessages { get; set; }
+        public List<Message> outgoingMessages { get; set; }
 
         public Actor()
         {
             messages = new Queue<Message>();
-            outgoingMessages = new Queue<Message>();
+            outgoingMessages = new List<Message>();
         }
 
         public abstract void process(long time);
@@ -33,12 +33,34 @@ namespace BattleServiceLibrary.Actors
 
         public void addOutgoingMessage(Message message)
         {
-            outgoingMessages.Enqueue(message);
+            outgoingMessages.Add(message);
         }
 
         public List<Message> retrieveOutgoingMessages()
         {
             return outgoingMessages.ToList();
+        }
+
+        public void removeMessagesAfterDefeat()
+        {
+            //Remove any messages that shouldn't be sent out after a defeat
+            List<Message> toRemove = new List<Message>();
+            foreach (Message message in this.outgoingMessages)
+            {
+                if (message is DamageDealt)
+                {
+
+                }
+                else
+                {
+                    toRemove.Add(message);
+                }
+            }
+
+            foreach (Message message in toRemove)
+            {
+                this.outgoingMessages.Remove(message);
+            }
         }
 
         public void clearOutgoingMessages()

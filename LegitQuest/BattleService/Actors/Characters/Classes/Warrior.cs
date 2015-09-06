@@ -1,4 +1,5 @@
 ﻿using BattleServiceLibrary.InternalMessage.Abilities;
+using BattleServiceLibrary.InternalMessage.Abilities.Warrior;
 using MessageDataStructures;
 using System;
 using System.Collections.Generic;
@@ -18,23 +19,54 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
 
         protected override void useCommand(CommandIssued commandIssued)
         {
-            //For now we are just assuming it's an attack
-            PhysicalAttack physicalAttack = new PhysicalAttack();
-            physicalAttack.abilityStrength = 15;
-            physicalAttack.attack = this.strength;
-            physicalAttack.target = commandIssued.target;
-            physicalAttack.source = this.id;
-            setCastTime(4000); //4s cast time
-            physicalAttack.executeTime = this.castTimeComplete;
-            physicalAttack.conversationId = commandIssued.conversationId;
-            addOutgoingMessage(physicalAttack);
+            if (this.abilities[commandIssued.commandNumber] == "Sword and Board")
+            {
+                PhysicalAttack physicalAttack = new PhysicalAttack();
+                physicalAttack.abilityStrength = 15;
+                physicalAttack.attack = this.strength;
+                physicalAttack.target = commandIssued.target;
+                physicalAttack.source = this.id;
+                setCastTime(4000); //4s cast time
+                physicalAttack.executeTime = this.castTimeComplete;
+                physicalAttack.conversationId = commandIssued.conversationId;
+                addOutgoingMessage(physicalAttack);
 
-            AbilityUsed abilityUsed = new AbilityUsed();
-            abilityUsed.conversationId = commandIssued.conversationId;
-            abilityUsed.message = "An attack has been used!";
-            addOutgoingMessage(abilityUsed);
+                SwordAndBoard swordAndBoard = new SwordAndBoard();
+                swordAndBoard.conversationId = commandIssued.conversationId;
+                swordAndBoard.executeTime = this.castTimeComplete;
+                swordAndBoard.potency = 5;
+                swordAndBoard.source = this.id;
+                swordAndBoard.target = commandIssued.target;
+                swordAndBoard.time = 8000;
+                addOutgoingMessage(swordAndBoard);
 
-            this.commandSent = false;
+                AbilityUsed abilityUsed = new AbilityUsed();
+                abilityUsed.conversationId = commandIssued.conversationId;
+                abilityUsed.message = this.name + " attacks while raising their shield!";
+                addOutgoingMessage(abilityUsed);
+
+                this.commandSent = false;
+            }
+            else
+            {
+                //For now we are just assuming it's an attack
+                PhysicalAttack physicalAttack = new PhysicalAttack();
+                physicalAttack.abilityStrength = 15;
+                physicalAttack.attack = this.strength;
+                physicalAttack.target = commandIssued.target;
+                physicalAttack.source = this.id;
+                setCastTime(4000); //4s cast time
+                physicalAttack.executeTime = this.castTimeComplete;
+                physicalAttack.conversationId = commandIssued.conversationId;
+                addOutgoingMessage(physicalAttack);
+
+                AbilityUsed abilityUsed = new AbilityUsed();
+                abilityUsed.conversationId = commandIssued.conversationId;
+                abilityUsed.message = "An attack has been used!";
+                addOutgoingMessage(abilityUsed);
+
+                this.commandSent = false;
+            }
         }
     }
 }

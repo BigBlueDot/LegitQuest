@@ -49,7 +49,9 @@
     <Compile Include="Actors\Statuses\DefenseIncreased.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="BattleService.cs" />
+    <Compile Include="InternalMessage\Abilities\Ability.cs" />
     <Compile Include="InternalMessage\Abilities\DealStaticDamage.cs" />
+    <Compile Include="InternalMessage\Abilities\Warrior\SwordAndBoard.cs" />
     <Compile Include="InternalMessage\BattleDefeat.cs" />
     <Compile Include="InternalMessage\BattleVictory.cs" />
     <Compile Include="InternalMessage\Abilities\DamageOverTime.cs" />
