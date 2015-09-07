@@ -52,11 +52,11 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
             {
                 AbilityUsed abilityUsed = new AbilityUsed();
                 abilityUsed.conversationId = commandIssued.conversationId;
-				abilityUsed.message = this.name + " has used Stagger!";
+				abilityUsed.message = this.name + " knocks the enemy off balance!";
                 addOutgoingMessage(abilityUsed);
 
                 PhysicalAttack physicalAttack = new PhysicalAttack();
-                physicalAttack.abilityStrength = 2;
+                physicalAttack.abilityStrength = 7;
                 physicalAttack.attack = this.strength;
                 physicalAttack.target = commandIssued.target;
                 physicalAttack.source = this.id;
@@ -79,6 +79,25 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                 addStatus.executeTime = this.castTimeComplete;
                 addStatus.status = new DefenseDecreasedStatus(this.castTimeComplete,defenseDecreased.duration,defenseDecreased.defenseReduction,defenseDecreased.target);
                 this.addOutgoingMessage(addStatus);
+
+                this.commandSent = false;
+            }
+            else if (abilities[commandIssued.commandNumber] == "Haymaker")
+            {
+                AbilityUsed abilityUsed = new AbilityUsed();
+                abilityUsed.conversationId = commandIssued.conversationId;
+                abilityUsed.message = this.name + " has struck a mighty blow!";
+                addOutgoingMessage(abilityUsed);
+
+                PhysicalAttack physicalAttack = new PhysicalAttack();
+                physicalAttack.abilityStrength = 15;
+                physicalAttack.attack = this.strength;
+                physicalAttack.target = commandIssued.target;
+                physicalAttack.source = this.id;
+                setCastTime(4000); //4s cast time
+                physicalAttack.executeTime = this.castTimeComplete;
+                physicalAttack.conversationId = commandIssued.conversationId;
+                addOutgoingMessage(physicalAttack);
 
                 this.commandSent = false;
             }
