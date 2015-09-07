@@ -40,7 +40,7 @@ namespace BattleServiceLibrary.Actors.Characters
             {
                 PhysicalAttack specificMessage = (PhysicalAttack)message;
 
-                int dmg = Convert.ToInt32(Math.Floor((Math.Pow((double)specificMessage.attack, 1.65f)) / ((double)(this.vitality == 0 ? 1 : this.vitality)) * specificMessage.abilityStrength));
+                int dmg = Convert.ToInt32(Math.Floor((Math.Pow((double)specificMessage.attack, 1.65f)) / ((double)(this.vitality <= 0 ? 1 : this.vitality)) * specificMessage.abilityStrength));
                 hp -= dmg;
 
                 DamageDealt damageDealt = new DamageDealt();
@@ -53,7 +53,7 @@ namespace BattleServiceLibrary.Actors.Characters
             {
                 MagicalAttack specificMessage = (MagicalAttack)message;
 
-                int dmg = Convert.ToInt32(Math.Floor((Math.Pow((double)specificMessage.magicAttack, 1.65f)) / ((double)(this.resistance == 0 ? 1 : this.resistance)) * specificMessage.abilityStrength));
+                int dmg = Convert.ToInt32(Math.Floor((Math.Pow((double)specificMessage.magicAttack, 1.65f)) / ((double)(this.resistance <= 0 ? 1 : this.resistance)) * specificMessage.abilityStrength));
 
                 this.hp -= dmg;
 
@@ -74,6 +74,18 @@ namespace BattleServiceLibrary.Actors.Characters
                 healingDone.target = this.id;
                 addOutgoingMessage(healingDone);
             }
+            else if (message is AttackIncreased)
+            {
+                AttackIncreased specificMessage = (AttackIncreased)message;
+
+                this.strength += specificMessage.attackIncrease;
+            }
+            else if (message is AttackDecreased)
+            {
+                AttackDecreased specificMessage = (AttackDecreased)message;
+
+                this.strength -= specificMessage.attackReduction;
+            }
             else if (message is DefenseIncreased)
             {
                 DefenseIncreased specificMessage = (DefenseIncreased)message;
@@ -86,10 +98,6 @@ namespace BattleServiceLibrary.Actors.Characters
                 DefenseDecreased specificMessage = (DefenseDecreased)message;
 
                 this.vitality -= specificMessage.defenseReduction;
-                if (this.vitality < 0)
-                {
-                    this.vitality = 0;
-                }
             }
             else if (message is DamageOverTime)
             {

@@ -1,4 +1,5 @@
-﻿using BattleServiceLibrary.InternalMessage.Abilities;
+﻿using BattleServiceLibrary.Actors.Statuses;
+using BattleServiceLibrary.InternalMessage.Abilities;
 using BattleServiceLibrary.InternalMessage.Abilities.Mage;
 using MessageDataStructures;
 using System;
@@ -52,6 +53,31 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                 AbilityUsed abilityUsed = new AbilityUsed();
                 abilityUsed.conversationId = commandIssued.conversationId;
                 abilityUsed.message = this.name + " unleashes a burst of magic energy!";
+                addOutgoingMessage(abilityUsed);
+
+                this.commandSent = false;
+            }
+            else if (abilities[commandIssued.commandNumber] == "Enfeeble")
+            {
+                AttackDecreased attackDecreased = new AttackDecreased();
+                attackDecreased.conversationId = commandIssued.conversationId;
+                attackDecreased.attackReduction = 5;
+                attackDecreased.duration = 12000;
+                attackDecreased.executeTime = this.castTimeComplete;
+                attackDecreased.source = this.id;
+                attackDecreased.target = commandIssued.target;
+                addOutgoingMessage(attackDecreased);
+
+                AddStatus addStatus = new AddStatus();
+                addStatus.conversationId = commandIssued.conversationId;
+                setCastTime(4000);
+                addStatus.executeTime = this.castTimeComplete;
+                addStatus.status = new AttackDecreasedStatus(this.castTimeComplete, attackDecreased.duration, attackDecreased.attackReduction, attackDecreased.target);
+                this.addOutgoingMessage(addStatus);
+
+                AbilityUsed abilityUsed = new AbilityUsed();
+                abilityUsed.conversationId = commandIssued.conversationId;
+                abilityUsed.message = this.name + " has case a blanket of enfeeblement!";
                 addOutgoingMessage(abilityUsed);
 
                 this.commandSent = false;

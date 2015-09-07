@@ -362,6 +362,8 @@ namespace BattleServiceLibrary
                 message is DealStaticDamage ||
                 message is DefenseDecreased ||
                 message is DefenseIncreased ||
+                message is AttackDecreased ||
+                message is AttackIncreased ||
                 message is MagicalAttack ||
                 message is PhysicalAttack ||
                 message is Taunt ||
@@ -377,6 +379,14 @@ namespace BattleServiceLibrary
                 else if (message is DealStaticDamage)
                 {
                     target = ((DealStaticDamage)message).target;
+                }
+                else if (message is AttackDecreased)
+                {
+                    target = ((AttackDecreased)message).target;
+                }
+                else if (message is AttackIncreased)
+                {
+                    target = ((AttackIncreased)message).target;
                 }
                 else if (message is DefenseDecreased)
                 {
