@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Actors\Actor.cs" />
     <Compile Include="Actors\Characters\Character.cs" />
+    <Compile Include="Actors\Characters\Classes\Mage.cs" />
     <Compile Include="Actors\Characters\NonPlayerCharacter.cs" />
     <Compile Include="Actors\Characters\PlayerCharacter.cs" />
     <Compile Include="Actors\Characters\RandomNonPlayerCharacter.cs" />

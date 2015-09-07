@@ -113,6 +113,10 @@ namespace BattleServiceLibrary
             {
                 return new Warrior(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.maxHp, character.mind, character.resistance, character.accuracy, character.dodge, character.critical, character.abilities);
             }
+            if (character.characterClass == CharacterClass.Mage)
+            {
+                return new Mage(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.maxHp, character.mind, character.resistance, character.accuracy, character.dodge, character.critical, character.abilities);
+            }
             else
             {
                 return new PlayerCharacter(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical, character.abilities);

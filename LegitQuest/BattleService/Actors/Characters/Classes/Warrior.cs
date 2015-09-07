@@ -23,7 +23,7 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
             if (this.abilities[commandIssued.commandNumber] == "Sword and Board")
             {
                 PhysicalAttack physicalAttack = new PhysicalAttack();
-                physicalAttack.abilityStrength = 15;
+                physicalAttack.abilityStrength = 5;
                 physicalAttack.attack = this.strength;
                 physicalAttack.target = commandIssued.target;
                 physicalAttack.source = this.id;
