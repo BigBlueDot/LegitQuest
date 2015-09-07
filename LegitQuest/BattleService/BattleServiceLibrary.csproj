@@ -46,7 +46,9 @@
     <Compile Include="Actors\Characters\RandomNonPlayerCharacter.cs" />
     <Compile Include="Actors\EndingConditions\KOEndingCondition.cs" />
     <Compile Include="Actors\Statuses\DamageOverTime.cs" />
-    <Compile Include="Actors\Statuses\DefenseIncreased.cs" />
+    <Compile Include="Actors\Statuses\DefenseDecreasedStatus.cs" />
+    <Compile Include="Actors\Statuses\DefenseIncrease.cs" />
+    <Compile Include="Actors\Statuses\DefenseIncreasedStatus.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="BattleService.cs" />
     <Compile Include="InternalMessage\Abilities\Ability.cs" />

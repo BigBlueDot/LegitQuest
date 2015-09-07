@@ -40,7 +40,7 @@ namespace BattleServiceLibrary.Actors.Characters
             {
                 PhysicalAttack specificMessage = (PhysicalAttack)message;
 
-                int dmg = Convert.ToInt32(Math.Floor((Math.Pow((double)specificMessage.attack, 1.65f)) / ((double)this.vitality) * specificMessage.abilityStrength));
+                int dmg = Convert.ToInt32(Math.Floor((Math.Pow((double)specificMessage.attack, 1.65f)) / ((double)(this.vitality == 0 ? 1 : this.vitality)) * specificMessage.abilityStrength));
                 hp -= dmg;
 
                 DamageDealt damageDealt = new DamageDealt();
@@ -53,7 +53,7 @@ namespace BattleServiceLibrary.Actors.Characters
             {
                 MagicalAttack specificMessage = (MagicalAttack)message;
 
-                int dmg = Convert.ToInt32(Math.Floor((Math.Pow((double)specificMessage.magicAttack, 1.65f)) / ((double)this.resistance) * specificMessage.abilityStrength));
+                int dmg = Convert.ToInt32(Math.Floor((Math.Pow((double)specificMessage.magicAttack, 1.65f)) / ((double)(this.resistance == 0 ? 1 : this.resistance)) * specificMessage.abilityStrength));
 
                 this.hp -= dmg;
 

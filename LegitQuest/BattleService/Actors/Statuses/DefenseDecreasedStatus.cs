@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.Actors.Statuses
 {
-    public class DefenseIncreased : Actor
+    public class DefenseDecreasedStatus : Actor
     {
         private long endTime { get; set; }
-        private int defenseMod { get; set; }
+        private int defenseDecreaseMod { get; set; }
         private Guid target { get; set; }
 
-        public DefenseIncreased(long currentTime, int duration, int defenseMod, Guid target)
+        public DefenseDecreasedStatus(long currentTime, int duration, int defenseDecreaseMod, Guid target)
         {
             this.endTime = currentTime + duration;
-            this.defenseMod = defenseMod;
+            this.defenseDecreaseMod = defenseDecreaseMod;
             this.target = target;
             this.id = Guid.NewGuid();
         }
@@ -31,8 +31,8 @@ namespace BattleServiceLibrary.Actors.Statuses
         {
             if (time >= endTime)
             {
-                DefenseDecreased defenseDecreased = new DefenseDecreased();
-                defenseDecreased.defenseReduction = defenseMod;
+                DefenseIncreased defenseDecreased = new DefenseIncreased();
+                defenseDecreased.defenseBonus = defenseDecreaseMod;
                 defenseDecreased.duration = -1;
                 defenseDecreased.target = this.target;
                 this.addOutgoingMessage(defenseDecreased);

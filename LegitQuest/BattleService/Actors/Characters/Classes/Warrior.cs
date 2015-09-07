@@ -1,4 +1,5 @@
-﻿using BattleServiceLibrary.InternalMessage.Abilities;
+﻿using BattleServiceLibrary.Actors.Statuses;
+using BattleServiceLibrary.InternalMessage.Abilities;
 using BattleServiceLibrary.InternalMessage.Abilities.Warrior;
 using MessageDataStructures;
 using System;
@@ -44,6 +45,40 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                 abilityUsed.conversationId = commandIssued.conversationId;
                 abilityUsed.message = this.name + " attacks while raising their shield!";
                 addOutgoingMessage(abilityUsed);
+
+                this.commandSent = false;
+            }
+            else if (this.abilities[commandIssued.commandNumber] == "Stagger")
+            {
+                AbilityUsed abilityUsed = new AbilityUsed();
+                abilityUsed.conversationId = commandIssued.conversationId;
+				abilityUsed.message = this.name + " has used Stagger!";
+                addOutgoingMessage(abilityUsed);
+
+                PhysicalAttack physicalAttack = new PhysicalAttack();
+                physicalAttack.abilityStrength = 2;
+                physicalAttack.attack = this.strength;
+                physicalAttack.target = commandIssued.target;
+                physicalAttack.source = this.id;
+                setCastTime(4000); //4s cast time
+                physicalAttack.executeTime = this.castTimeComplete;
+                physicalAttack.conversationId = commandIssued.conversationId;
+                addOutgoingMessage(physicalAttack);
+
+                DefenseDecreased defenseDecreased = new DefenseDecreased();
+                defenseDecreased.conversationId = commandIssued.conversationId;
+                defenseDecreased.defenseReduction = 5;
+                defenseDecreased.duration = 6000;
+                defenseDecreased.executeTime = this.castTimeComplete;
+                defenseDecreased.source = this.id;
+                defenseDecreased.target = commandIssued.target;
+                addOutgoingMessage(defenseDecreased);
+
+                AddStatus addStatus = new AddStatus();
+                addStatus.conversationId = commandIssued.conversationId;
+                addStatus.executeTime = this.castTimeComplete;
+                addStatus.status = new DefenseDecreasedStatus(this.castTimeComplete,defenseDecreased.duration,defenseDecreased.defenseReduction,defenseDecreased.target);
+                this.addOutgoingMessage(addStatus);
 
                 this.commandSent = false;
             }
