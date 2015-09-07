@@ -55,6 +55,7 @@
     <Compile Include="InternalMessage\Abilities\Ability.cs" />
     <Compile Include="InternalMessage\Abilities\AddStatus.cs" />
     <Compile Include="InternalMessage\Abilities\DealStaticDamage.cs" />
+    <Compile Include="InternalMessage\Abilities\Mage\Flurry.cs" />
     <Compile Include="InternalMessage\Abilities\Warrior\SwordAndBoard.cs" />
     <Compile Include="InternalMessage\BattleDefeat.cs" />
     <Compile Include="InternalMessage\BattleVictory.cs" />

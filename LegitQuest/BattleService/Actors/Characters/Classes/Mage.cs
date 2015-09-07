@@ -1,4 +1,5 @@
 ﻿using BattleServiceLibrary.InternalMessage.Abilities;
+using BattleServiceLibrary.InternalMessage.Abilities.Mage;
 using MessageDataStructures;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,24 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                 AbilityUsed abilityUsed = new AbilityUsed();
                 abilityUsed.conversationId = commandIssued.conversationId;
                 abilityUsed.message = this.name + " fires an arcane bullet!";
+                addOutgoingMessage(abilityUsed);
+
+                this.commandSent = false;
+            }
+            else if (this.abilities[commandIssued.commandNumber] == "Flurry")
+            {
+                Flurry flurry = new Flurry();
+                flurry.conversationId = commandIssued.conversationId;
+                flurry.potency = 8;
+                flurry.magicAttack = this.magic;
+                flurry.source = this.id;
+                setCastTime(8000);
+                flurry.executeTime = this.castTimeComplete;
+                addOutgoingMessage(flurry);
+
+                AbilityUsed abilityUsed = new AbilityUsed();
+                abilityUsed.conversationId = commandIssued.conversationId;
+                abilityUsed.message = this.name + " unleashes a burst of magic energy!";
                 addOutgoingMessage(abilityUsed);
 
                 this.commandSent = false;
