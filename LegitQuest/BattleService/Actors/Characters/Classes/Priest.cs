@@ -53,6 +53,25 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
 
                 this.commandSent = false;
             }
+            else if (this.abilities[commandIssued.commandNumber] == "Smite")
+            {
+                MagicalAttack magicalAttack = new MagicalAttack();
+                magicalAttack.abilityStrength = 8;
+                magicalAttack.magicAttack = this.magic;
+                magicalAttack.target = commandIssued.target;
+                magicalAttack.source = this.id;
+                setCastTime(4000); //4s cast time
+                magicalAttack.executeTime = this.castTimeComplete;
+                magicalAttack.conversationId = commandIssued.conversationId;
+                addOutgoingMessage(magicalAttack);
+
+                AbilityUsed abilityUsed = new AbilityUsed();
+                abilityUsed.conversationId = commandIssued.conversationId;
+                abilityUsed.message = this.name + " calls upon holy fire!";
+                addOutgoingMessage(abilityUsed);
+
+                this.commandSent = false;
+            }
             else
             {
                 //For now we are just assuming it's an attack
