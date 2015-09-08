@@ -105,7 +105,7 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
             {
                 //For now we are just assuming it's an attack
                 PhysicalAttack physicalAttack = new PhysicalAttack();
-                physicalAttack.abilityStrength = 15;
+                physicalAttack.abilityStrength = 0;
                 physicalAttack.attack = this.strength;
                 physicalAttack.target = commandIssued.target;
                 physicalAttack.source = this.id;

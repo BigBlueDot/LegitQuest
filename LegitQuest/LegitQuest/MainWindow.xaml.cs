@@ -124,6 +124,16 @@ namespace LegitQuest
         void battleDisplay_characterClicked(EventInfo.CharacterSelectedEventArgs args)
         {
             //Nothing for now
+            this.abilityAggregator.addTarget(args.id);
+            CommandIssued commandIssued = this.abilityAggregator.getCommand();
+            if (commandIssued != null)
+            {
+                //Disable commands
+                battleDisplay.disableAbilities(commandIssued.source);
+
+                //Send gui message
+                this.guiServiceHelper.useCommand(commandIssued);
+            }
         }
     }
 }

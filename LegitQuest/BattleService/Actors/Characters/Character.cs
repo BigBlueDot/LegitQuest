@@ -71,6 +71,8 @@ namespace BattleServiceLibrary.Actors.Characters
 
                 HealingDone healingDone = new HealingDone();
                 healingDone.healValue = specificMessage.healValue;
+                healingDone.conversationId = specificMessage.conversationId;
+                healingDone.source = specificMessage.source;
                 healingDone.target = this.id;
                 addOutgoingMessage(healingDone);
             }

@@ -42,6 +42,7 @@
     <Compile Include="Actors\Actor.cs" />
     <Compile Include="Actors\Characters\Character.cs" />
     <Compile Include="Actors\Characters\Classes\Mage.cs" />
+    <Compile Include="Actors\Characters\Classes\Priest.cs" />
     <Compile Include="Actors\Characters\NonPlayerCharacter.cs" />
     <Compile Include="Actors\Characters\PlayerCharacter.cs" />
     <Compile Include="Actors\Characters\RandomNonPlayerCharacter.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="Actors\Statuses\DamageOverTime.cs" />
     <Compile Include="Actors\Statuses\DefenseDecreasedStatus.cs" />
     <Compile Include="Actors\Statuses\DefenseIncreasedStatus.cs" />
+    <Compile Include="Actors\Statuses\HealOverTimeStatus.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="BattleService.cs" />
     <Compile Include="InternalMessage\Abilities\Ability.cs" />
