@@ -1,5 +1,6 @@
 ﻿using BattleServiceLibrary.Actors.Statuses;
 using BattleServiceLibrary.InternalMessage.Abilities;
+using BattleServiceLibrary.InternalMessage.Abilities.Priest;
 using MessageDataStructures;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,23 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                 AbilityUsed abilityUsed = new AbilityUsed();
                 abilityUsed.conversationId = commandIssued.conversationId;
                 abilityUsed.message = "A healing aura emanates from " + this.name + "!";
+                this.addOutgoingMessage(abilityUsed);
+
+                this.commandSent = false;
+            }
+            else if (this.abilities[commandIssued.commandNumber] == "Prayer")
+            {
+                setCastTime(8000);
+                Prayer prayer = new Prayer();
+                prayer.conversationId = commandIssued.conversationId;
+                prayer.executeTime = this.castTimeComplete;
+                prayer.healValue = (int)Math.Floor(this.mind * 1.5);
+                prayer.source = this.id;
+                this.addOutgoingMessage(prayer);
+
+                AbilityUsed abilityUsed = new AbilityUsed();
+                abilityUsed.conversationId = commandIssued.conversationId;
+                abilityUsed.message = "A burst of healing energy is released by " + this.name + "!";
                 this.addOutgoingMessage(abilityUsed);
 
                 this.commandSent = false;

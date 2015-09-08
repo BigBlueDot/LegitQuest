@@ -78,7 +78,7 @@ namespace PlayerServiceLibrary
                     battleCharacter.name = "Cohlm";
                     battleCharacter.abilities = new List<string>();
                     battleCharacter.abilities.Add("Heal");
-                    battleCharacter.abilities.Add("Pray");
+                    battleCharacter.abilities.Add("Prayer");
                     battleCharacter.abilities.Add("Smite");
                     battleCharacter.characterClass = characterClass;
                     battleCharacter.maxHp = 65;
