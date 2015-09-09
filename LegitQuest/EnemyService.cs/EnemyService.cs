@@ -1,4 +1,5 @@
-﻿using MessageDataStructures;
+﻿using EnemyService.cs.EnemyGenerators;
+using MessageDataStructures;
 using MessageDataStructures.BattleGeneration;
 using MessageDataStructures.EnemyGeneration;
 using System;
@@ -11,10 +12,14 @@ namespace EnemyServiceLibrary
 {
     public class EnemyService : BaseService
     {
+        private GoblinGenerator goblinGenerator;
+
         public EnemyService(MessageReader messageReader, MessageWriter messageWriter)
             : base(messageReader, messageWriter)
         {
             this.messageReader.MessageReceived += messageReader_MessageReceived;
+
+            this.goblinGenerator = new GoblinGenerator();
         }
 
         void messageReader_MessageReceived(MessageReceivedEventArgs args)
@@ -38,20 +43,27 @@ namespace EnemyServiceLibrary
 
         private MessageDataStructures.EnemyGeneration.Enemy getEnemy(EnemyType enemyType, int level)
         {
-            //This will be structured differently later
-            MessageDataStructures.EnemyGeneration.Enemy enemy = new MessageDataStructures.EnemyGeneration.Enemy();
-            enemy.name = "Goblin";
-            enemy.hp = 50;
-            enemy.maxHp = 50;
-            enemy.strength = 5;
-            enemy.dexterity = 5;
-            enemy.vitality = 5;
-            enemy.magic = 5;
-            enemy.resistance = 5;
-            enemy.accuracy = 5;
-            enemy.dodge = 5;
-            enemy.critical = 5;
-            return enemy;
+            if (enemyType == EnemyType.Goblin)
+            {
+                return goblinGenerator.getEnemy(enemyType, level);
+            }
+            else
+            {
+                //This will be structured differently later
+                MessageDataStructures.EnemyGeneration.Enemy enemy = new MessageDataStructures.EnemyGeneration.Enemy();
+                enemy.name = "Goblin";
+                enemy.hp = 50;
+                enemy.maxHp = 50;
+                enemy.strength = 5;
+                enemy.dexterity = 5;
+                enemy.vitality = 5;
+                enemy.magic = 5;
+                enemy.resistance = 5;
+                enemy.accuracy = 5;
+                enemy.dodge = 5;
+                enemy.critical = 5;
+                return enemy;
+            }
         }
     }
 }
