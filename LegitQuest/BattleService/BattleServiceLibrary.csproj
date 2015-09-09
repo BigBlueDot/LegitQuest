@@ -43,6 +43,7 @@
     <Compile Include="Actors\Characters\Character.cs" />
     <Compile Include="Actors\Characters\Classes\Mage.cs" />
     <Compile Include="Actors\Characters\Classes\Priest.cs" />
+    <Compile Include="Actors\Characters\Enemies\BlueSlime.cs" />
     <Compile Include="Actors\Characters\Enemies\Goblin.cs" />
     <Compile Include="Actors\Characters\NonPlayerCharacter.cs" />
     <Compile Include="Actors\Characters\PlayerCharacter.cs" />

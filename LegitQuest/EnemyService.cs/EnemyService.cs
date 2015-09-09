@@ -13,6 +13,7 @@ namespace EnemyServiceLibrary
     public class EnemyService : BaseService
     {
         private GoblinGenerator goblinGenerator;
+        private SlimeGenerator slimeGenerator;
 
         public EnemyService(MessageReader messageReader, MessageWriter messageWriter)
             : base(messageReader, messageWriter)
@@ -20,6 +21,7 @@ namespace EnemyServiceLibrary
             this.messageReader.MessageReceived += messageReader_MessageReceived;
 
             this.goblinGenerator = new GoblinGenerator();
+            this.slimeGenerator = new SlimeGenerator();
         }
 
         void messageReader_MessageReceived(MessageReceivedEventArgs args)
@@ -46,6 +48,10 @@ namespace EnemyServiceLibrary
             if (enemyType == EnemyType.Goblin)
             {
                 return goblinGenerator.getEnemy(enemyType, level);
+            }
+            else if (enemyType == EnemyType.BlueSlime)
+            {
+                return slimeGenerator.getBlueSlime(enemyType, level);
             }
             else
             {
