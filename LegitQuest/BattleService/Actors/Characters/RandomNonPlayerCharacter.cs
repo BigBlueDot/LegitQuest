@@ -11,7 +11,19 @@ namespace BattleServiceLibrary.Actors.Characters
 {
     public class RandomNonPlayerCharacter : NonPlayerCharacter
     {
-        private bool waitingForTarget { get; set; }
+        private static Random _random;
+        protected static Random random
+        {
+            get
+            {
+                if (_random == null)
+                {
+                    _random = new Random();
+                }
+                return _random;
+            }
+        }
+        protected bool waitingForTarget { get; set; }
 
         public RandomNonPlayerCharacter()
         {
@@ -52,29 +64,22 @@ namespace BattleServiceLibrary.Actors.Characters
         {
             if (waitingForTarget && message is Target)
             {
-                //Now that it has the target, get the attack
                 waitingForTarget = false;
-                PhysicalAttack physicalAttack = new PhysicalAttack();
-                physicalAttack.abilityStrength = 10;
-                physicalAttack.attack = this.strength;
-                physicalAttack.target = ((Target)message).target;
-                physicalAttack.source = this.id;
-
-                setCastTime(4000); //4s cast time
-
-                physicalAttack.executeTime = this.castTimeComplete;
-                addOutgoingMessage(physicalAttack);
+                this.useRandomAttack((Target)message, RandomNonPlayerCharacter.random);
 
                 return;
             }
             base.processMessage(message);
         }
 
-        private void setCastTime(int castTimeMs)
+        protected void setCastTime(int castTimeMs)
         {
             this.castTimeComplete += castTimeMs; //Will wait castTimeMs before using another ability
         }
 
+        protected virtual void useRandomAttack(Target target, Random random)
+        {
 
+        }
     }
 }

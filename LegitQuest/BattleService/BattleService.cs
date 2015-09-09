@@ -1,6 +1,7 @@
 ﻿using BattleServiceLibrary.Actors;
 using BattleServiceLibrary.Actors.Characters;
 using BattleServiceLibrary.Actors.Characters.Classes;
+using BattleServiceLibrary.Actors.Characters.Enemies;
 using MessageDataStructures;
 using MessageDataStructures.Battle;
 using MessageDataStructures.EnemyGeneration;
@@ -129,6 +130,10 @@ namespace BattleServiceLibrary
 
         private RandomNonPlayerCharacter getRandomNonPlayerCharacter(Enemy character)
         {
+            if (character.battleGenerationInfo.enemyType == MessageDataStructures.BattleGeneration.EnemyType.Goblin)
+            {
+                return new Goblin(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
+            }
             return new RandomNonPlayerCharacter(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
         }
 

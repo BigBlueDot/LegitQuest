@@ -1,4 +1,4 @@
-﻿using EnemyService.cs.EnemyGenerators;
+﻿using EnemyServiceLibrary.EnemyGenerators;
 using MessageDataStructures;
 using MessageDataStructures.BattleGeneration;
 using MessageDataStructures.EnemyGeneration;

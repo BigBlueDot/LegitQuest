@@ -43,6 +43,7 @@
     <Compile Include="Actors\Characters\Character.cs" />
     <Compile Include="Actors\Characters\Classes\Mage.cs" />
     <Compile Include="Actors\Characters\Classes\Priest.cs" />
+    <Compile Include="Actors\Characters\Enemies\Goblin.cs" />
     <Compile Include="Actors\Characters\NonPlayerCharacter.cs" />
     <Compile Include="Actors\Characters\PlayerCharacter.cs" />
     <Compile Include="Actors\Characters\RandomNonPlayerCharacter.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="InternalMessage\Abilities\AttackDecreased.cs" />
     <Compile Include="InternalMessage\Abilities\AttackIncreased.cs" />
     <Compile Include="InternalMessage\Abilities\DealStaticDamage.cs" />
+    <Compile Include="InternalMessage\Abilities\Goblin\GoblinPunch.cs" />
     <Compile Include="InternalMessage\Abilities\Mage\Flurry.cs" />
     <Compile Include="InternalMessage\Abilities\Priest\Prayer.cs" />
     <Compile Include="InternalMessage\Abilities\Warrior\SwordAndBoard.cs" />
