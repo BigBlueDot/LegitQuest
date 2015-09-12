@@ -70,6 +70,18 @@ namespace LegitQuest
             }
         }
 
+        public void modifyMaxHP(Guid character, int mod)
+        {
+            if (this.characterDisplays.ContainsKey(character))
+            {
+                this.characterDisplays[character].changeMaxHP(mod);
+            }
+            else if (this.enemyDisplays.ContainsKey(character))
+            {
+                this.enemyDisplays[character].changeMaxHP(mod);
+            }
+        }
+
         void characterDisplay_CharacterClicked(EventInfo.CharacterSelectedEventArgs args)
         {
             if (this.characterClicked != null)

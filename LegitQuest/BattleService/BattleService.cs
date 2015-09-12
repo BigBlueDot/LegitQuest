@@ -134,6 +134,10 @@ namespace BattleServiceLibrary
             {
                 return new Goblin(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
             }
+            else if (character.battleGenerationInfo.enemyType == MessageDataStructures.BattleGeneration.EnemyType.BlueSlime)
+            {
+                return new BlueSlime(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
+            }
             return new RandomNonPlayerCharacter(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
         }
 

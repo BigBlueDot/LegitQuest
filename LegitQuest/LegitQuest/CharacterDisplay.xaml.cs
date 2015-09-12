@@ -52,6 +52,12 @@ namespace LegitQuest
             this.txtHP.Text = this.hp.ToString() + " / " + this.maxHP.ToString();
         }
 
+        public void changeMaxHP(int mod)
+        {
+            maxHP += mod;
+            this.txtHP.Text = this.hp.ToString() + " / " + this.maxHP.ToString();
+        }
+
         private void Select_Click_1(object sender, RoutedEventArgs e)
         {
             if (CharacterClicked != null)

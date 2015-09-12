@@ -145,7 +145,8 @@ namespace MediatorServiceLibrary
                 message is CommandAvailable ||
                 message is DamageDealt ||
                 message is HealingDone ||
-                message is StatusChange)
+                message is StatusChange ||
+                message is MaxHPChange)
             {
                 //These are simple Gui outputs
                 this.writers[ServiceType.Gui].writeMessage(message);

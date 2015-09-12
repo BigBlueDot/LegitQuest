@@ -13,8 +13,8 @@ namespace EnemyServiceLibrary.EnemyGenerators
         {
             MessageDataStructures.EnemyGeneration.Enemy enemy = new MessageDataStructures.EnemyGeneration.Enemy();
             enemy.name = "Blue Slime";
-            enemy.hp = 30;
-            enemy.maxHp = 30;
+            enemy.hp = 100;
+            enemy.maxHp = 100;
             enemy.strength = 5;
             enemy.dexterity = 4;
             enemy.vitality = 6;

@@ -2,9 +2,11 @@
 using BattleServiceLibrary.Actors.Characters;
 using BattleServiceLibrary.InternalMessage;
 using BattleServiceLibrary.InternalMessage.Abilities;
+using BattleServiceLibrary.InternalMessage.Abilities.Slime;
 using BattleServiceLibrary.InternalMessage.DataRequests;
 using BattleServiceLibrary.InternalMessage.DataResults;
 using MessageDataStructures;
+using MessageDataStructures.Battle;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -367,7 +369,8 @@ namespace BattleServiceLibrary
                 message is MagicalAttack ||
                 message is PhysicalAttack ||
                 message is Taunt ||
-                message is Heal)
+                message is Heal ||
+                message is BlueMerge)
             {
                 //Assign to the targetted actor
                 Guid target = new Guid();
@@ -416,6 +419,10 @@ namespace BattleServiceLibrary
                 {
                     target = ((DealStaticDamage)message).target;
                 }
+                else if (message is BlueMerge)
+                {
+                    target = ((BlueMerge)message).target;
+                }
 
 
                 foreach (Actor actor in actors)
@@ -423,6 +430,17 @@ namespace BattleServiceLibrary
                     if (actor.id == target)
                     {
                         actor.addEventMessage(message);
+                    }
+                }
+            }
+            else if (message is DataResult)
+            {
+                DataResult dataResult = (DataResult)message;
+                foreach (Actor actor in actors)
+                {
+                    if (dataResult.inquirer == actor.id)
+                    {
+                        actor.addEventMessage(dataResult);
                     }
                 }
             }

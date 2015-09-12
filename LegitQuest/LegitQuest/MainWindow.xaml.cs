@@ -1,4 +1,5 @@
 ﻿using MessageDataStructures;
+using MessageDataStructures.Battle;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -99,6 +100,12 @@ namespace LegitQuest
                 HealingDone healingDone = (HealingDone)message;
                 battleDisplay.modifyHP(healingDone.target, -healingDone.healValue);
                 messageDisplay.addMessage(characterMapper[healingDone.source] + " has healed " + characterMapper[healingDone.target] + healingDone.healValue + " healing has been done!");
+            }
+            else if (message is MaxHPChange)
+            {
+                MaxHPChange maxHPChange = (MaxHPChange)message;
+                battleDisplay.modifyMaxHP(maxHPChange.target, maxHPChange.maxHPMod);
+                messageDisplay.addMessage(characterMapper[maxHPChange.target] + "'s Max Hit Points has increased by " + maxHPChange.maxHPMod + "!");
             }
         }
 

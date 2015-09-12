@@ -14,7 +14,7 @@ namespace BattleServiceLibrary.InternalMessage
         public int CompareTo(object obj)
         {
             long value = ((InternalMessage)obj).executeTime - this.executeTime;
-            int returnValue;
+            int returnValue = 0;
             if(value > 0)
             {
                 returnValue = 1;
