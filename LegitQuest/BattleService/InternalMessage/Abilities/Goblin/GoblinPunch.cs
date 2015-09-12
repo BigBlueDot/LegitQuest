@@ -14,6 +14,8 @@ namespace BattleServiceLibrary.InternalMessage.Abilities.Goblin
         public Guid target { get; set; }
         public int potency { get; set; }
         public int physicalAttack { get; set; }
+        public int accuracy { get; set; }
+        public int crit { get; set; }
 
         public GoblinPunch()
         {
@@ -46,6 +48,8 @@ namespace BattleServiceLibrary.InternalMessage.Abilities.Goblin
                 physicalAttack.executeTime = ability.executeTime;
                 physicalAttack.source = goblinPunch.source;
                 physicalAttack.target = goblinPunch.target;
+                physicalAttack.crit = goblinPunch.crit;
+                physicalAttack.accuracy = goblinPunch.accuracy;
                 messages.Add(physicalAttack);
 
                 return messages;

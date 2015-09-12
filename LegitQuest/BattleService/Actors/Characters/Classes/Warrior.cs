@@ -27,6 +27,8 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                 physicalAttack.attack = this.strength;
                 physicalAttack.target = commandIssued.target;
                 physicalAttack.source = this.id;
+                physicalAttack.accuracy = this.accuracy;
+                physicalAttack.crit = this.critical;
                 setCastTime(4000); //4s cast time
                 physicalAttack.executeTime = this.castTimeComplete;
                 physicalAttack.conversationId = commandIssued.conversationId;
@@ -60,6 +62,8 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                 physicalAttack.attack = this.strength;
                 physicalAttack.target = commandIssued.target;
                 physicalAttack.source = this.id;
+                physicalAttack.accuracy = this.accuracy;
+                physicalAttack.crit = this.critical;
                 setCastTime(4000); //4s cast time
                 physicalAttack.executeTime = this.castTimeComplete;
                 physicalAttack.conversationId = commandIssued.conversationId;
@@ -94,6 +98,8 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                 physicalAttack.attack = this.strength;
                 physicalAttack.target = commandIssued.target;
                 physicalAttack.source = this.id;
+                physicalAttack.accuracy = this.accuracy;
+                physicalAttack.crit = this.critical;
                 setCastTime(4000); //4s cast time
                 physicalAttack.executeTime = this.castTimeComplete;
                 physicalAttack.conversationId = commandIssued.conversationId;
@@ -109,6 +115,8 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                 physicalAttack.attack = this.strength;
                 physicalAttack.target = commandIssued.target;
                 physicalAttack.source = this.id;
+                physicalAttack.crit = this.critical;
+                physicalAttack.accuracy = this.accuracy;
                 setCastTime(4000); //4s cast time
                 physicalAttack.executeTime = this.castTimeComplete;
                 physicalAttack.conversationId = commandIssued.conversationId;

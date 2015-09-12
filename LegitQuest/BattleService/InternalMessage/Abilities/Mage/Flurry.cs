@@ -12,6 +12,8 @@ namespace BattleServiceLibrary.InternalMessage.Abilities.Mage
         public Guid source { get; set; }
         public int potency { get; set; }
         public int magicAttack { get; set; }
+        public int accuracy { get; set; }
+        public int crit { get; set; }
 
         public Flurry()
         {
@@ -35,6 +37,8 @@ namespace BattleServiceLibrary.InternalMessage.Abilities.Mage
                             magicalAttack.executeTime = flurry.executeTime;
                             magicalAttack.source = flurry.source;
                             magicalAttack.target = guid;
+                            magicalAttack.accuracy = flurry.accuracy;
+                            magicalAttack.crit = flurry.crit;
                             messages.Add(magicalAttack);
                         }
                     }

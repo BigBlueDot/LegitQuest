@@ -14,6 +14,7 @@ namespace BattleServiceLibrary.Actors.Characters
     public abstract class Character : Actor
     {
         public string name { get; set; }
+        public int level { get; set; }
         public int hp { get; set; }
         public int maxHp { get; set; }
         public int strength { get; set; } //Physical attack
@@ -39,6 +40,9 @@ namespace BattleServiceLibrary.Actors.Characters
             if (message is PhysicalAttack)
             {
                 PhysicalAttack specificMessage = (PhysicalAttack)message;
+
+                int dodgeChance = 95 + specificMessage.accuracy - this.dodge;
+                double critChange = specificMessage.crit / Math.Pow(this.level, 1.1);
 
                 int dmg = Convert.ToInt32(Math.Floor((Math.Pow((double)specificMessage.attack, 1.65f)) / ((double)(this.vitality <= 0 ? 1 : this.vitality)) * specificMessage.abilityStrength));
                 hp -= dmg;

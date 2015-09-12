@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.Actors.Characters.Enemies
 {
-    public class BlueSlime : RandomNonPlayerCharacter
+    public class BlueSlime : Slime
     {
         private InternalMessage.DataResults.Target lastTarget { get; set; }
         private bool merging { get; set; }
@@ -83,33 +83,9 @@ namespace BattleServiceLibrary.Actors.Characters.Enemies
 
                 return;
             }
-            else if (message is BlueMerge)
-            {
-                BlueMerge blueMerge = (BlueMerge)message;
-                if (blueMerge.fullPotency)
-                {
-                    MaxHPChange maxHPChange = new MaxHPChange();
-                    maxHPChange.conversationId = message.conversationId;
-                    maxHPChange.target = this.id;
-                    maxHPChange.maxHPMod = this.maxHp;
-                    addOutgoingMessage(maxHPChange);
-
-                    this.maxHp = this.maxHp * 2;
-                }
-
-                HealingDone healingDone = new HealingDone();
-                healingDone.conversationId = blueMerge.conversationId;
-                healingDone.healValue = this.maxHp - this.hp;
-                healingDone.source = blueMerge.source;
-                healingDone.target = this.id;
-                addOutgoingMessage(healingDone);
-
-                this.hp = this.maxHp;
-            }
 
             base.processMessage(message);
         }
-
 
         protected override void useRandomAttack(InternalMessage.DataResults.Target target, Random random)
         {
@@ -131,6 +107,8 @@ namespace BattleServiceLibrary.Actors.Characters.Enemies
             physicalAttack.attack = this.strength;
             physicalAttack.target = target.target;
             physicalAttack.source = this.id;
+            physicalAttack.accuracy = this.accuracy;
+            physicalAttack.crit = this.critical;
 
             physicalAttack.executeTime = this.castTimeComplete;
             addOutgoingMessage(physicalAttack);

@@ -60,6 +60,8 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                 magicalAttack.magicAttack = this.magic;
                 magicalAttack.target = commandIssued.target;
                 magicalAttack.source = this.id;
+                magicalAttack.accuracy = this.accuracy;
+                magicalAttack.crit = this.critical;
                 setCastTime(4000); //4s cast time
                 magicalAttack.executeTime = this.castTimeComplete;
                 magicalAttack.conversationId = commandIssued.conversationId;
@@ -80,6 +82,8 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                 physicalAttack.attack = this.strength;
                 physicalAttack.target = commandIssued.target;
                 physicalAttack.source = this.id;
+                physicalAttack.accuracy = this.accuracy;
+                physicalAttack.crit = this.critical;
                 setCastTime(4000); //4s cast time
                 physicalAttack.executeTime = this.castTimeComplete;
                 physicalAttack.conversationId = commandIssued.conversationId;

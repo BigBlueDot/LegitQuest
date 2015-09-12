@@ -11,6 +11,8 @@ namespace BattleServiceLibrary.InternalMessage.Abilities
         public Guid target;
         public Guid source;
         public int attack { get; set; }
+        public int accuracy { get; set; }
+        public int crit { get; set; }
         public int abilityStrength { get; set; }
     }
 }

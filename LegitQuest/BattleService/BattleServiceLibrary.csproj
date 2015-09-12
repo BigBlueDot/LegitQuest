@@ -46,6 +46,7 @@
     <Compile Include="Actors\Characters\Enemies\BlueSlime.cs" />
     <Compile Include="Actors\Characters\Enemies\Goblin.cs" />
     <Compile Include="Actors\Characters\Enemies\RedSlime.cs" />
+    <Compile Include="Actors\Characters\Enemies\Slime.cs" />
     <Compile Include="Actors\Characters\NonPlayerCharacter.cs" />
     <Compile Include="Actors\Characters\PlayerCharacter.cs" />
     <Compile Include="Actors\Characters\RandomNonPlayerCharacter.cs" />

@@ -84,6 +84,8 @@ namespace BattleServiceLibrary.Actors.Characters
             physicalAttack.attack = this.strength;
             physicalAttack.target = commandIssued.target;
             physicalAttack.source = this.id;
+            physicalAttack.accuracy = this.accuracy;
+            physicalAttack.crit = this.critical;
             setCastTime(4000); //4s cast time
             physicalAttack.executeTime = this.castTimeComplete;
             physicalAttack.conversationId = commandIssued.conversationId;

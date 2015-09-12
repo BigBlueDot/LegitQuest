@@ -31,6 +31,8 @@ namespace BattleServiceLibrary.Actors.Characters.Enemies
                 physicalAttack.attack = this.strength;
                 physicalAttack.target = target.target;
                 physicalAttack.source = this.id;
+                physicalAttack.accuracy = this.accuracy;
+                physicalAttack.crit = this.critical;
 
                 setCastTime(4000); //4s cast time
 
@@ -53,6 +55,8 @@ namespace BattleServiceLibrary.Actors.Characters.Enemies
                 goblinPunch.source = this.id;
                 goblinPunch.target = target.target;
                 goblinPunch.conversationId = target.conversationId;
+                goblinPunch.accuracy = this.accuracy;
+                goblinPunch.crit = this.critical;
                 addOutgoingMessage(goblinPunch);
 
                 DefenseDecreased defenseDecreased = new DefenseDecreased();

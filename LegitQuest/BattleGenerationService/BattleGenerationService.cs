@@ -26,7 +26,7 @@ namespace BattleGenerationServiceLibrary
                 battleGenerationMessage.enemies = new List<Enemy>();
                 battleGenerationMessage.enemies.Add(new Enemy() { level = 1, enemyType = EnemyType.RedSlime });
                 battleGenerationMessage.enemies.Add(new Enemy() { level = 1, enemyType = EnemyType.RedSlime });
-                battleGenerationMessage.enemies.Add(new Enemy() { level = 1, enemyType = EnemyType.RedSlime });
+                battleGenerationMessage.enemies.Add(new Enemy() { level = 1, enemyType = EnemyType.BlueSlime });
                 this.messageWriter.writeMessage(battleGenerationMessage);
             }
         }
