@@ -8,6 +8,8 @@ using BattleServiceLibrary.InternalMessage.DataRequests;
 using BattleServiceLibrary.InternalMessage.DataResults;
 using MessageDataStructures;
 using BattleServiceLibrary.InternalMessage;
+using BattleServiceLibrary.Utility;
+using MessageDataStructures.Battle;
 
 namespace BattleServiceLibrary.Actors.Characters
 {
@@ -41,11 +43,42 @@ namespace BattleServiceLibrary.Actors.Characters
             {
                 PhysicalAttack specificMessage = (PhysicalAttack)message;
 
-                int dodgeChance = 95 + specificMessage.accuracy - this.dodge;
-                double critChange = specificMessage.crit / Math.Pow(this.level, 1.1);
+                int hitChance = 95 + specificMessage.accuracy - this.dodge;
+                double critChance = specificMessage.crit / Math.Pow(this.level, 1.1);
+                double critModifier = 1.0;
 
-                int dmg = Convert.ToInt32(Math.Floor((Math.Pow((double)specificMessage.attack, 1.65f)) / ((double)(this.vitality <= 0 ? 1 : this.vitality)) * specificMessage.abilityStrength));
-                hp -= dmg;
+                int dmg = 0;
+                bool criticalHit = false;
+
+                if (RNG.random.Next(100) < critChance)
+                {
+                    critModifier = 1.5;
+                    criticalHit = true;
+                }
+
+                if (RNG.random.Next(100) < hitChance)
+                {
+                    dmg = Convert.ToInt32(Math.Floor((Math.Pow((double)specificMessage.attack, 1.65f)) / ((double)(this.vitality <= 0 ? 1 : this.vitality)) * specificMessage.abilityStrength * critModifier));
+                    hp -= dmg;
+
+                    if(criticalHit)
+                    {
+                        Crit crit = new Crit();
+                        crit.source = specificMessage.source;
+                        crit.conversationId = specificMessage.conversationId;
+                        crit.target = specificMessage.target;
+                        this.addOutgoingMessage(crit);
+                    }
+                }
+                else
+                {
+                    Dodge dodge = new Dodge();
+                    dodge.conversationId = specificMessage.conversationId;
+                    dodge.source = specificMessage.source;
+                    dodge.target = specificMessage.target;
+                    this.addOutgoingMessage(dodge);
+                }
+
 
                 DamageDealt damageDealt = new DamageDealt();
                 damageDealt.damage = dmg;
@@ -57,7 +90,42 @@ namespace BattleServiceLibrary.Actors.Characters
             {
                 MagicalAttack specificMessage = (MagicalAttack)message;
 
-                int dmg = Convert.ToInt32(Math.Floor((Math.Pow((double)specificMessage.magicAttack, 1.65f)) / ((double)(this.resistance <= 0 ? 1 : this.resistance)) * specificMessage.abilityStrength));
+                int hitChance = 95 + specificMessage.accuracy - this.dodge;
+                double critChance = specificMessage.crit / Math.Pow(this.level, 1.1);
+                double critModifier = 1.0;
+
+                int dmg = 0;
+                bool criticalHit = false;
+
+                if (RNG.random.Next(100) < critChance)
+                {
+                    critModifier = 1.5;
+                    criticalHit = true;
+                }
+
+
+                if (RNG.random.Next(100) < hitChance)
+                {
+                    dmg = Convert.ToInt32(Math.Floor((Math.Pow((double)specificMessage.magicAttack, 1.65f)) / ((double)(this.resistance <= 0 ? 1 : this.resistance)) * specificMessage.abilityStrength * critModifier));
+
+
+                    if (criticalHit)
+                    {
+                        Crit crit = new Crit();
+                        crit.source = specificMessage.source;
+                        crit.conversationId = specificMessage.conversationId;
+                        crit.target = specificMessage.target;
+                        this.addOutgoingMessage(crit);
+                    }
+                }
+                else
+                {
+                    Dodge dodge = new Dodge();
+                    dodge.conversationId = specificMessage.conversationId;
+                    dodge.source = specificMessage.source;
+                    dodge.target = specificMessage.target;
+                    this.addOutgoingMessage(dodge);
+                }
 
                 this.hp -= dmg;
 

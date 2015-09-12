@@ -112,19 +112,19 @@ namespace BattleServiceLibrary
         {
             if (character.characterClass == CharacterClass.Warrior)
             {
-                return new Warrior(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.maxHp, character.mind, character.resistance, character.accuracy, character.dodge, character.critical, character.abilities);
+                return new Warrior(character.level, character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.maxHp, character.mind, character.resistance, character.accuracy, character.dodge, character.critical, character.abilities);
             }
             else if (character.characterClass == CharacterClass.Mage)
             {
-                return new Mage(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.maxHp, character.mind, character.resistance, character.accuracy, character.dodge, character.critical, character.abilities);
+                return new Mage(character.level, character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.maxHp, character.mind, character.resistance, character.accuracy, character.dodge, character.critical, character.abilities);
             }
             else if (character.characterClass == CharacterClass.Priest)
             {
-                return new Priest(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.maxHp, character.mind, character.resistance, character.accuracy, character.dodge, character.critical, character.abilities);
+                return new Priest(character.level, character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.maxHp, character.mind, character.resistance, character.accuracy, character.dodge, character.critical, character.abilities);
             }
             else
             {
-                return new PlayerCharacter(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical, character.abilities);
+                return new PlayerCharacter(character.level, character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical, character.abilities);
             }
         }
 
@@ -132,17 +132,17 @@ namespace BattleServiceLibrary
         {
             if (character.battleGenerationInfo.enemyType == MessageDataStructures.BattleGeneration.EnemyType.Goblin)
             {
-                return new Goblin(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
+                return new Goblin(character.battleGenerationInfo.level, character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
             }
             else if (character.battleGenerationInfo.enemyType == MessageDataStructures.BattleGeneration.EnemyType.BlueSlime)
             {
-                return new BlueSlime(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
+                return new BlueSlime(character.battleGenerationInfo.level, character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
             }
             else if (character.battleGenerationInfo.enemyType == MessageDataStructures.BattleGeneration.EnemyType.RedSlime)
             {
-                return new RedSlime(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
+                return new RedSlime(character.battleGenerationInfo.level, character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
             }
-            return new RandomNonPlayerCharacter(character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
+            return new RandomNonPlayerCharacter(character.battleGenerationInfo.level, character.name, character.maxHp, character.strength, character.dexterity, character.vitality, character.magic, character.mind, character.resistance, character.accuracy, character.dodge, character.critical);
         }
 
         private MessageDataStructures.ViewModels.Character getCharacterViewModel(Character character, MessageDataStructures.ViewModels.Position position)

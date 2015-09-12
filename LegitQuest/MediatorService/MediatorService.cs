@@ -146,7 +146,9 @@ namespace MediatorServiceLibrary
                 message is DamageDealt ||
                 message is HealingDone ||
                 message is StatusChange ||
-                message is MaxHPChange)
+                message is MaxHPChange ||
+                message is Dodge ||
+                message is Crit)
             {
                 //These are simple Gui outputs
                 this.writers[ServiceType.Gui].writeMessage(message);

@@ -31,8 +31,9 @@ namespace BattleServiceLibrary.Actors.Characters
         }
 
 
-        public RandomNonPlayerCharacter(string name, int maxHP, int strength, int dexterity, int vitality, int magic, int mind, int resistance, int accuracy, int dodge, int critical)
+        public RandomNonPlayerCharacter(int level, string name, int maxHP, int strength, int dexterity, int vitality, int magic, int mind, int resistance, int accuracy, int dodge, int critical)
         {
+            this.level = level;
             this.name = name;
             this.maxHp = maxHP;
             this.hp = maxHP;

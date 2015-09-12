@@ -53,8 +53,10 @@
     <Compile Include="Battle\CombatEnded.cs" />
     <Compile Include="Battle\CommandAvailable.cs" />
     <Compile Include="Battle\CommandIssued.cs" />
+    <Compile Include="Battle\Crit.cs" />
     <Compile Include="Battle\DamageDealt.cs" />
     <Compile Include="Battle\ActorDefeated.cs" />
+    <Compile Include="Battle\Dodge.cs" />
     <Compile Include="Battle\HealingDone.cs" />
     <Compile Include="Battle\MaxHPChange.cs" />
     <Compile Include="DirectMessageReader.cs" />

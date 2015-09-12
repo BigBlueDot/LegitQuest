@@ -15,8 +15,8 @@ namespace BattleServiceLibrary.Actors.Characters.Enemies
         private InternalMessage.DataResults.Target lastTarget { get; set; }
         private bool merging { get; set; }
 
-        public BlueSlime(string name, int maxHP, int strength, int dexterity, int vitality, int magic, int mind, int resistance, int accuracy, int dodge, int critical) :
-            base(name, maxHP, strength, dexterity, vitality, magic, mind, resistance, accuracy, dodge, critical)
+        public BlueSlime(int level, string name, int maxHP, int strength, int dexterity, int vitality, int magic, int mind, int resistance, int accuracy, int dodge, int critical) :
+            base(level, name, maxHP, strength, dexterity, vitality, magic, mind, resistance, accuracy, dodge, critical)
         {
 
         }

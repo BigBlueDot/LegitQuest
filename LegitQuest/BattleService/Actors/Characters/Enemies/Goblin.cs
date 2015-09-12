@@ -13,8 +13,8 @@ namespace BattleServiceLibrary.Actors.Characters.Enemies
 {
     public class Goblin : RandomNonPlayerCharacter
     {
-        public Goblin(string name, int maxHP, int strength, int dexterity, int vitality, int magic, int mind, int resistance, int accuracy, int dodge, int critical) :
-            base(name, maxHP, strength, dexterity, vitality, magic, mind, resistance, accuracy, dodge, critical)
+        public Goblin(int level, string name, int maxHP, int strength, int dexterity, int vitality, int magic, int mind, int resistance, int accuracy, int dodge, int critical) :
+            base(level, name, maxHP, strength, dexterity, vitality, magic, mind, resistance, accuracy, dodge, critical)
         {
         }
 

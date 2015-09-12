@@ -43,6 +43,7 @@ namespace PlayerServiceLibrary
                     battleCharacter.abilities.Add("Stagger");
                     battleCharacter.abilities.Add("Haymaker");
                     battleCharacter.name = "Tonin";
+                    battleCharacter.level = 1;
                     battleCharacter.maxHp = 1000;
                     battleCharacter.hp = 1000;
                     battleCharacter.strength = 10;
@@ -62,6 +63,7 @@ namespace PlayerServiceLibrary
                     battleCharacter.abilities.Add("Flurry");
                     battleCharacter.abilities.Add("Enfeeble");
                     battleCharacter.characterClass = characterClass;
+                    battleCharacter.level = 1;
                     battleCharacter.maxHp = 45;
                     battleCharacter.hp = 45;
                     battleCharacter.strength = 3;
@@ -81,6 +83,7 @@ namespace PlayerServiceLibrary
                     battleCharacter.abilities.Add("Prayer");
                     battleCharacter.abilities.Add("Smite");
                     battleCharacter.characterClass = characterClass;
+                    battleCharacter.level = 1;
                     battleCharacter.maxHp = 65;
                     battleCharacter.hp = 65;
                     battleCharacter.strength = 8;

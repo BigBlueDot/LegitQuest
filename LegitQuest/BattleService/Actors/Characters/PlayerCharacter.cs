@@ -19,8 +19,9 @@ namespace BattleServiceLibrary.Actors.Characters
             this.started = false;
         }
 
-        public PlayerCharacter(string name, int maxHP, int strength, int dexterity, int vitality, int magic, int mind, int resistance, int accuracy, int dodge, int critical, List<string> abilities)
+        public PlayerCharacter(int level, string name, int maxHP, int strength, int dexterity, int vitality, int magic, int mind, int resistance, int accuracy, int dodge, int critical, List<string> abilities)
         {
+            this.level = level;
             this.name = name;
             this.maxHp = maxHP;
             this.hp = maxHP;

@@ -107,6 +107,16 @@ namespace LegitQuest
                 battleDisplay.modifyMaxHP(maxHPChange.target, maxHPChange.maxHPMod);
                 messageDisplay.addMessage(characterMapper[maxHPChange.target] + "'s Max Hit Points has increased by " + maxHPChange.maxHPMod + "!");
             }
+            else if (message is Dodge)
+            {
+                Dodge dodge = (Dodge)message;
+                messageDisplay.addMessage(characterMapper[dodge.source] + " has missed " + characterMapper[dodge.target] + "!");
+            }
+            else if (message is Crit)
+            {
+                Crit crit = (Crit)message;
+                messageDisplay.addMessage(characterMapper[crit.source] + " has critically hit " + characterMapper[crit.target] + "!");
+            }
         }
 
         void battleDisplay_abilityClicked(EventInfo.AbilitySelectedEventArgs e)
