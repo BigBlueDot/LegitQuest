@@ -53,6 +53,10 @@ namespace EnemyServiceLibrary
             {
                 return slimeGenerator.getBlueSlime(enemyType, level);
             }
+            else if (enemyType == EnemyType.RedSlime)
+            {
+                return slimeGenerator.getRedSlime(enemyType, level);
+            }
             else
             {
                 //This will be structured differently later
