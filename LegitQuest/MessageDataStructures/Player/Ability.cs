@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MessageDataStructures.Battle;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,6 @@ namespace MessageDataStructures.Player
         public bool enabled { get; set; }
         public int castTime { get; set; }
         public int cooldown { get; set; }
+        public ManaAffinity affinity { get; set; }
     }
 }

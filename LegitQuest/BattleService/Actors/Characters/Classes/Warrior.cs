@@ -26,11 +26,12 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
             int manaCost = this.abilities[commandIssued.commandNumber].manaCost;
             int castTime = this.abilities[commandIssued.commandNumber].castTime;
             int cooldown = this.abilities[commandIssued.commandNumber].cooldown;
+            ManaAffinity affinity = this.abilities[commandIssued.commandNumber].affinity;
 
 
-            if (this.hasMana(manaCost))
+            if (this.hasMana(manaCost, affinity))
             {
-                this.useMana(manaCost);
+                addOutgoingMessage(this.useMana(manaCost, affinity));
                 this.setCooldown(cooldown, commandIssued.commandNumber);
 
                 if (this.abilities[commandIssued.commandNumber].name == "Sword and Board")
@@ -60,11 +61,6 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                     abilityUsed.conversationId = commandIssued.conversationId;
                     abilityUsed.message = this.name + " attacks while raising their shield!";
                     addOutgoingMessage(abilityUsed);
-
-                    UseMana useMana = new UseMana();
-                    useMana.conversationId = commandIssued.conversationId;
-                    useMana.mana = manaCost;
-                    addOutgoingMessage(useMana);
 
                     this.commandSent = false;
                 }
@@ -96,11 +92,6 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                     defenseDecreased.target = commandIssued.target;
                     addOutgoingMessage(defenseDecreased);
 
-                    UseMana useMana = new UseMana();
-                    useMana.conversationId = commandIssued.conversationId;
-                    useMana.mana = manaCost;
-                    addOutgoingMessage(useMana);
-
                     AddStatus addStatus = new AddStatus();
                     addStatus.conversationId = commandIssued.conversationId;
                     addStatus.executeTime = this.castTimeComplete;
@@ -127,11 +118,6 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                     physicalAttack.executeTime = this.castTimeComplete;
                     physicalAttack.conversationId = commandIssued.conversationId;
                     addOutgoingMessage(physicalAttack);
-
-                    UseMana useMana = new UseMana();
-                    useMana.conversationId = commandIssued.conversationId;
-                    useMana.mana = manaCost;
-                    addOutgoingMessage(useMana);
 
                     this.commandSent = false;
                 }

@@ -28,7 +28,7 @@ namespace BattleServiceLibrary
         private long startingTime { get; set; }
         public Guid id { get; set; }
 
-        public Battle(Guid id, PlayerCharacter pointCharacter, PlayerCharacter leftWingCharacter, PlayerCharacter rightWingCharacter, Actor pointEnemy, Actor leftWingEnemy, Actor rightWingEnemy, int mana)
+        public Battle(Guid id, PlayerCharacter pointCharacter, PlayerCharacter leftWingCharacter, PlayerCharacter rightWingCharacter, Actor pointEnemy, Actor leftWingEnemy, Actor rightWingEnemy, int mana, ManaAffinity affinity, int affinityMana)
         {
             messages = new List<InternalMessage.InternalMessage>();
             outgoingMessages = new List<Message>();
@@ -54,6 +54,8 @@ namespace BattleServiceLibrary
 
             this.manaStore = new ManaStore();
             manaStore.mana = mana;
+            manaStore.affinity = affinity;
+            manaStore.affinityMana = affinityMana;
             pointCharacter.manaStore = this.manaStore;
             leftWingCharacter.manaStore = this.manaStore;
             rightWingCharacter.manaStore = this.manaStore;

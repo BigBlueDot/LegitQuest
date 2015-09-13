@@ -24,6 +24,7 @@ namespace LegitQuest
     {
         private BattleDisplay battleDisplay;
         private ManaDisplay manaDisplay;
+        private ManaDisplay affinityManaDisplay;
         private MessageDisplay messageDisplay;
         private GuiServiceHelper guiServiceHelper;
         private AbilityAggregator abilityAggregator;
@@ -45,6 +46,10 @@ namespace LegitQuest
             this.pnlMain.Children.Clear();
             this.pnlMain.Children.Add(battleDisplay);
             this.pnlMain.Children.Add(manaDisplay);
+            if (affinityManaDisplay != null)
+            {
+                this.pnlMain.Children.Add(affinityManaDisplay);
+            }
             this.pnlMain.Children.Add(messageDisplay);
         }
 
@@ -72,7 +77,11 @@ namespace LegitQuest
                 this.battleDisplay.characterClicked += battleDisplay_characterClicked;
                 this.battleDisplay.enemyClicked += battleDisplay_enemyClicked;
                 this.battleDisplay.abilityClicked += battleDisplay_abilityClicked;
-                this.manaDisplay = new ManaDisplay(battleInitialization.mana);
+                this.manaDisplay = new ManaDisplay(battleInitialization.mana, "");
+                if (battleInitialization.affinity != ManaAffinity.None)
+                {
+                    this.affinityManaDisplay = new ManaDisplay(battleInitialization.affinityMana, battleInitialization.affinity.ToString());
+                }
                 draw();
             }
             else if (message is CommandAvailable)
@@ -124,6 +133,10 @@ namespace LegitQuest
             {
                 UseMana useMana = (UseMana)message;
                 manaDisplay.modifyMana(-useMana.mana);
+                if (useMana.affinity != ManaAffinity.None)
+                {
+                    affinityManaDisplay.modifyMana(-useMana.affinityMana);
+                }
             }
         }
 

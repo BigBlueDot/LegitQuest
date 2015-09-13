@@ -22,20 +22,34 @@ namespace LegitQuest
     {
         private int maxMana { get; set; }
         private int currentMana { get; set; }
+        private string affinity { get; set; }
 
-        public ManaDisplay(int maxMana)
+        public ManaDisplay(int maxMana, string affinity)
         {
             InitializeComponent();
 
+            this.affinity = affinity;
             this.currentMana = maxMana;
             this.maxMana = maxMana;
-            this.txtMana.Text = "Mana:  " + currentMana + "/" + maxMana;
+            draw();
+        }
+
+        private void draw()
+        {
+            if (affinity != null && affinity != string.Empty)
+            {
+                this.txtMana.Text = affinity + " Mana:  " + currentMana + "/" + maxMana;
+            }
+            else
+            {
+                this.txtMana.Text = "Mana:  " + currentMana + "/" + maxMana;
+            }
         }
 
         public void modifyMana(int mod)
         {
             this.currentMana += mod;
-            this.txtMana.Text = "Mana:  " + currentMana + "/" + maxMana;
+            draw();
         }
     }
 }

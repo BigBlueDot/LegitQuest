@@ -1,4 +1,5 @@
 ﻿using MessageDataStructures;
+using MessageDataStructures.Battle;
 using MessageDataStructures.BattleGeneration;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,8 @@ namespace BattleGenerationServiceLibrary
                 BattleGenerationMessage battleGenerationMessage = new BattleGenerationMessage();
                 battleGenerationMessage.fieldType = FieldType.Plains;
                 battleGenerationMessage.mana = 100;
+                battleGenerationMessage.affinityMana = 20;
+                battleGenerationMessage.affinity = ManaAffinity.Force;
                 battleGenerationMessage.enemies = new List<Enemy>();
                 battleGenerationMessage.enemies.Add(new Enemy() { level = 1, enemyType = EnemyType.RedSlime });
                 battleGenerationMessage.enemies.Add(new Enemy() { level = 1, enemyType = EnemyType.RedSlime });

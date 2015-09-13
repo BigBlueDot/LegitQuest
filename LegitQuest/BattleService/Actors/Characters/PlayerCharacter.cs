@@ -1,6 +1,7 @@
 ﻿using BattleServiceLibrary.InternalMessage.Abilities;
 using BattleServiceLibrary.Utility;
 using MessageDataStructures;
+using MessageDataStructures.Battle;
 using MessageDataStructures.Player;
 using System;
 using System.Collections.Generic;
@@ -187,14 +188,49 @@ namespace BattleServiceLibrary.Actors.Characters
             return offCooldown;
         }
 
-        protected bool hasMana(int manaCost)
+        protected bool hasMana(int manaCost, ManaAffinity affinity)
         {
-            return (manaStore.mana >= manaCost);
+            if (affinity == manaStore.affinity)
+            {
+                return (manaStore.mana + manaStore.affinityMana >= manaCost);
+            }
+            else
+            {
+                return (manaStore.mana >= manaCost);
+            }
         }
 
-        protected void useMana(int manaCost)
+        protected UseMana useMana(int manaCost, ManaAffinity affinity)
         {
-            manaCost -= manaCost;
+            UseMana useMana = new UseMana();
+
+            if (manaStore.affinity == affinity)
+            {
+                useMana.affinity = affinity;
+                if (manaCost > manaStore.affinityMana)
+                {
+                    useMana.affinityMana = manaStore.affinityMana;
+                    manaCost -= manaStore.affinityMana;
+                    manaStore.affinityMana = 0;
+                    manaStore.mana -= manaCost;
+                    useMana.mana = manaCost;
+                }
+                else
+                {
+                    manaStore.affinityMana -= manaCost;
+                    useMana.affinityMana = manaCost;
+                    useMana.mana = 0;
+                }
+            }
+            else
+            {
+                manaStore.mana -= manaCost;
+                useMana.affinity = ManaAffinity.None;
+                useMana.affinityMana = 0;
+                useMana.mana = manaCost;
+            }
+
+            return useMana;
         }
     }
 }

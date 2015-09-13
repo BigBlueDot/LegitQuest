@@ -58,6 +58,7 @@
     <Compile Include="Battle\ActorDefeated.cs" />
     <Compile Include="Battle\Dodge.cs" />
     <Compile Include="Battle\HealingDone.cs" />
+    <Compile Include="Battle\ManaAffinity.cs" />
     <Compile Include="Battle\MaxHPChange.cs" />
     <Compile Include="Battle\UseMana.cs" />
     <Compile Include="DirectMessageReader.cs" />

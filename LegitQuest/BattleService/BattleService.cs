@@ -37,7 +37,7 @@ namespace BattleServiceLibrary
             if (message is AggregatedBattleInformation)
             {
                 AggregatedBattleInformation aggregateBattleInformation = (AggregatedBattleInformation)message;
-                createBattle(aggregateBattleInformation.enemyGenerationInfo.enemies, aggregateBattleInformation.characterBattleInfo.characters, message.conversationId, aggregateBattleInformation.battleGenerationInfo.mana);
+                createBattle(aggregateBattleInformation.enemyGenerationInfo.enemies, aggregateBattleInformation.characterBattleInfo.characters, message.conversationId, aggregateBattleInformation.battleGenerationInfo.mana, aggregateBattleInformation.battleGenerationInfo.affinity, aggregateBattleInformation.battleGenerationInfo.affinityMana);
             }
             else if (message is CommandIssued)
             {
@@ -81,7 +81,7 @@ namespace BattleServiceLibrary
             }
         }
 
-        private void createBattle(List<Enemy> enemies, List<BattleCharacter> characters, Guid conversationId, int mana)
+        private void createBattle(List<Enemy> enemies, List<BattleCharacter> characters, Guid conversationId, int mana, ManaAffinity affinity, int affinityMana)
         {
             //There will be more to this later
             PlayerCharacter pointCharacter = getPlayerCharacter(characters[0]);
@@ -90,7 +90,7 @@ namespace BattleServiceLibrary
             NonPlayerCharacter pointEnemy = getRandomNonPlayerCharacter(enemies[0]);
             NonPlayerCharacter leftWingEnemy = getRandomNonPlayerCharacter(enemies[1]);
             NonPlayerCharacter rightWingEnemy = getRandomNonPlayerCharacter(enemies[2]);
-            Battle battle = new Battle(new Guid(), pointCharacter, leftWingCharacter, rightWingCharacter, pointEnemy, leftWingEnemy, rightWingEnemy, mana);
+            Battle battle = new Battle(new Guid(), pointCharacter, leftWingCharacter, rightWingCharacter, pointEnemy, leftWingEnemy, rightWingEnemy, mana, affinity, affinityMana);
             battles.Add(battle.id, battle);
             
             //Now get initialization
@@ -98,6 +98,8 @@ namespace BattleServiceLibrary
             battleInitialization.conversationId = conversationId;
             battleInitialization.battleId = battle.id;
             battleInitialization.mana = mana;
+            battleInitialization.affinity = affinity;
+            battleInitialization.affinityMana = affinityMana;
             battleInitialization.NonPlayerCharacters = new List<MessageDataStructures.ViewModels.Character>();
             battleInitialization.PlayerCharacters = new List<MessageDataStructures.ViewModels.Character>();
             battleInitialization.NonPlayerCharacters.Add(getCharacterViewModel(pointEnemy, MessageDataStructures.ViewModels.Position.Point));

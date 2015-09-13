@@ -26,10 +26,11 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
             int manaCost = this.abilities[commandIssued.commandNumber].manaCost;
             int castTime = this.abilities[commandIssued.commandNumber].castTime;
             int cooldown = this.abilities[commandIssued.commandNumber].cooldown;
+            ManaAffinity affinity = this.abilities[commandIssued.commandNumber].affinity;
 
-            if (this.hasMana(manaCost))
+            if (this.hasMana(manaCost, affinity))
             {
-                this.useMana(manaCost);
+                addOutgoingMessage(this.useMana(manaCost, affinity));
                 this.setCooldown(cooldown, commandIssued.commandNumber);
 
                 if (this.abilities[commandIssued.commandNumber].name == "Arcane Bullet")
@@ -51,11 +52,6 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                     abilityUsed.message = this.name + " fires an arcane bullet!";
                     addOutgoingMessage(abilityUsed);
 
-                    UseMana useMana = new UseMana();
-                    useMana.conversationId = commandIssued.conversationId;
-                    useMana.mana = manaCost;
-                    addOutgoingMessage(useMana);
-
                     this.commandSent = false;
                 }
                 else if (this.abilities[commandIssued.commandNumber].name == "Flurry")
@@ -75,11 +71,6 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                     abilityUsed.conversationId = commandIssued.conversationId;
                     abilityUsed.message = this.name + " unleashes a burst of magic energy!";
                     addOutgoingMessage(abilityUsed);
-
-                    UseMana useMana = new UseMana();
-                    useMana.conversationId = commandIssued.conversationId;
-                    useMana.mana = manaCost;
-                    addOutgoingMessage(useMana);
 
                     this.commandSent = false;
                 }
@@ -105,11 +96,6 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                     abilityUsed.conversationId = commandIssued.conversationId;
                     abilityUsed.message = this.name + " has case a blanket of enfeeblement!";
                     addOutgoingMessage(abilityUsed);
-
-                    UseMana useMana = new UseMana();
-                    useMana.conversationId = commandIssued.conversationId;
-                    useMana.mana = manaCost;
-                    addOutgoingMessage(useMana);
 
                     this.commandSent = false;
                 }

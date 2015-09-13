@@ -26,10 +26,11 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
             int manaCost = this.abilities[commandIssued.commandNumber].manaCost;
             int castTime = this.abilities[commandIssued.commandNumber].castTime;
             int cooldown = this.abilities[commandIssued.commandNumber].cooldown;
+            ManaAffinity affinity = this.abilities[commandIssued.commandNumber].affinity;
 
-            if (this.hasMana(manaCost))
+            if (this.hasMana(manaCost, affinity))
             {
-                this.useMana(manaCost);
+                addOutgoingMessage(this.useMana(manaCost, affinity));
                 this.setCooldown(cooldown, commandIssued.commandNumber);
 
                 if (this.abilities[commandIssued.commandNumber].name == "Heal")
@@ -45,11 +46,6 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                     abilityUsed.conversationId = commandIssued.conversationId;
                     abilityUsed.message = "A healing aura emanates from " + this.name + "!";
                     this.addOutgoingMessage(abilityUsed);
-
-                    UseMana useMana = new UseMana();
-                    useMana.conversationId = commandIssued.conversationId;
-                    useMana.mana = manaCost;
-                    addOutgoingMessage(useMana);
 
                     this.commandSent = false;
                 }
@@ -67,11 +63,6 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                     abilityUsed.conversationId = commandIssued.conversationId;
                     abilityUsed.message = "A burst of healing energy is released by " + this.name + "!";
                     this.addOutgoingMessage(abilityUsed);
-
-                    UseMana useMana = new UseMana();
-                    useMana.conversationId = commandIssued.conversationId;
-                    useMana.mana = manaCost;
-                    addOutgoingMessage(useMana);
 
                     this.commandSent = false;
                 }
@@ -93,11 +84,6 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                     abilityUsed.conversationId = commandIssued.conversationId;
                     abilityUsed.message = this.name + " calls upon holy fire!";
                     addOutgoingMessage(abilityUsed);
-
-                    UseMana useMana = new UseMana();
-                    useMana.conversationId = commandIssued.conversationId;
-                    useMana.mana = manaCost;
-                    addOutgoingMessage(useMana);
 
                     this.commandSent = false;
                 }

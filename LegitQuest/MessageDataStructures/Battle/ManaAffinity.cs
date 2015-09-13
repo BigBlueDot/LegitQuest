@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace MessageDataStructures.Battle
 {
-    public class UseMana : Message
+    public enum ManaAffinity
     {
-        public int mana { get; set; }
-        public ManaAffinity affinity { get; set; }
-        public int affinityMana { get; set; }
+        None,
+        Force,
+        Grit,
+        Arcane,
+        Holy,
+        Nature,
+        Celerity,
+        Shadows
     }
 }
