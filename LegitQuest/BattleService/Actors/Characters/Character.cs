@@ -32,6 +32,11 @@ namespace BattleServiceLibrary.Actors.Characters
         public long currentTime { get; set; }
         public long castTimeComplete { get; set; }
 
+        public Character()
+        {
+            castTimeComplete = 3000; //Have a buffer at the start of combat
+        }
+
         protected bool isDefeated()
         {
             return (hp <= 0);
