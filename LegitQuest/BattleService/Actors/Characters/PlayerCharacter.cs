@@ -15,6 +15,9 @@ namespace BattleServiceLibrary.Actors.Characters
         protected bool started { get; set; }
         protected bool commandSent { get; set; }
         public List<Ability> abilities { get; set; }
+        public List<long> abilityAvailable { get; set; }
+        public List<bool> onCooldown { get; set; }
+
         private ManaStore _manaStore;
         public ManaStore manaStore
         {
@@ -53,6 +56,14 @@ namespace BattleServiceLibrary.Actors.Characters
             this.abilities = abilities;
             this.started = false;
             this.id = Guid.NewGuid();
+            this.abilityAvailable = new List<long>();
+            this.abilityAvailable.Add(0);
+            this.abilityAvailable.Add(0);
+            this.abilityAvailable.Add(0);
+            this.onCooldown = new List<bool>();
+            this.onCooldown.Add(false);
+            this.onCooldown.Add(false);
+            this.onCooldown.Add(false);
         }
 
         private void addCommandAvailableMessage()
@@ -60,11 +71,11 @@ namespace BattleServiceLibrary.Actors.Characters
             CommandAvailable commandAvailable = new CommandAvailable();
             commandAvailable.conversationId = Guid.NewGuid();
             commandAvailable.commandOne = abilities[0];
-            commandAvailable.commandOneEnabled = (this.manaStore.mana > abilities[0].manaCost);
+            commandAvailable.commandOneEnabled = (this.manaStore.mana > abilities[0].manaCost && currentTime >= abilityAvailable[0]);
             commandAvailable.commandTwo = abilities[1];
-            commandAvailable.commandTwoEnabled = (this.manaStore.mana > abilities[1].manaCost);
+            commandAvailable.commandTwoEnabled = (this.manaStore.mana > abilities[1].manaCost && currentTime >= abilityAvailable[1]);
             commandAvailable.commandThree = abilities[2];
-            commandAvailable.commandThreeEnabled = (this.manaStore.mana > abilities[2].manaCost);
+            commandAvailable.commandThreeEnabled = (this.manaStore.mana > abilities[2].manaCost && currentTime >= abilityAvailable[2]);
             commandAvailable.characterId = this.id;
             this.addOutgoingMessage(commandAvailable);
         }
@@ -120,7 +131,7 @@ namespace BattleServiceLibrary.Actors.Characters
         {
             if (currentTime > this.castTimeComplete)
             {
-                this.castTimeComplete += currentTime + ms;
+                this.castTimeComplete = currentTime + ms;
             }
             else
             {
@@ -128,15 +139,52 @@ namespace BattleServiceLibrary.Actors.Characters
             }
         }
 
+        protected void setCooldown(long ms, int index)
+        {
+            if (currentTime > this.castTimeComplete)
+            {
+                this.abilityAvailable[index] = currentTime + ms;
+                this.onCooldown[index] = true;
+            }
+            else
+            {
+                this.abilityAvailable[index] = this.castTimeComplete + ms;
+                this.onCooldown[index] = true;
+            }
+        }
+
         public override void process(long time)
         {
             base.process(time);
+
+            if (canUseCommand() && cooldownComplete(time))
+            {
+                commandSent = true;
+                addCommandAvailableMessage();
+            }
 
             if (canUseCommand() && !commandSent)
             {
                 commandSent = true;
                 addCommandAvailableMessage();
             }
+        }
+
+        private bool cooldownComplete(long time)
+        {
+            //Check all cooldowns and see if one has come off cooldown
+            bool offCooldown = false;
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (abilityAvailable[i] < this.currentTime && onCooldown[i])
+                {
+                    offCooldown = true;
+                    onCooldown[i] = false;
+                }
+            }
+
+            return offCooldown;
         }
 
         protected bool hasMana(int manaCost)

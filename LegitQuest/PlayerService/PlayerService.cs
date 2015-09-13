@@ -39,9 +39,9 @@ namespace PlayerServiceLibrary
                 case CharacterClass.Warrior:
                     battleCharacter.characterClass = characterClass;
                     battleCharacter.abilities = new List<Ability>();
-                    battleCharacter.abilities.Add(new Ability() { name= "Sword and Board", manaCost= 4 });
-                    battleCharacter.abilities.Add(new Ability() { name = "Stagger", manaCost = 6 });
-                    battleCharacter.abilities.Add(new Ability() { name = "Haymaker", manaCost = 8 });
+                    battleCharacter.abilities.Add(new Ability() { name= "Sword and Board", manaCost= 4, cooldown = 3000, castTime = 3000 });
+                    battleCharacter.abilities.Add(new Ability() { name = "Stagger", manaCost = 6, cooldown = 8000, castTime = 3000});
+                    battleCharacter.abilities.Add(new Ability() { name = "Haymaker", manaCost = 8, cooldown = 5000, castTime = 3000 });
                     battleCharacter.name = "Tonin";
                     battleCharacter.level = 1;
                     battleCharacter.maxHp = 1000;
@@ -59,9 +59,9 @@ namespace PlayerServiceLibrary
                 case CharacterClass.Mage:
                     battleCharacter.name = "Noktix";
                     battleCharacter.abilities = new List<Ability>();
-                    battleCharacter.abilities.Add(new Ability() { name = "Arcane Bullet", manaCost = 3 });
-                    battleCharacter.abilities.Add(new Ability() { name = "Flurry", manaCost = 10 });
-                    battleCharacter.abilities.Add(new Ability() { name = "Enfeeble", manaCost = 5 });
+                    battleCharacter.abilities.Add(new Ability() { name = "Arcane Bullet", manaCost = 3, cooldown = 3000, castTime = 3000 });
+                    battleCharacter.abilities.Add(new Ability() { name = "Flurry", manaCost = 10, cooldown = 10000, castTime = 3000 });
+                    battleCharacter.abilities.Add(new Ability() { name = "Enfeeble", manaCost = 5, cooldown = 6000, castTime = 3000 });
                     battleCharacter.characterClass = characterClass;
                     battleCharacter.level = 1;
                     battleCharacter.maxHp = 45;
@@ -79,9 +79,9 @@ namespace PlayerServiceLibrary
                 case CharacterClass.Priest:
                     battleCharacter.name = "Cohlm";
                     battleCharacter.abilities = new List<Ability>();
-                    battleCharacter.abilities.Add(new Ability() { name = "Heal", manaCost = 3 });
-                    battleCharacter.abilities.Add(new Ability() { name = "Prayer", manaCost = 7 });
-                    battleCharacter.abilities.Add(new Ability() { name = "Smite", manaCost = 5 });
+                    battleCharacter.abilities.Add(new Ability() { name = "Heal", manaCost = 3, castTime = 3000, cooldown = 6000 });
+                    battleCharacter.abilities.Add(new Ability() { name = "Prayer", manaCost = 7, castTime = 3000, cooldown = 10000 });
+                    battleCharacter.abilities.Add(new Ability() { name = "Smite", manaCost = 5, castTime = 3000, cooldown = 4000 });
                     battleCharacter.characterClass = characterClass;
                     battleCharacter.level = 1;
                     battleCharacter.maxHp = 65;

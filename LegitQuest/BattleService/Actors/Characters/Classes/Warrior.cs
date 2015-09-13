@@ -23,14 +23,18 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
 
         protected override void useCommand(CommandIssued commandIssued)
         {
-            if (this.abilities[commandIssued.commandNumber].name == "Sword and Board")
+            int manaCost = this.abilities[commandIssued.commandNumber].manaCost;
+            int castTime = this.abilities[commandIssued.commandNumber].castTime;
+            int cooldown = this.abilities[commandIssued.commandNumber].cooldown;
+
+
+            if (this.hasMana(manaCost))
             {
-                int manaCost = this.abilities[commandIssued.commandNumber].manaCost;
+                this.useMana(manaCost);
+                this.setCooldown(cooldown, commandIssued.commandNumber);
 
-                if (this.hasMana(manaCost))
+                if (this.abilities[commandIssued.commandNumber].name == "Sword and Board")
                 {
-                    this.useMana(manaCost);
-
                     PhysicalAttack physicalAttack = new PhysicalAttack();
                     physicalAttack.abilityStrength = 5;
                     physicalAttack.attack = this.strength;
@@ -38,7 +42,7 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                     physicalAttack.source = this.id;
                     physicalAttack.accuracy = this.accuracy;
                     physicalAttack.crit = this.critical;
-                    setCastTime(4000); //4s cast time
+                    setCastTime(castTime); //4s cast time
                     physicalAttack.executeTime = this.castTimeComplete;
                     physicalAttack.conversationId = commandIssued.conversationId;
                     addOutgoingMessage(physicalAttack);
@@ -64,15 +68,8 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
 
                     this.commandSent = false;
                 }
-            }
-            else if (this.abilities[commandIssued.commandNumber].name == "Stagger")
-            {
-                int manaCost = this.abilities[commandIssued.commandNumber].manaCost;
-
-                if (this.hasMana(manaCost))
+                else if (this.abilities[commandIssued.commandNumber].name == "Stagger")
                 {
-                    this.useMana(manaCost);
-
                     AbilityUsed abilityUsed = new AbilityUsed();
                     abilityUsed.conversationId = commandIssued.conversationId;
                     abilityUsed.message = this.name + " knocks the enemy off balance!";
@@ -85,7 +82,7 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                     physicalAttack.source = this.id;
                     physicalAttack.accuracy = this.accuracy;
                     physicalAttack.crit = this.critical;
-                    setCastTime(4000); //4s cast time
+                    setCastTime(castTime); //4s cast time
                     physicalAttack.executeTime = this.castTimeComplete;
                     physicalAttack.conversationId = commandIssued.conversationId;
                     addOutgoingMessage(physicalAttack);
@@ -112,15 +109,8 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
 
                     this.commandSent = false;
                 }
-            }
-            else if (abilities[commandIssued.commandNumber].name == "Haymaker")
-            {
-                int manaCost = this.abilities[commandIssued.commandNumber].manaCost;
-
-                if (this.hasMana(manaCost))
+                else if (abilities[commandIssued.commandNumber].name == "Haymaker")
                 {
-                    this.useMana(manaCost);
-
                     AbilityUsed abilityUsed = new AbilityUsed();
                     abilityUsed.conversationId = commandIssued.conversationId;
                     abilityUsed.message = this.name + " has struck a mighty blow!";
@@ -133,7 +123,7 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                     physicalAttack.source = this.id;
                     physicalAttack.accuracy = this.accuracy;
                     physicalAttack.crit = this.critical;
-                    setCastTime(4000); //4s cast time
+                    setCastTime(castTime); //4s cast time
                     physicalAttack.executeTime = this.castTimeComplete;
                     physicalAttack.conversationId = commandIssued.conversationId;
                     addOutgoingMessage(physicalAttack);
@@ -145,28 +135,6 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
 
                     this.commandSent = false;
                 }
-            }
-            else
-            {
-                //For now we are just assuming it's an attack
-                PhysicalAttack physicalAttack = new PhysicalAttack();
-                physicalAttack.abilityStrength = 0;
-                physicalAttack.attack = this.strength;
-                physicalAttack.target = commandIssued.target;
-                physicalAttack.source = this.id;
-                physicalAttack.crit = this.critical;
-                physicalAttack.accuracy = this.accuracy;
-                setCastTime(4000); //4s cast time
-                physicalAttack.executeTime = this.castTimeComplete;
-                physicalAttack.conversationId = commandIssued.conversationId;
-                addOutgoingMessage(physicalAttack);
-
-                AbilityUsed abilityUsed = new AbilityUsed();
-                abilityUsed.conversationId = commandIssued.conversationId;
-                abilityUsed.message = "An attack has been used!";
-                addOutgoingMessage(abilityUsed);
-
-                this.commandSent = false;
             }
         }
     }

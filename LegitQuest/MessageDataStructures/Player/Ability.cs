@@ -11,5 +11,7 @@ namespace MessageDataStructures.Player
         public string name { get; set; }
         public int manaCost { get; set; }
         public bool enabled { get; set; }
+        public int castTime { get; set; }
+        public int cooldown { get; set; }
     }
 }

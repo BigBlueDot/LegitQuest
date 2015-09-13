@@ -23,17 +23,20 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
 
         protected override void useCommand(CommandIssued commandIssued)
         {
-            if (this.abilities[commandIssued.commandNumber].name == "Heal")
+            int manaCost = this.abilities[commandIssued.commandNumber].manaCost;
+            int castTime = this.abilities[commandIssued.commandNumber].castTime;
+            int cooldown = this.abilities[commandIssued.commandNumber].cooldown;
+
+            if (this.hasMana(manaCost))
             {
-                int manaCost = this.abilities[commandIssued.commandNumber].manaCost;
+                this.useMana(manaCost);
+                this.setCooldown(cooldown, commandIssued.commandNumber);
 
-                if (this.hasMana(manaCost))
+                if (this.abilities[commandIssued.commandNumber].name == "Heal")
                 {
-                    this.useMana(manaCost);
-
                     AddStatus addStatus = new AddStatus();
                     addStatus.conversationId = commandIssued.conversationId;
-                    setCastTime(4000);
+                    setCastTime(castTime);
                     addStatus.executeTime = this.castTimeComplete;
                     addStatus.status = new HealOverTimeStatus(this.castTimeComplete, 3000, 4, this.mind, this.id, commandIssued.target, commandIssued.conversationId);
                     this.addOutgoingMessage(addStatus);
@@ -50,16 +53,9 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
 
                     this.commandSent = false;
                 }
-            }
-            else if (this.abilities[commandIssued.commandNumber].name == "Prayer")
-            {
-                int manaCost = this.abilities[commandIssued.commandNumber].manaCost;
-
-                if (this.hasMana(manaCost))
+                else if (this.abilities[commandIssued.commandNumber].name == "Prayer")
                 {
-                    this.useMana(manaCost);
-
-                    setCastTime(8000);
+                    setCastTime(castTime);
                     Prayer prayer = new Prayer();
                     prayer.conversationId = commandIssued.conversationId;
                     prayer.executeTime = this.castTimeComplete;
@@ -79,15 +75,8 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
 
                     this.commandSent = false;
                 }
-            }
-            else if (this.abilities[commandIssued.commandNumber].name == "Smite")
-            {
-                int manaCost = this.abilities[commandIssued.commandNumber].manaCost;
-
-                if (this.hasMana(manaCost))
+                else if (this.abilities[commandIssued.commandNumber].name == "Smite")
                 {
-                    this.useMana(manaCost);
-
                     MagicalAttack magicalAttack = new MagicalAttack();
                     magicalAttack.abilityStrength = 8;
                     magicalAttack.magicAttack = this.magic;
@@ -95,7 +84,7 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                     magicalAttack.source = this.id;
                     magicalAttack.accuracy = this.accuracy;
                     magicalAttack.crit = this.critical;
-                    setCastTime(4000); //4s cast time
+                    setCastTime(castTime); //4s cast time
                     magicalAttack.executeTime = this.castTimeComplete;
                     magicalAttack.conversationId = commandIssued.conversationId;
                     addOutgoingMessage(magicalAttack);
@@ -112,28 +101,6 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
 
                     this.commandSent = false;
                 }
-            }
-            else
-            {
-                //For now we are just assuming it's an attack
-                PhysicalAttack physicalAttack = new PhysicalAttack();
-                physicalAttack.abilityStrength = 0;
-                physicalAttack.attack = this.strength;
-                physicalAttack.target = commandIssued.target;
-                physicalAttack.source = this.id;
-                physicalAttack.accuracy = this.accuracy;
-                physicalAttack.crit = this.critical;
-                setCastTime(4000); //4s cast time
-                physicalAttack.executeTime = this.castTimeComplete;
-                physicalAttack.conversationId = commandIssued.conversationId;
-                addOutgoingMessage(physicalAttack);
-
-                AbilityUsed abilityUsed = new AbilityUsed();
-                abilityUsed.conversationId = commandIssued.conversationId;
-                abilityUsed.message = "An attack has been used!";
-                addOutgoingMessage(abilityUsed);
-
-                this.commandSent = false;
             }
         }
     }

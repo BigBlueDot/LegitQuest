@@ -23,14 +23,17 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
 
         protected override void useCommand(CommandIssued commandIssued)
         {
-            if (this.abilities[commandIssued.commandNumber].name == "Arcane Bullet")
+            int manaCost = this.abilities[commandIssued.commandNumber].manaCost;
+            int castTime = this.abilities[commandIssued.commandNumber].castTime;
+            int cooldown = this.abilities[commandIssued.commandNumber].cooldown;
+
+            if (this.hasMana(manaCost))
             {
-                int manaCost = this.abilities[commandIssued.commandNumber].manaCost;
+                this.useMana(manaCost);
+                this.setCooldown(cooldown, commandIssued.commandNumber);
 
-                if (this.hasMana(manaCost))
+                if (this.abilities[commandIssued.commandNumber].name == "Arcane Bullet")
                 {
-                    this.useMana(manaCost);
-
                     MagicalAttack magicalAttack = new MagicalAttack();
                     magicalAttack.abilityStrength = 8;
                     magicalAttack.magicAttack = this.magic;
@@ -38,7 +41,7 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                     magicalAttack.source = this.id;
                     magicalAttack.accuracy = this.accuracy;
                     magicalAttack.crit = this.critical;
-                    setCastTime(4000); //4s cast time
+                    setCastTime(castTime);
                     magicalAttack.executeTime = this.castTimeComplete;
                     magicalAttack.conversationId = commandIssued.conversationId;
                     addOutgoingMessage(magicalAttack);
@@ -55,15 +58,8 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
 
                     this.commandSent = false;
                 }
-            }
-            else if (this.abilities[commandIssued.commandNumber].name == "Flurry")
-            {
-                int manaCost = this.abilities[commandIssued.commandNumber].manaCost;
-
-                if (this.hasMana(manaCost))
+                else if (this.abilities[commandIssued.commandNumber].name == "Flurry")
                 {
-                    this.useMana(manaCost);
-
                     Flurry flurry = new Flurry();
                     flurry.conversationId = commandIssued.conversationId;
                     flurry.potency = 8;
@@ -71,7 +67,7 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
                     flurry.source = this.id;
                     flurry.accuracy = this.accuracy;
                     flurry.crit = this.critical;
-                    setCastTime(8000);
+                    setCastTime(castTime);
                     flurry.executeTime = this.castTimeComplete;
                     addOutgoingMessage(flurry);
 
@@ -87,15 +83,8 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
 
                     this.commandSent = false;
                 }
-            }
-            else if (abilities[commandIssued.commandNumber].name == "Enfeeble")
-            {
-                int manaCost = this.abilities[commandIssued.commandNumber].manaCost;
-
-                if (this.hasMana(manaCost))
+                else if (abilities[commandIssued.commandNumber].name == "Enfeeble")
                 {
-                    this.useMana(manaCost);
-
                     AttackDecreased attackDecreased = new AttackDecreased();
                     attackDecreased.conversationId = commandIssued.conversationId;
                     attackDecreased.attackReduction = 5;
@@ -107,7 +96,7 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
 
                     AddStatus addStatus = new AddStatus();
                     addStatus.conversationId = commandIssued.conversationId;
-                    setCastTime(4000);
+                    setCastTime(castTime);
                     addStatus.executeTime = this.castTimeComplete;
                     addStatus.status = new AttackDecreasedStatus(this.castTimeComplete, attackDecreased.duration, attackDecreased.attackReduction, attackDecreased.target);
                     this.addOutgoingMessage(addStatus);
@@ -124,28 +113,6 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
 
                     this.commandSent = false;
                 }
-            }
-            else
-            {
-                //For now we are just assuming it's an attack
-                PhysicalAttack physicalAttack = new PhysicalAttack();
-                physicalAttack.abilityStrength = 0;
-                physicalAttack.attack = this.strength;
-                physicalAttack.target = commandIssued.target;
-                physicalAttack.source = this.id;
-                physicalAttack.accuracy = this.accuracy;
-                physicalAttack.crit = this.critical;
-                setCastTime(4000); //4s cast time
-                physicalAttack.executeTime = this.castTimeComplete;
-                physicalAttack.conversationId = commandIssued.conversationId;
-                addOutgoingMessage(physicalAttack);
-
-                AbilityUsed abilityUsed = new AbilityUsed();
-                abilityUsed.conversationId = commandIssued.conversationId;
-                abilityUsed.message = "An attack has been used!";
-                addOutgoingMessage(abilityUsed);
-
-                this.commandSent = false;
             }
         }
     }
