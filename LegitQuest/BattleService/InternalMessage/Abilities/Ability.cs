@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.InternalMessage.Abilities
 {
-    public class Ability : InternalMessage
+    public class AbilityMessage : InternalMessage
     {
         public bool hasComplexProcessing { get; set; }
-        public Func<Ability, List<Actors.Actor>, List<Guid>, List<Guid>, List<InternalMessage>> execute { get; set; }
+        public Func<AbilityMessage, List<Actors.Actor>, List<Guid>, List<Guid>, List<InternalMessage>> execute { get; set; }
     }
 }

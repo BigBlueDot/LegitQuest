@@ -148,7 +148,8 @@ namespace MediatorServiceLibrary
                 message is StatusChange ||
                 message is MaxHPChange ||
                 message is Dodge ||
-                message is Crit)
+                message is Crit ||
+                message is UseMana)
             {
                 //These are simple Gui outputs
                 this.writers[ServiceType.Gui].writeMessage(message);

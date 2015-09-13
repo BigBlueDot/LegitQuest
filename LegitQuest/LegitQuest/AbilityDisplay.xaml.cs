@@ -27,12 +27,13 @@ namespace LegitQuest
         public delegate void AbilitySelectedEventHandler(AbilitySelectedEventArgs e);
 
 
-        public AbilityDisplay(Guid characterId, String name, int commandNumber)
+        public AbilityDisplay(Guid characterId, String name, int commandNumber, bool enabled)
         {
             InitializeComponent();
             Ability.Content = name;
             this.characterId = characterId;
             this.commandNumber = commandNumber;
+            Ability.IsEnabled = enabled;
         }
 
         private void Ability_Click_1(object sender, RoutedEventArgs e)

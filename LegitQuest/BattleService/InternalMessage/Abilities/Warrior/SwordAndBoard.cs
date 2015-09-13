@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.InternalMessage.Abilities.Warrior
 {
-    public class SwordAndBoard : Ability
+    public class SwordAndBoard : AbilityMessage
     {
         public SwordAndBoard()
         {
             this.hasComplexProcessing = true;
-            this.execute = new Func<Ability, List<Actors.Actor>,List<Guid>,List<Guid>, List<InternalMessage>>((Ability ability, List<Actors.Actor> Actors, List<Guid> allies, List<Guid> enemies) =>{
+            this.execute = new Func<AbilityMessage, List<Actors.Actor>,List<Guid>,List<Guid>, List<InternalMessage>>((AbilityMessage ability, List<Actors.Actor> Actors, List<Guid> allies, List<Guid> enemies) =>{
                 List<InternalMessage> messages = new List<InternalMessage>();
                 SwordAndBoard swordAndBoard = (SwordAndBoard)ability;
                 int allyIndex = allies.IndexOf(swordAndBoard.source);

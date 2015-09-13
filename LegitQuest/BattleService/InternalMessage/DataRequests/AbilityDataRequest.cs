@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.InternalMessage.DataRequests
 {
-    public class AbilityDataRequest : Ability
+    public class AbilityDataRequest : AbilityMessage
     {
         public Guid source { get; set; }
     }

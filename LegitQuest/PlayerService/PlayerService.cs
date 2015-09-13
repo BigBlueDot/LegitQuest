@@ -38,10 +38,10 @@ namespace PlayerServiceLibrary
             {
                 case CharacterClass.Warrior:
                     battleCharacter.characterClass = characterClass;
-                    battleCharacter.abilities = new List<string>();
-                    battleCharacter.abilities.Add("Sword and Board");
-                    battleCharacter.abilities.Add("Stagger");
-                    battleCharacter.abilities.Add("Haymaker");
+                    battleCharacter.abilities = new List<Ability>();
+                    battleCharacter.abilities.Add(new Ability() { name= "Sword and Board", manaCost= 4 });
+                    battleCharacter.abilities.Add(new Ability() { name = "Stagger", manaCost = 6 });
+                    battleCharacter.abilities.Add(new Ability() { name = "Haymaker", manaCost = 8 });
                     battleCharacter.name = "Tonin";
                     battleCharacter.level = 1;
                     battleCharacter.maxHp = 1000;
@@ -58,10 +58,10 @@ namespace PlayerServiceLibrary
                     return battleCharacter;
                 case CharacterClass.Mage:
                     battleCharacter.name = "Noktix";
-                    battleCharacter.abilities = new List<string>();
-                    battleCharacter.abilities.Add("Arcane Bullet");
-                    battleCharacter.abilities.Add("Flurry");
-                    battleCharacter.abilities.Add("Enfeeble");
+                    battleCharacter.abilities = new List<Ability>();
+                    battleCharacter.abilities.Add(new Ability() { name = "Arcane Bullet", manaCost = 3 });
+                    battleCharacter.abilities.Add(new Ability() { name = "Flurry", manaCost = 10 });
+                    battleCharacter.abilities.Add(new Ability() { name = "Enfeeble", manaCost = 5 });
                     battleCharacter.characterClass = characterClass;
                     battleCharacter.level = 1;
                     battleCharacter.maxHp = 45;
@@ -78,10 +78,10 @@ namespace PlayerServiceLibrary
                     return battleCharacter;
                 case CharacterClass.Priest:
                     battleCharacter.name = "Cohlm";
-                    battleCharacter.abilities = new List<string>();
-                    battleCharacter.abilities.Add("Heal");
-                    battleCharacter.abilities.Add("Prayer");
-                    battleCharacter.abilities.Add("Smite");
+                    battleCharacter.abilities = new List<Ability>();
+                    battleCharacter.abilities.Add(new Ability() { name = "Heal", manaCost = 3 });
+                    battleCharacter.abilities.Add(new Ability() { name = "Prayer", manaCost = 7 });
+                    battleCharacter.abilities.Add(new Ability() { name = "Smite", manaCost = 5 });
                     battleCharacter.characterClass = characterClass;
                     battleCharacter.level = 1;
                     battleCharacter.maxHp = 65;

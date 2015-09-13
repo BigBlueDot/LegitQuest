@@ -33,3 +33,5 @@ C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\Char
 C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\EnemyDisplay.g.cs
 C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\MessageDisplay.baml
 C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\MessageDisplay.g.cs
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\ManaDisplay.baml
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuest\obj\Debug\ManaDisplay.g.cs

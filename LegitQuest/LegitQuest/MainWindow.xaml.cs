@@ -23,6 +23,7 @@ namespace LegitQuest
     public partial class MainWindow : Window
     {
         private BattleDisplay battleDisplay;
+        private ManaDisplay manaDisplay;
         private MessageDisplay messageDisplay;
         private GuiServiceHelper guiServiceHelper;
         private AbilityAggregator abilityAggregator;
@@ -43,6 +44,7 @@ namespace LegitQuest
         {
             this.pnlMain.Children.Clear();
             this.pnlMain.Children.Add(battleDisplay);
+            this.pnlMain.Children.Add(manaDisplay);
             this.pnlMain.Children.Add(messageDisplay);
         }
 
@@ -70,14 +72,15 @@ namespace LegitQuest
                 this.battleDisplay.characterClicked += battleDisplay_characterClicked;
                 this.battleDisplay.enemyClicked += battleDisplay_enemyClicked;
                 this.battleDisplay.abilityClicked += battleDisplay_abilityClicked;
+                this.manaDisplay = new ManaDisplay(battleInitialization.mana);
                 draw();
             }
             else if (message is CommandAvailable)
             {
                 CommandAvailable commandAvailable = (CommandAvailable)message;
-                battleDisplay.addCommand(commandAvailable.characterId, 0, commandAvailable.commandOne);
-                battleDisplay.addCommand(commandAvailable.characterId, 1, commandAvailable.commandTwo);
-                battleDisplay.addCommand(commandAvailable.characterId, 2, commandAvailable.commandThree);
+                battleDisplay.addCommand(commandAvailable.characterId, 0, commandAvailable.commandOne.name, commandAvailable.commandOneEnabled);
+                battleDisplay.addCommand(commandAvailable.characterId, 1, commandAvailable.commandTwo.name, commandAvailable.commandTwoEnabled);
+                battleDisplay.addCommand(commandAvailable.characterId, 2, commandAvailable.commandThree.name, commandAvailable.commandThreeEnabled);
             }
             else if (message is AbilityUsed)
             {
@@ -116,6 +119,11 @@ namespace LegitQuest
             {
                 Crit crit = (Crit)message;
                 messageDisplay.addMessage(characterMapper[crit.source] + " has critically hit " + characterMapper[crit.target] + "!");
+            }
+            else if (message is UseMana)
+            {
+                UseMana useMana = (UseMana)message;
+                manaDisplay.modifyMana(-useMana.mana);
             }
         }
 

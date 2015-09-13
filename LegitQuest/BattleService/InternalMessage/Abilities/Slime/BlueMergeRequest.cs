@@ -15,7 +15,7 @@ namespace BattleServiceLibrary.InternalMessage.Abilities.Slime
         public BlueMergeRequest()
         {
             this.hasComplexProcessing = true;
-            this.execute = new Func<Ability, List<Actors.Actor>, List<Guid>, List<Guid>, List<InternalMessage>>((Ability ability, List<Actors.Actor> Actors, List<Guid> allies, List<Guid> enemies) =>
+            this.execute = new Func<AbilityMessage, List<Actors.Actor>, List<Guid>, List<Guid>, List<InternalMessage>>((AbilityMessage ability, List<Actors.Actor> Actors, List<Guid> allies, List<Guid> enemies) =>
             {
                 List<InternalMessage> messages = new List<InternalMessage>();
                 BlueMergeRequest blueMerge = (BlueMergeRequest)ability;

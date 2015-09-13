@@ -8,6 +8,7 @@ namespace MessageDataStructures.BattleGeneration
 {
     public class BattleGenerationMessage : Message
     {
+        public int mana { get; set; }
         public List<Enemy> enemies { get; set; }
         public FieldType fieldType { get; set; }
     }

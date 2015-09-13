@@ -1,5 +1,7 @@
 ﻿using BattleServiceLibrary.InternalMessage.Abilities;
+using BattleServiceLibrary.Utility;
 using MessageDataStructures;
+using MessageDataStructures.Player;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +14,28 @@ namespace BattleServiceLibrary.Actors.Characters
     {
         protected bool started { get; set; }
         protected bool commandSent { get; set; }
-        public List<string> abilities { get; set; }
+        public List<Ability> abilities { get; set; }
+        private ManaStore _manaStore;
+        public ManaStore manaStore
+        {
+            get
+            {
+                return _manaStore;
+            }
+            set
+            {
+                this._manaStore = value;
+                this.addCommandAvailableMessage();
+                this.commandSent = true;
+            }
+        }
 
         public PlayerCharacter()
         {
             this.started = false;
         }
 
-        public PlayerCharacter(int level, string name, int maxHP, int strength, int dexterity, int vitality, int magic, int mind, int resistance, int accuracy, int dodge, int critical, List<string> abilities)
+        public PlayerCharacter(int level, string name, int maxHP, int strength, int dexterity, int vitality, int magic, int mind, int resistance, int accuracy, int dodge, int critical, List<Ability> abilities)
         {
             this.level = level;
             this.name = name;
@@ -37,9 +53,6 @@ namespace BattleServiceLibrary.Actors.Characters
             this.abilities = abilities;
             this.started = false;
             this.id = Guid.NewGuid();
-
-            this.addCommandAvailableMessage();
-            this.commandSent = true;
         }
 
         private void addCommandAvailableMessage()
@@ -47,8 +60,11 @@ namespace BattleServiceLibrary.Actors.Characters
             CommandAvailable commandAvailable = new CommandAvailable();
             commandAvailable.conversationId = Guid.NewGuid();
             commandAvailable.commandOne = abilities[0];
+            commandAvailable.commandOneEnabled = (this.manaStore.mana > abilities[0].manaCost);
             commandAvailable.commandTwo = abilities[1];
+            commandAvailable.commandTwoEnabled = (this.manaStore.mana > abilities[1].manaCost);
             commandAvailable.commandThree = abilities[2];
+            commandAvailable.commandThreeEnabled = (this.manaStore.mana > abilities[2].manaCost);
             commandAvailable.characterId = this.id;
             this.addOutgoingMessage(commandAvailable);
         }
@@ -114,6 +130,16 @@ namespace BattleServiceLibrary.Actors.Characters
                 commandSent = true;
                 addCommandAvailableMessage();
             }
+        }
+
+        protected bool hasMana(int manaCost)
+        {
+            return (manaStore.mana >= manaCost);
+        }
+
+        protected void useMana(int manaCost)
+        {
+            manaCost -= manaCost;
         }
     }
 }

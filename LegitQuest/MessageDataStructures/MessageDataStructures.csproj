@@ -59,6 +59,7 @@
     <Compile Include="Battle\Dodge.cs" />
     <Compile Include="Battle\HealingDone.cs" />
     <Compile Include="Battle\MaxHPChange.cs" />
+    <Compile Include="Battle\UseMana.cs" />
     <Compile Include="DirectMessageReader.cs" />
     <Compile Include="EnemyGeneration\Enemy.cs" />
     <Compile Include="EnemyGeneration\EnemyGeneratedMessage.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="MessageReader.cs" />
     <Compile Include="MessageReceivedEventArgs.cs" />
     <Compile Include="MessageWriter.cs" />
+    <Compile Include="Player\Ability.cs" />
     <Compile Include="Player\BattleCharacter.cs" />
     <Compile Include="Player\CharacterBattleMessage.cs" />
     <Compile Include="Player\CharacterBattleRequest.cs" />

@@ -10,7 +10,7 @@ namespace MessageDataStructures.Player
     {
         public string name { get; set; }
         public CharacterClass characterClass { get; set; }
-        public List<string> abilities { get; set; }
+        public List<Ability> abilities { get; set; }
         public int level { get; set; }
         public int hp { get; set; }
         public int maxHp { get; set; }

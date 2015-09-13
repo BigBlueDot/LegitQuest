@@ -5,6 +5,7 @@ using BattleServiceLibrary.InternalMessage.Abilities;
 using BattleServiceLibrary.InternalMessage.Abilities.Slime;
 using BattleServiceLibrary.InternalMessage.DataRequests;
 using BattleServiceLibrary.InternalMessage.DataResults;
+using BattleServiceLibrary.Utility;
 using MessageDataStructures;
 using MessageDataStructures.Battle;
 using System;
@@ -23,10 +24,11 @@ namespace BattleServiceLibrary
         private List<Actor> actors { get; set; }
         private List<Guid> allies { get; set; } //Allows it to track down ally actors for global data requests
         private List<Guid> enemies { get; set; } //Allows it to track down enemy actors for global data requests
+        private ManaStore manaStore { get; set; }
         private long startingTime { get; set; }
         public Guid id { get; set; }
 
-        public Battle(Guid id, Actor pointCharacter, Actor leftWingCharacter, Actor rightWingCharacter, Actor pointEnemy, Actor leftWingEnemy, Actor rightWingEnemy)
+        public Battle(Guid id, PlayerCharacter pointCharacter, PlayerCharacter leftWingCharacter, PlayerCharacter rightWingCharacter, Actor pointEnemy, Actor leftWingEnemy, Actor rightWingEnemy, int mana)
         {
             messages = new List<InternalMessage.InternalMessage>();
             outgoingMessages = new List<Message>();
@@ -49,6 +51,12 @@ namespace BattleServiceLibrary
             this.actors.Add(pointEnemy);
             this.actors.Add(leftWingEnemy);
             this.actors.Add(rightWingEnemy);
+
+            this.manaStore = new ManaStore();
+            manaStore.mana = mana;
+            pointCharacter.manaStore = this.manaStore;
+            leftWingCharacter.manaStore = this.manaStore;
+            rightWingCharacter.manaStore = this.manaStore;
         }
 
         private long getCurrentTimeMs()
@@ -230,11 +238,11 @@ namespace BattleServiceLibrary
                         }
                     }
                 }
-                else if (message is Ability)
+                else if (message is AbilityMessage)
                 {
-                    if (((Ability)message).hasComplexProcessing)
+                    if (((AbilityMessage)message).hasComplexProcessing)
                     {
-                        newMessages.AddRange(((Ability)message).execute((Ability)message, actors, allies, enemies));
+                        newMessages.AddRange(((AbilityMessage)message).execute((AbilityMessage)message, actors, allies, enemies));
                     }
                 }
                 else if (message is AddStatus)
@@ -472,7 +480,7 @@ namespace BattleServiceLibrary
             {
                 this.globalMessages.Add(message); //These need to be processed globally
             }
-            else if (message is Ability)
+            else if (message is AbilityMessage)
             {
                 this.globalMessages.Add(message);
             }

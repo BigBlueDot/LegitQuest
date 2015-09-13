@@ -9,6 +9,7 @@ namespace MessageDataStructures
     public class BattleInitialization : Message
     {
         public Guid battleId { get; set; }
+        public int mana { get; set; }
         public List<ViewModels.Character> PlayerCharacters { get; set; }
         public List<ViewModels.Character> NonPlayerCharacters { get; set; }
     }

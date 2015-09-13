@@ -107,11 +107,11 @@ namespace LegitQuest
             }
         }
 
-        public void addCommand(Guid characterId, int index, String name)
+        public void addCommand(Guid characterId, int index, String name, bool enabled)
         {
             int characterIndex = indexDictionary[characterId];
             removeAbility(characterIndex, index);
-            addAbility(characterId, characterIndex, index, name);
+            addAbility(characterId, characterIndex, index, name, enabled);
         }
 
         private void removeAbility(int characterIndex, int index)
@@ -123,9 +123,9 @@ namespace LegitQuest
             }
         }
 
-        private void addAbility(Guid id, int characterIndex, int index, String name)
+        private void addAbility(Guid id, int characterIndex, int index, String name, bool enabled)
         {
-            AbilityDisplay abilityDisplay = new AbilityDisplay(id, name, index);
+            AbilityDisplay abilityDisplay = new AbilityDisplay(id, name, index, enabled);
             if (!abilityDictionary.ContainsKey(characterIndex))
             {
                 abilityDictionary.Add(characterIndex, new Dictionary<int, AbilityDisplay>());

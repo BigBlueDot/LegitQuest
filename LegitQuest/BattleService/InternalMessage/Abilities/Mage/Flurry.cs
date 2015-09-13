@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.InternalMessage.Abilities.Mage
 {
-    public class Flurry : Ability
+    public class Flurry : AbilityMessage
     {
         public Guid source { get; set; }
         public int potency { get; set; }
@@ -18,7 +18,7 @@ namespace BattleServiceLibrary.InternalMessage.Abilities.Mage
         public Flurry()
         {
             this.hasComplexProcessing = true;
-            this.execute = new Func<Ability, List<Actors.Actor>, List<Guid>, List<Guid>, List<InternalMessage>>((Ability ability, List<Actors.Actor> Actors, List<Guid> allies, List<Guid> enemies) =>
+            this.execute = new Func<AbilityMessage, List<Actors.Actor>, List<Guid>, List<Guid>, List<InternalMessage>>((AbilityMessage ability, List<Actors.Actor> Actors, List<Guid> allies, List<Guid> enemies) =>
             {
                 List<InternalMessage> messages = new List<InternalMessage>();
                 Flurry flurry = (Flurry)ability;

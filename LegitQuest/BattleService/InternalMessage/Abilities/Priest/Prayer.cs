@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.InternalMessage.Abilities.Priest
 {
-    public class Prayer : Ability
+    public class Prayer : AbilityMessage
     {
         public int healValue { get; set; }
         public Guid source { get; set; }
@@ -15,7 +15,7 @@ namespace BattleServiceLibrary.InternalMessage.Abilities.Priest
         public Prayer()
         {
             this.hasComplexProcessing = true;
-            this.execute = new Func<Ability, List<Actors.Actor>, List<Guid>, List<Guid>, List<InternalMessage>>((Ability ability, List<Actors.Actor> Actors, List<Guid> allies, List<Guid> enemies) =>
+            this.execute = new Func<AbilityMessage, List<Actors.Actor>, List<Guid>, List<Guid>, List<InternalMessage>>((AbilityMessage ability, List<Actors.Actor> Actors, List<Guid> allies, List<Guid> enemies) =>
             {
                 List<InternalMessage> messages = new List<InternalMessage>();
                 Prayer prayer = (Prayer)ability;

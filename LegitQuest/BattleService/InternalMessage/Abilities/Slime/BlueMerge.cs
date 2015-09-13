@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.InternalMessage.Abilities.Slime
 {
-    public class BlueMerge : Ability
+    public class BlueMerge : AbilityMessage
     {
         public Guid source { get; set; }
         public Guid target { get; set; }

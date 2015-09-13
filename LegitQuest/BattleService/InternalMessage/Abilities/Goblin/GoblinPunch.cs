@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.InternalMessage.Abilities.Goblin
 {
-    public class GoblinPunch : Ability
+    public class GoblinPunch : AbilityMessage
     {
         public Guid source { get; set; }
         public Guid target { get; set; }
@@ -20,7 +20,7 @@ namespace BattleServiceLibrary.InternalMessage.Abilities.Goblin
         public GoblinPunch()
         {
             this.hasComplexProcessing = true;
-            this.execute = new Func<Ability, List<Actors.Actor>, List<Guid>, List<Guid>, List<InternalMessage>>((Ability ability, List<Actors.Actor> Actors, List<Guid> allies, List<Guid> enemies) =>
+            this.execute = new Func<AbilityMessage, List<Actors.Actor>, List<Guid>, List<Guid>, List<InternalMessage>>((AbilityMessage ability, List<Actors.Actor> Actors, List<Guid> allies, List<Guid> enemies) =>
             {
                 List<InternalMessage> messages = new List<InternalMessage>();
                 GoblinPunch goblinPunch = (GoblinPunch)ability;
