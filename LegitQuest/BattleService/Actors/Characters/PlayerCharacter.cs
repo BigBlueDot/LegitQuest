@@ -118,7 +118,14 @@ namespace BattleServiceLibrary.Actors.Characters
 
         protected void setCastTime(long ms)
         {
-            this.castTimeComplete += ms;
+            if (currentTime > this.castTimeComplete)
+            {
+                this.castTimeComplete += currentTime + ms;
+            }
+            else
+            {
+                this.castTimeComplete += ms;
+            }
         }
 
         public override void process(long time)
