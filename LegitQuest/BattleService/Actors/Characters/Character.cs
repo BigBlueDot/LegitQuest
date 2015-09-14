@@ -156,10 +156,16 @@ namespace BattleServiceLibrary.Actors.Characters
             {
                 Heal specificMessage = (Heal)message;
 
-                this.hp += specificMessage.healValue;
+                int heal = specificMessage.healValue;
+                if (heal + this.hp > this.maxHp)
+                {
+                    heal = this.maxHp - this.hp;
+                }
+
+                this.hp += heal;
 
                 HealingDone healingDone = new HealingDone();
-                healingDone.healValue = specificMessage.healValue;
+                healingDone.healValue = heal;
                 healingDone.conversationId = specificMessage.conversationId;
                 healingDone.source = specificMessage.source;
                 healingDone.target = this.id;
