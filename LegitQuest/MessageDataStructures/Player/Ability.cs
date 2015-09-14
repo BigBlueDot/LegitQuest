@@ -15,5 +15,6 @@ namespace MessageDataStructures.Player
         public int castTime { get; set; }
         public int cooldown { get; set; }
         public ManaAffinity affinity { get; set; }
+        public List<TriAttackInfo> triAttackInfo { get; set; }
     }
 }

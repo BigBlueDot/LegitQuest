@@ -1,6 +1,7 @@
 ﻿using BattleServiceLibrary.Actors.Statuses;
 using BattleServiceLibrary.InternalMessage.Abilities;
 using BattleServiceLibrary.InternalMessage.Abilities.Priest;
+using BattleServiceLibrary.InternalMessage.Abilities.TriAttack;
 using BattleServiceLibrary.Utility;
 using MessageDataStructures;
 using MessageDataStructures.Battle;
@@ -32,6 +33,16 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
             {
                 addOutgoingMessage(this.useMana(manaCost, affinity));
                 this.setCooldown(cooldown, commandIssued.commandNumber);
+
+                //TriAttackInfo
+                List<TriAttackInfo> triAttackInfo = this.abilities[commandIssued.commandNumber].triAttackInfo;
+                TriAttackContribution triAttackContribution = new TriAttackContribution();
+                triAttackContribution.contributions = triAttackInfo;
+                triAttackContribution.conversationId = commandIssued.conversationId;
+                triAttackContribution.executeTime = this.castTimeComplete;
+                triAttackContribution.source = this.id;
+                triAttackContribution.target = commandIssued.target;
+                this.addOutgoingMessage(triAttackContribution);
 
                 if (this.abilities[commandIssued.commandNumber].name == "Heal")
                 {

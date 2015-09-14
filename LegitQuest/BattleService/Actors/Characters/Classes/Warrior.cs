@@ -1,5 +1,6 @@
 ﻿using BattleServiceLibrary.Actors.Statuses;
 using BattleServiceLibrary.InternalMessage.Abilities;
+using BattleServiceLibrary.InternalMessage.Abilities.TriAttack;
 using BattleServiceLibrary.InternalMessage.Abilities.Warrior;
 using BattleServiceLibrary.Utility;
 using MessageDataStructures;
@@ -28,11 +29,20 @@ namespace BattleServiceLibrary.Actors.Characters.Classes
             int cooldown = this.abilities[commandIssued.commandNumber].cooldown;
             ManaAffinity affinity = this.abilities[commandIssued.commandNumber].affinity;
 
-
             if (this.hasMana(manaCost, affinity))
             {
                 addOutgoingMessage(this.useMana(manaCost, affinity));
                 this.setCooldown(cooldown, commandIssued.commandNumber);
+
+                //TriAttackInfo
+                List<TriAttackInfo> triAttackInfo = this.abilities[commandIssued.commandNumber].triAttackInfo;
+                TriAttackContribution triAttackContribution = new TriAttackContribution();
+                triAttackContribution.contributions = triAttackInfo;
+                triAttackContribution.conversationId = commandIssued.conversationId;
+                triAttackContribution.executeTime = this.castTimeComplete;
+                triAttackContribution.source = this.id;
+                triAttackContribution.target = commandIssued.target;
+                this.addOutgoingMessage(triAttackContribution);
 
                 if (this.abilities[commandIssued.commandNumber].name == "Sword and Board")
                 {

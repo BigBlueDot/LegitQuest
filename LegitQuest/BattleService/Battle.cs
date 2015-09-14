@@ -3,6 +3,7 @@ using BattleServiceLibrary.Actors.Characters;
 using BattleServiceLibrary.InternalMessage;
 using BattleServiceLibrary.InternalMessage.Abilities;
 using BattleServiceLibrary.InternalMessage.Abilities.Slime;
+using BattleServiceLibrary.InternalMessage.Abilities.TriAttack;
 using BattleServiceLibrary.InternalMessage.DataRequests;
 using BattleServiceLibrary.InternalMessage.DataResults;
 using BattleServiceLibrary.Utility;
@@ -380,7 +381,8 @@ namespace BattleServiceLibrary
                 message is PhysicalAttack ||
                 message is Taunt ||
                 message is Heal ||
-                message is BlueMerge)
+                message is BlueMerge ||
+                message is TriAttackContribution)
             {
                 //Assign to the targetted actor
                 Guid target = new Guid();
@@ -432,6 +434,10 @@ namespace BattleServiceLibrary
                 else if (message is BlueMerge)
                 {
                     target = ((BlueMerge)message).target;
+                }
+                else if (message is TriAttackContribution)
+                {
+                    target = ((TriAttackContribution)message).target;
                 }
 
 

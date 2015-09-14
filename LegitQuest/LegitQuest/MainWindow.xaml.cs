@@ -100,7 +100,15 @@ namespace LegitQuest
                 DamageDealt specificMessage = (DamageDealt)message;
                 int dmg = specificMessage.damage;
                 Guid target = specificMessage.target;
-                messageDisplay.addMessage(characterMapper[specificMessage.source] + " has dealt " + dmg + " to " + characterMapper[specificMessage.target] + "!");
+                if (characterMapper.ContainsKey(specificMessage.source))
+                {
+                    messageDisplay.addMessage(characterMapper[specificMessage.source] + " has dealt " + dmg + " to " + characterMapper[specificMessage.target] + "!");
+                }
+                else
+                {
+                    messageDisplay.addMessage(characterMapper[specificMessage.target] + " has taken " + dmg + "!");
+                }
+                
                 battleDisplay.modifyHP(specificMessage.target, specificMessage.damage);
             }
             else if (message is CombatEnded)

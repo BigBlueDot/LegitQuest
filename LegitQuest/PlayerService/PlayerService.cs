@@ -1,4 +1,5 @@
 ﻿using MessageDataStructures;
+using MessageDataStructures.Battle;
 using MessageDataStructures.Player;
 using System;
 using System.Collections.Generic;
@@ -39,9 +40,11 @@ namespace PlayerServiceLibrary
                 case CharacterClass.Warrior:
                     battleCharacter.characterClass = characterClass;
                     battleCharacter.abilities = new List<Ability>();
-                    battleCharacter.abilities.Add(new Ability() { name= "Sword and Board", manaCost= 4, cooldown = 3000, castTime = 3000, affinity = MessageDataStructures.Battle.ManaAffinity.Grit });
-                    battleCharacter.abilities.Add(new Ability() { name = "Stagger", manaCost = 6, cooldown = 8000, castTime = 3000, affinity = MessageDataStructures.Battle.ManaAffinity.Force});
-                    battleCharacter.abilities.Add(new Ability() { name = "Haymaker", manaCost = 8, cooldown = 5000, castTime = 3000, affinity = MessageDataStructures.Battle.ManaAffinity.Force });
+                    List<TriAttackInfo> haymakerInfo = new List<TriAttackInfo>();
+                    haymakerInfo.Add(new TriAttackInfo() { contribution = 45, type = TriAttackType.Strike });
+                    battleCharacter.abilities.Add(new Ability() { name= "Sword and Board", manaCost= 4, cooldown = 3000, castTime = 3000, affinity = MessageDataStructures.Battle.ManaAffinity.Grit, triAttackInfo = new List<TriAttackInfo>() });
+                    battleCharacter.abilities.Add(new Ability() { name = "Stagger", manaCost = 6, cooldown = 8000, castTime = 3000, affinity = MessageDataStructures.Battle.ManaAffinity.Force, triAttackInfo = new List<TriAttackInfo>() });
+                    battleCharacter.abilities.Add(new Ability() { name = "Haymaker", manaCost = 8, cooldown = 5000, castTime = 3000, affinity = MessageDataStructures.Battle.ManaAffinity.Force, triAttackInfo = haymakerInfo });
                     battleCharacter.name = "Tonin";
                     battleCharacter.level = 1;
                     battleCharacter.maxHp = 1000;
@@ -59,9 +62,11 @@ namespace PlayerServiceLibrary
                 case CharacterClass.Mage:
                     battleCharacter.name = "Noktix";
                     battleCharacter.abilities = new List<Ability>();
-                    battleCharacter.abilities.Add(new Ability() { name = "Arcane Bullet", manaCost = 3, cooldown = 3000, castTime = 3000, affinity = MessageDataStructures.Battle.ManaAffinity.Arcane });
-                    battleCharacter.abilities.Add(new Ability() { name = "Flurry", manaCost = 10, cooldown = 10000, castTime = 3000, affinity = MessageDataStructures.Battle.ManaAffinity.Arcane });
-                    battleCharacter.abilities.Add(new Ability() { name = "Enfeeble", manaCost = 5, cooldown = 6000, castTime = 3000, affinity = MessageDataStructures.Battle.ManaAffinity.Arcane });
+                    List<TriAttackInfo> arcaneBulletInfo = new List<TriAttackInfo>();
+                    arcaneBulletInfo.Add(new TriAttackInfo() { type = TriAttackType.Strike, contribution = 45 });
+                    battleCharacter.abilities.Add(new Ability() { name = "Arcane Bullet", manaCost = 3, cooldown = 3000, castTime = 3000, affinity = MessageDataStructures.Battle.ManaAffinity.Arcane, triAttackInfo = arcaneBulletInfo });
+                    battleCharacter.abilities.Add(new Ability() { name = "Flurry", manaCost = 10, cooldown = 10000, castTime = 3000, affinity = MessageDataStructures.Battle.ManaAffinity.Arcane, triAttackInfo = new List<TriAttackInfo>() });
+                    battleCharacter.abilities.Add(new Ability() { name = "Enfeeble", manaCost = 5, cooldown = 6000, castTime = 3000, affinity = MessageDataStructures.Battle.ManaAffinity.Arcane, triAttackInfo = new List<TriAttackInfo>() });
                     battleCharacter.characterClass = characterClass;
                     battleCharacter.level = 1;
                     battleCharacter.maxHp = 45;
@@ -79,9 +84,11 @@ namespace PlayerServiceLibrary
                 case CharacterClass.Priest:
                     battleCharacter.name = "Cohlm";
                     battleCharacter.abilities = new List<Ability>();
-                    battleCharacter.abilities.Add(new Ability() { name = "Heal", manaCost = 3, castTime = 3000, cooldown = 6000, affinity = MessageDataStructures.Battle.ManaAffinity.Holy });
-                    battleCharacter.abilities.Add(new Ability() { name = "Prayer", manaCost = 7, castTime = 3000, cooldown = 10000, affinity = MessageDataStructures.Battle.ManaAffinity.Holy });
-                    battleCharacter.abilities.Add(new Ability() { name = "Smite", manaCost = 5, castTime = 3000, cooldown = 4000, affinity = MessageDataStructures.Battle.ManaAffinity.Holy });
+                    List<TriAttackInfo> smiteInfo = new List<TriAttackInfo>();
+                    smiteInfo.Add(new TriAttackInfo() { contribution = 25, type = TriAttackType.Strike });
+                    battleCharacter.abilities.Add(new Ability() { name = "Heal", manaCost = 3, castTime = 3000, cooldown = 6000, affinity = MessageDataStructures.Battle.ManaAffinity.Holy, triAttackInfo = new List<TriAttackInfo>() });
+                    battleCharacter.abilities.Add(new Ability() { name = "Prayer", manaCost = 7, castTime = 3000, cooldown = 10000, affinity = MessageDataStructures.Battle.ManaAffinity.Holy, triAttackInfo = new List<TriAttackInfo>() });
+                    battleCharacter.abilities.Add(new Ability() { name = "Smite", manaCost = 5, castTime = 3000, cooldown = 4000, affinity = MessageDataStructures.Battle.ManaAffinity.Holy, triAttackInfo = smiteInfo });
                     battleCharacter.characterClass = characterClass;
                     battleCharacter.level = 1;
                     battleCharacter.maxHp = 65;

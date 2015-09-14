@@ -60,6 +60,8 @@
     <Compile Include="Battle\HealingDone.cs" />
     <Compile Include="Battle\ManaAffinity.cs" />
     <Compile Include="Battle\MaxHPChange.cs" />
+    <Compile Include="Battle\TriAttackInfo.cs" />
+    <Compile Include="Battle\TriAttackType.cs" />
     <Compile Include="Battle\UseMana.cs" />
     <Compile Include="DirectMessageReader.cs" />
     <Compile Include="EnemyGeneration\Enemy.cs" />
