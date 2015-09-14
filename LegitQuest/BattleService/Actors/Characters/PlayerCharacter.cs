@@ -83,7 +83,7 @@ namespace BattleServiceLibrary.Actors.Characters
 
         private bool canUseCommand()
         {
-            return (this.castTimeComplete <= this.currentTime + 1000); //Can cast 1 second ahead of time
+            return (this.castTimeComplete <= this.currentTime + 1000) || this.currentTime <= 3000; //Can cast 1 second ahead of time
         }
 
         private bool AoEAttackAllowed(CommandIssued command)
