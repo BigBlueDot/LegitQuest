@@ -90,6 +90,12 @@ namespace BattleServiceLibrary
             NonPlayerCharacter pointEnemy = getRandomNonPlayerCharacter(enemies[0]);
             NonPlayerCharacter leftWingEnemy = getRandomNonPlayerCharacter(enemies[1]);
             NonPlayerCharacter rightWingEnemy = getRandomNonPlayerCharacter(enemies[2]);
+            pointCharacter.engagedWith = pointEnemy.id;
+            pointEnemy.engagedWith = pointCharacter.id;
+            leftWingCharacter.engagedWith = leftWingEnemy.id;
+            leftWingEnemy.engagedWith = leftWingCharacter.id;
+            rightWingCharacter.engagedWith = rightWingEnemy.id;
+            rightWingEnemy.engagedWith = rightWingCharacter.id;
             Battle battle = new Battle(new Guid(), pointCharacter, leftWingCharacter, rightWingCharacter, pointEnemy, leftWingEnemy, rightWingEnemy, mana, affinity, affinityMana);
             battles.Add(battle.id, battle);
             

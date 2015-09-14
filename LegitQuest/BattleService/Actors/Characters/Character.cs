@@ -32,6 +32,8 @@ namespace BattleServiceLibrary.Actors.Characters
         public long currentTime { get; set; }
         public long castTimeComplete { get; set; }
 
+        public Guid engagedWith { get; set; }
+
         public Character()
         {
             castTimeComplete = 3000; //Have a buffer at the start of combat
@@ -64,6 +66,12 @@ namespace BattleServiceLibrary.Actors.Characters
                 if (RNG.random.Next(100) < hitChance)
                 {
                     dmg = Convert.ToInt32(Math.Floor((Math.Pow((double)specificMessage.attack, 1.65f)) / ((double)(this.vitality <= 0 ? 1 : this.vitality)) * specificMessage.abilityStrength * critModifier));
+
+                    if (specificMessage.source == this.engagedWith)
+                    {
+                        dmg = Convert.ToInt32(dmg * 1.25);
+                    }
+
                     hp -= dmg;
 
                     if(criticalHit)
@@ -113,6 +121,10 @@ namespace BattleServiceLibrary.Actors.Characters
                 {
                     dmg = Convert.ToInt32(Math.Floor((Math.Pow((double)specificMessage.magicAttack, 1.65f)) / ((double)(this.resistance <= 0 ? 1 : this.resistance)) * specificMessage.abilityStrength * critModifier));
 
+                    if (specificMessage.source == this.engagedWith)
+                    {
+                        dmg = Convert.ToInt32(dmg * 1.25);
+                    }
 
                     if (criticalHit)
                     {
