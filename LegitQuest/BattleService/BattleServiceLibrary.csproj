@@ -62,6 +62,7 @@
     <Compile Include="InternalMessage\Abilities\AddStatus.cs" />
     <Compile Include="InternalMessage\Abilities\AttackDecreased.cs" />
     <Compile Include="InternalMessage\Abilities\AttackIncreased.cs" />
+    <Compile Include="InternalMessage\Abilities\CustomAbility.cs" />
     <Compile Include="InternalMessage\Abilities\DealStaticDamage.cs" />
     <Compile Include="InternalMessage\Abilities\Goblin\GoblinPunch.cs" />
     <Compile Include="InternalMessage\Abilities\Mage\Flurry.cs" />
