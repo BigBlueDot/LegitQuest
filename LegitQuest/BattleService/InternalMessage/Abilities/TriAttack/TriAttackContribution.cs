@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.InternalMessage.Abilities.TriAttack
 {
-    public class TriAttackContribution : InternalMessage
+    public class TriAttackContribution : TargetedMessage
     {
-        public Guid target { get; set; }
-        public Guid source { get; set; }
         public List<TriAttackInfo> contributions { get; set; }
     }
 }

@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.InternalMessage.Abilities
 {
-    public class DealStaticDamage : InternalMessage
+    public class DealStaticDamage : TargetedMessage
     {
-        public Guid target { get; set; }
-        public Guid source { get; set; }
         public int damage { get; set; }
     }
 }

@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.InternalMessage.Abilities
 {
-    public class DefenseDecreased : InternalMessage
+    public class DefenseDecreased : TargetedMessage
     {
-        public Guid target { get; set; }
-        public Guid source { get; set; }
         public int duration { get; set; }
         public int defenseReduction { get; set; }
     }

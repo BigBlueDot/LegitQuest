@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.InternalMessage.Abilities
 {
-    public class DamageOverTime : InternalMessage
+    public class DamageOverTime : TargetedMessage
     {
-        public Guid target { get; set; }
-        public Guid source { get; set; }
         public int damage { get; set; }
         public int durationMS { get; set; }
         public int tickDurationMS { get; set; }

@@ -93,7 +93,7 @@
     <Compile Include="InternalMessage\Abilities\PhysicalAttack.cs" />
     <Compile Include="InternalMessage\Abilities\Taunt.cs" />
     <Compile Include="InternalMessage\InternalMessage.cs" />
-    <Compile Include="InternalMessage\Targetted.cs" />
+    <Compile Include="InternalMessage\TargetedMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\ManaStore.cs" />
     <Compile Include="Utility\RNG.cs" />

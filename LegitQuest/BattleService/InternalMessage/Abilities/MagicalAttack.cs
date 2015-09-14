@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.InternalMessage.Abilities
 {
-    public class MagicalAttack : InternalMessage
+    public class MagicalAttack : TargetedMessage
     {
-        public Guid target { get; set; }
-        public Guid source { get; set; }
         public int magicAttack { get; set; }
         public int accuracy { get; set; }
         public int crit { get; set; }

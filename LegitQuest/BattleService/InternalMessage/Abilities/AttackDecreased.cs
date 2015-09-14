@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace BattleServiceLibrary.InternalMessage.Abilities
 {
-    public class AttackDecreased : InternalMessage
+    public class AttackDecreased : TargetedMessage
     {
-        public Guid target { get; set; }
-        public Guid source { get; set; }
         public int duration { get; set; }
         public int attackReduction { get; set; }
     }

@@ -371,75 +371,10 @@ namespace BattleServiceLibrary
 
         private void assignMessage(InternalMessage.InternalMessage message)
         {
-            if (message is DamageOverTime ||
-                message is DealStaticDamage ||
-                message is DefenseDecreased ||
-                message is DefenseIncreased ||
-                message is AttackDecreased ||
-                message is AttackIncreased ||
-                message is MagicalAttack ||
-                message is PhysicalAttack ||
-                message is Taunt ||
-                message is Heal ||
-                message is BlueMerge ||
-                message is TriAttackContribution)
+            if (message is TargetedMessage)
             {
                 //Assign to the targetted actor
-                Guid target = new Guid();
-
-                if (message is DamageOverTime)
-                {
-                    target = ((DamageOverTime)message).target;
-                }
-                else if (message is DealStaticDamage)
-                {
-                    target = ((DealStaticDamage)message).target;
-                }
-                else if (message is AttackDecreased)
-                {
-                    target = ((AttackDecreased)message).target;
-                }
-                else if (message is AttackIncreased)
-                {
-                    target = ((AttackIncreased)message).target;
-                }
-                else if (message is DefenseDecreased)
-                {
-                    target = ((DefenseDecreased)message).target;
-                }
-                else if (message is DefenseIncreased)
-                {
-                    target = ((DefenseIncreased)message).target;
-                }
-                else if (message is MagicalAttack)
-                {
-                    target = ((MagicalAttack)message).target;
-                }
-                else if (message is PhysicalAttack)
-                {
-                    target = ((PhysicalAttack)message).target;
-                }
-                else if (message is Taunt)
-                {
-                    target = ((Taunt)message).target;
-                }
-                else if (message is Heal)
-                {
-                    target = ((Heal)message).target;
-                }
-                else if (message is DealStaticDamage)
-                {
-                    target = ((DealStaticDamage)message).target;
-                }
-                else if (message is BlueMerge)
-                {
-                    target = ((BlueMerge)message).target;
-                }
-                else if (message is TriAttackContribution)
-                {
-                    target = ((TriAttackContribution)message).target;
-                }
-
+                Guid target = ((TargetedMessage)message).target;
 
                 foreach (Actor actor in actors)
                 {
