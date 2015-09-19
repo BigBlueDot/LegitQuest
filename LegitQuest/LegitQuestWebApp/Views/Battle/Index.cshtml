@@ -13,13 +13,13 @@
     $(function () {
         var clientConnection = $.connection.battleHub;
 
-        clientConnection.client.broadcastMessage = function (name, message) {
-            alert("TEST");
+        clientConnection.client.processMessage = function (message) {
+
         }
 
         $.connection.hub.start().done(function()
         {
-            clientConnection.server.hello();
+            clientConnection.server.startCombat();
         })
     });
 </script>
