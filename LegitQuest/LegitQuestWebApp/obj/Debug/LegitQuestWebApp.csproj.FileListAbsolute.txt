@@ -81,3 +81,7 @@ C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuestWebApp\bin\Play
 C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuestWebApp\obj\Debug\LegitQuestWebApp.csprojResolveAssemblyReference.cache
 C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuestWebApp\obj\Debug\LegitQuestWebApp.dll
 C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuestWebApp\obj\Debug\LegitQuestWebApp.pdb
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuestWebApp\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuestWebApp\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuestWebApp\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\Trey_2\Documents\GitHub\LegitQuest\LegitQuest\LegitQuestWebApp\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
