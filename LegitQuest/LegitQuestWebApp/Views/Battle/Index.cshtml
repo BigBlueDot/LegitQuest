@@ -3,5 +3,24 @@
     ViewBag.Title = "Index";
 }
 
+@Scripts.Render("~/bundles/jquery");
+@Scripts.Render("~/bundles/signalR");
+<script src="~/signalr/hubs"></script>
+
 <h2>Index</h2>
+
+<script type="text/javascript">
+    $(function () {
+        var clientConnection = $.connection.battleHub;
+
+        clientConnection.client.broadcastMessage = function (name, message) {
+            alert("TEST");
+        }
+
+        $.connection.hub.start().done(function()
+        {
+            clientConnection.server.hello();
+        })
+    });
+</script>
 
