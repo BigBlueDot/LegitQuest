@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows Desktop
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegitQuest", "LegitQuest\LegitQuest.csproj", "{10B591C6-12E9-43EA-A919-CDBE0ACB2D6B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleServiceLibrary", "BattleService\BattleServiceLibrary.csproj", "{6E4BDF76-D363-452A-8D0E-13692D530927}"
@@ -16,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerServiceLibrary", "PlayerService\PlayerServiceLibrary.csproj", "{74222533-B155-492A-89D9-2A2D5B61B6AB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuiServiceLibrary", "GuiServiceLibrary\GuiServiceLibrary.csproj", "{572BED69-2E5F-4A2B-9199-494BBB75D45F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegitQuestWebApp", "LegitQuestWebApp\LegitQuestWebApp.csproj", "{CC55AF6F-5DD8-41E3-965F-0FC0060E6A04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,10 @@ Global
 		{572BED69-2E5F-4A2B-9199-494BBB75D45F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{572BED69-2E5F-4A2B-9199-494BBB75D45F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{572BED69-2E5F-4A2B-9199-494BBB75D45F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC55AF6F-5DD8-41E3-965F-0FC0060E6A04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC55AF6F-5DD8-41E3-965F-0FC0060E6A04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC55AF6F-5DD8-41E3-965F-0FC0060E6A04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC55AF6F-5DD8-41E3-965F-0FC0060E6A04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
