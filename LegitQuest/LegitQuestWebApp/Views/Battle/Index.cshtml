@@ -7,14 +7,44 @@
 @Scripts.Render("~/bundles/signalR");
 <script src="~/signalr/hubs"></script>
 
-<h2>Index</h2>
+<style>
+    .message-box
+    {
+        height:25vh;
+        overflow:auto;
+        position:relative;
+    }
+
+    .battle-container
+    {
+        height:100vh;
+    }
+
+    .characters-container{
+        height:75vh;
+    }
+</style>
+
+<h2>Battle</h2>
+
+<div id="container" class="battle-container container-fluid">
+    <div id="messageBox" class="text-primary message-box">
+
+    </div>
+    <div id="charactersContainer" class="characters-container">
+
+    </div>
+</div>
 
 <script type="text/javascript">
     $(function () {
         var clientConnection = $.connection.battleHub;
 
         clientConnection.client.processMessage = function (message) {
-
+            if(message.message != null && message.message != "")
+            {
+                messageBox.innerHTML = message.message + "<br />" + messageBox.innerHTML;
+            }
         }
 
         $.connection.hub.start().done(function()

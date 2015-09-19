@@ -9,5 +9,6 @@ namespace MessageDataStructures
     public class Message
     {
         public Guid conversationId { get; set; } 
+        public string className {  get { return this.GetType().Name; } }
     }
 }
