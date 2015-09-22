@@ -65,7 +65,8 @@ namespace BattleServiceLibrary
                     }
                     battles[key].clearOutgoingMessages();
                 }
-                
+
+                Thread.Sleep(1000);
             }
         }
 
