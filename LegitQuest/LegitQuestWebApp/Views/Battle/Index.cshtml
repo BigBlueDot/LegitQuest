@@ -5,7 +5,11 @@
 
 @Scripts.Render("~/bundles/jquery");
 @Scripts.Render("~/bundles/signalR");
+@Scripts.Render("~/bundles/react");
 <script src="~/signalr/hubs"></script>
+<script src="~/Scripts/battle/BattleDisplay.jsx"></script>
+<script src="~/Scripts/battle/MessageBox.jsx"></script>
+<script src="~/Scripts/battle/CharacterDisplay.jsx"></script>
 
 <style>
     .message-box
@@ -27,23 +31,37 @@
 
 <h2>Battle</h2>
 
-<div id="container" class="battle-container container-fluid">
-    <div id="messageBox" class="text-primary message-box">
+<div id="container">
 
-    </div>
-    <div id="charactersContainer" class="characters-container">
-
-    </div>
 </div>
 
 <script type="text/javascript">
+    React.render(React.createElement(BattleDisplay, { messages: ["MESSAGE"] }), document.getElementById("container"));
+</script>
+
+@*<div id="container" class="battle-container container-fluid">
+    @*<div id="messageBox" class="text-primary message-box">
+
+    </div>
+    <script type="text/javascript">
+        var messageBoxElement = React.createElement(MessageBox, {});
+        React.render(messageBoxElement, document.getElementById("container"));
+    </script>
+    <div id="charactersContainer" class="characters-container">
+
+    </div>
+</div>*@
+
+@*<script type="text/javascript">
     $(function () {
         var clientConnection = $.connection.battleHub;
 
         clientConnection.client.processMessage = function (message) {
             if(message.message != null && message.message != "")
             {
-                messageBox.innerHTML = message.message + "<br />" + messageBox.innerHTML;
+                messageBoxElement.setState({ messages: this.messages + message });
+                //messageBoxElement.getProperties().messages.push(message.message);
+               // messageBox.innerHTML = message.message + "<br />" + messageBox.innerHTML;
             }
         }
 
@@ -52,5 +70,5 @@
             clientConnection.server.startCombat();
         })
     });
-</script>
+</script>*@
 
